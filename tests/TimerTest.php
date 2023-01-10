@@ -10,7 +10,12 @@ final class TimerTest extends TestCase
     public function testTimerDecorator(): void
     {
         $calc = new Calc();
-        $this->assertSame("Total execution: 1; Result: 3", $calc->sum1(1, 2));
+
+        ob_start();
+        $calc->sum1(1, 2);
+        $output = ob_get_clean();
+
+        $this->assertSame("Total execution: 1; Result: 3", $output);
     }
 
     public function testNoDecorator(): void

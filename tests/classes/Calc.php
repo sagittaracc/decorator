@@ -3,6 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\classes;
 
 use Sagittaracc\PhpPythonDecorator\Decorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\attributes\Log;
 use Sagittaracc\PhpPythonDecorator\tests\attributes\Timer;
 
 class Calc
@@ -10,6 +11,7 @@ class Calc
     use Decorator;
 
     #[Timer]
+    #[Log]
     protected function sum1($a, $b)
     {
         sleep(1);

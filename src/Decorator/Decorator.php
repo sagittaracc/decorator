@@ -12,10 +12,18 @@ trait Decorator
         $attributes = $method->getAttributes();
 
         if (count($attributes) > 0) {
+
+            $f = function () use ($func, $args) {
+                return $this->$func(...$args);
+            };
+
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
-                return $instance->main(fn() => $this->$func(...$args));
+                $f = $instance->main($f, $args);
             }
+
+            return $f();
+
         }
         else {
             return $this->$func(...$args);
