@@ -11,11 +11,9 @@ trait Decorator
         $method = new ReflectionMethod($this, $func);
         $attributes = $method->getAttributes();
 
-        if (count($attributes) > 0) {
-
-            $f = function () use ($func, $args) {
-                return $this->$func(...$args);
-            };
+        if (count($attributes) > 0)
+        {
+            $f = fn() => $this->$func(...$args);
 
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
@@ -23,9 +21,9 @@ trait Decorator
             }
 
             return $f();
-
         }
-        else {
+        else
+        {
             return $this->$func(...$args);
         }
     }
