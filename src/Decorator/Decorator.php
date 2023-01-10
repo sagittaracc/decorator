@@ -6,7 +6,7 @@ use ReflectionMethod;
 
 trait Decorator
 {
-    public function run(string $func, ...$args)
+    public function __call($func, $args)
     {
         $method = new ReflectionMethod($this, $func);
         $attributes = $method->getAttributes();
