@@ -56,6 +56,6 @@ class Log {
 ```php
 
 $calc = new Calc();
-echo $calc->sum(1, 2); // Total execution: 1.00000343; Result: 3
+$calc->sum(1, 2); // Total execution: 1.00000343; Result: 3
 
 ```
