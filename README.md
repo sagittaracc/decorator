@@ -1,7 +1,7 @@
 # php-python-decorator
 Python style decorator for PHP
 
-# Example
+# Пример
 Функцию `sum1` помечаем декоратором `Timer` чтобы подсчитать время выполнения функции, а функцию `sum2` без декоратора - чтобы просто получить результат
 ```php
 
