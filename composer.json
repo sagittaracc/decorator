@@ -1,0 +1,21 @@
+{
+    "name": "sagittaracc/php-python-decorator",
+    "description": "Python style decorator for PHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sagittaracc\\PhpPythonDecorator\\": "src/",
+            "Sagittaracc\\PhpPythonDecorator\\tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sagittaracc",
+            "email": "sagittaracc@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
