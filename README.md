@@ -2,6 +2,7 @@
 Python style decorator for PHP
 
 # Example
+Функцию `sum1` помечаем декоратором `Timer` чтобы подсчитать время выполнения функции, а функцию `sum2` без декоратора - чтобы просто получить результат
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator\Decorator;
@@ -24,6 +25,7 @@ class Calc
 }
 ```
 
+Пишем код декоратора (функция обернутая в декоратор вызывается как `$callback()`
 ```php
 
 #[Attribute]
@@ -45,7 +47,9 @@ class Timer {
 ```php
 
 $calc = new Calc();
+// Так как функция sum1 обернута в декоратор Timer - на выходе мы получаем результат и время выполнения
 echo $calc->run('sum1', 1, 2); // Total execution: 1.00000343; Result: 3
+// Так как функция sum2 НЕ обернута в декоратор Timer - мы получаем просто результат
 echo $calc->run('sum2', 1, 2); // 3
 
 ```
