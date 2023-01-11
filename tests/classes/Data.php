@@ -13,8 +13,8 @@ class Data
     protected function getData()
     {
         return [
-            'id' => 1,
-            'name' => 'name',
+            'id'      => 1,
+            'name'    => 'name',
             'caption' => 'caption',
         ];
     }
