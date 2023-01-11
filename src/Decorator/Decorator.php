@@ -17,7 +17,7 @@ trait Decorator
 
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
-                $f = $instance->main($f, $args);
+                $f = fn() => $instance->main($f, $args);
             }
 
             return $f();

@@ -8,8 +8,6 @@ use Attribute;
 class Log {
     public function main($func, ...$args)
     {
-        return function () use ($func) {
-            echo $func();
-        };
+        echo $func();
     }
 }
