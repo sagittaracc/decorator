@@ -22,17 +22,17 @@ class Retry
 
     public function main($func, ...$args)
     {
-        $attemptNeeded = 1;
+        $attemptsNeeded = 1;
 
-        for ($attempt = 1; $attempt <= $this->attempts; $attempt++) {
+        for ($i = 1; $i <= $this->attempts; $i++) {
             try
             {
-                if ($attempt < 3) {
+                if ($i < 3) {
                     throw new Exception;
                 }
                 else {
                     $result = $func($args);
-                    $attemptNeeded = $attempt;
+                    $attemptsNeeded = $i;
                 }
             }
             catch (Exception $e)
@@ -46,7 +46,7 @@ class Retry
         }
 
         return [
-            'attempts' => $attemptNeeded,
+            'attempts' => $attemptsNeeded,
             'result' => $result,
         ];
     }
