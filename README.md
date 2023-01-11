@@ -26,16 +26,14 @@ class Calc
 class Timer {
     public function main($func, ...$args)
     {
-        return function () use ($func, $args) {
-            $time_start = microtime(true);
+        $time_start = microtime(true);
 
-            $result = $func($args);
+        $result = $func($args);
 
-            $time_end = microtime(true);
-            $execution_time = $time_end - $time_start;
+        $time_end = microtime(true);
+        $execution_time = $time_end - $time_start;
 
-            return "Total execution: $execution_time; Result: $result";
-        };
+        return "Total execution: $execution_time; Result: $result";
     }
 }
 ```
@@ -46,9 +44,7 @@ class Timer {
 class Log {
     public function main($func, ...$args)
     {
-        return function () use ($func) {
-            echo $func();
-        };
+        echo $func();
     }
 }
 ```
