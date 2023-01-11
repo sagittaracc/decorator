@@ -3,24 +3,12 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
 use Attribute;
+use Sagittaracc\PhpPythonDecorator\Decorator\Dto\DtoDecorator;
 
 #[Attribute]
-class ObjectDto {
-    public function main($func, ...$args)
-    {
-        $row = $func($args);
+class ObjectDto extends DtoDecorator {
 
-        $dto = [];
-        $dtoFields = $this->fields();
-
-        foreach ($row as $key => $value) {
-            $dto[$dtoFields[$key]] = $value;
-        }
-
-        return $dto;
-    }
-
-    private function fields()
+    public function fields()
     {
         return [
             'id'      => 'dtoId',
