@@ -3,7 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\Decorator\Dto\DtoDecorator;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Dto\DtoDecorator;
 
 #[Attribute]
 class ObjectDto extends DtoDecorator {

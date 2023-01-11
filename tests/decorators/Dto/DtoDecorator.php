@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\Decorator\Dto;
+namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
 abstract class DtoDecorator
 {
