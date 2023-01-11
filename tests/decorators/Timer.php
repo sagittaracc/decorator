@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\tests\attributes;
+namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
 use Attribute;
 
