@@ -24,23 +24,4 @@ final class CalcTest extends TestCase
 
         $this->assertSame(3, $calc->sum2(1, 2));
     }
-
-    public function testFailedRetryDecorator(): void
-    {
-        $this->expectExceptionMessage('2 attempts was not enough!');
-
-        $calc = new Calc();
-
-        $calc->div1(2, 1);
-    }
-
-    public function testSuccessfulRetryDecorator(): void
-    {
-        $calc = new Calc();
-
-        $result = $calc->div2(4, 2);
-
-        $this->assertSame(2, $result['result']);
-        $this->assertSame(3, $result['attempts']);
-    }
 }

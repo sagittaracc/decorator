@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+use PHPUnit\Framework\TestCase;
+use Sagittaracc\PhpPythonDecorator\tests\classes\Server;
+
+final class ServerTest extends TestCase
+{
+    public function testFailRetryDecorator(): void
+    {
+        $this->expectExceptionMessage('2 attempts was not enough!');
+
+        $server = new Server();
+
+        $server->failConnect();
+    }
+
+    public function testSuccessRetryDecorator(): void
+    {
+        $server = new Server();
+
+        $result = $server->successConnect();
+
+        $this->assertTrue($result['result']);
+        $this->assertSame(3, $result['attempts']);
+    }
+}
