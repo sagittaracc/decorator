@@ -23,8 +23,14 @@ class Calc
         return $a + $b;
     }
 
+    #[Retry(2)]
+    protected function div1($a, $b)
+    {
+        return $a / $b;
+    }
+
     #[Retry(3)]
-    protected function div($a, $b)
+    protected function div2($a, $b)
     {
         return $a / $b;
     }
