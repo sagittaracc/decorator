@@ -5,6 +5,7 @@ namespace Sagittaracc\PhpPythonDecorator\tests\classes;
 use Sagittaracc\PhpPythonDecorator\Decorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Retry;
 
 class Calc
 {
@@ -20,5 +21,11 @@ class Calc
     protected function sum2($a, $b)
     {
         return $a + $b;
+    }
+
+    #[Retry(3)]
+    protected function div($a, $b)
+    {
+        return $a / $b;
     }
 }
