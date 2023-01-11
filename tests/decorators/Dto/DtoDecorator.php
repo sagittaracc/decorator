@@ -8,14 +8,13 @@ abstract class DtoDecorator
     {
         $row = $func($args);
 
-        $dto = [];
         $dtoFields = $this->fields();
 
         foreach ($row as $key => $value) {
-            $dto[$dtoFields[$key]] = $value;
+            $this->{$dtoFields[$key]} = $value;
         }
 
-        return $dto;
+        return $this;
     }
 
     abstract public function fields();
