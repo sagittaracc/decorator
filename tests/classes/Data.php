@@ -23,9 +23,9 @@ class Data
     protected function getFailData()
     {
         return [
-            'id'       => 1,
-            'name'     => 'name',
-            'caption1' => 'caption',
+            'id'            => 1,
+            'name'          => 'name',
+            'wrong_caption' => 'caption',
         ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\tests\classes\Data;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 
 final class DtoTest extends TestCase
 {
@@ -21,7 +22,8 @@ final class DtoTest extends TestCase
 
     public function testFailDto(): void
     {
-        $this->expectExceptionMessage('\'$dtoCaption\' can not be set because \'$caption\' is not defined!');
+        $this->expectException(DtoException::class);
+        $this->expectExceptionMessage('Dto::$dtoCaption can not be set because Data::$caption is not defined!');
 
         $data = new Data();
         $data->getFailData();

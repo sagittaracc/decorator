@@ -2,7 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
-use Exception;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 
 abstract class DtoDecorator
 {
@@ -17,7 +17,13 @@ abstract class DtoDecorator
                 $this->$dtoField = $row[$field];
             }
             else {
-                throw new Exception("'\${$dtoField}' can not be set because '\${$field}' is not defined!");
+                throw new DtoException(
+                    sprintf(
+                        "%s can not be set because %s is not defined!",
+                        "Dto::\$$dtoField",
+                        "Data::\$$field"
+                    )
+                );
             }
         }
 
