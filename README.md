@@ -4,7 +4,7 @@ Python style decorator for PHP
 # Пример
 ```php
 
-use Sagittaracc\PhpPythonDecorator\Decorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\Decorator;
 
 class Calc
 {
@@ -23,7 +23,7 @@ class Calc
 ```php
 
 #[Attribute]
-class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute\Attribute
+class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute
 {
     public function main($func, ...$args)
     {
@@ -42,7 +42,7 @@ class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute\Attribute
 ```php
 
 #[Attribute]
-class Log extends \Sagittaracc\PhpPythonDecorator\Attribute\Attribute
+class Log extends \Sagittaracc\PhpPythonDecorator\Attribute
 {
     public function main($func, ...$args)
     {
