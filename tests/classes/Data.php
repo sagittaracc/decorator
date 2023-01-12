@@ -3,13 +3,13 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\classes;
 
 use Sagittaracc\PhpPythonDecorator\Decorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\ObjectDto;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
 
 class Data
 {
     use Decorator;
 
-    #[ObjectDto]
+    #[CreateObjectDto]
     protected function getData()
     {
         return [

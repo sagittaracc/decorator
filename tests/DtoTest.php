@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\tests\classes\Data;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\ObjectDto;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
 
 final class DtoTest extends TestCase
 {
@@ -13,7 +13,7 @@ final class DtoTest extends TestCase
         $data = new Data();
         $dtoData = $data->getData();
 
-        $this->assertInstanceOf(ObjectDto::class, $dtoData);
+        $this->assertInstanceOf(CreateObjectDto::class, $dtoData);
         $this->assertSame(1, $dtoData->dtoId);
         $this->assertSame('name', $dtoData->dtoName);
         $this->assertSame('caption', $dtoData->dtoCaption);

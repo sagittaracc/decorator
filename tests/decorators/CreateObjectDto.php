@@ -6,18 +6,18 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Dto\DtoDecorator;
 
 #[Attribute]
-class ObjectDto extends DtoDecorator
+class CreateObjectDto extends DtoDecorator
 {
-    public $dtoId;
-    public $dtoName;
-    public $dtoCaption;
+    public int $dtoId;
+    public string $dtoName;
+    public string $dtoCaption;
 
     public function props()
     {
         return [
-            'id'      => 'dtoId',
-            'name'    => 'dtoName',
-            'caption' => 'dtoCaption',
+            'dtoId'      => 'id',
+            'dtoName'    => 'name',
+            'dtoCaption' => 'caption',
         ];
     }
 }
