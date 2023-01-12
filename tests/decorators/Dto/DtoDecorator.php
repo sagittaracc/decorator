@@ -22,9 +22,7 @@ abstract class DtoDecorator extends DecoratorAttribute
                 try
                 {
                     $this->$dtoField = $row[$field];
-                    if ($validateList[$dtoField]($this->$dtoField) === false) {
-                        throw new DtoValidationError;
-                    }
+                    $validateList[$dtoField]($this->$dtoField);
                 }
                 catch (TypeError $e)
                 {

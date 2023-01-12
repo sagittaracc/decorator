@@ -4,6 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Dto\DtoDecorator;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoValidationError;
 
 #[Attribute]
 class CreateObjectDto extends DtoDecorator
@@ -25,7 +26,9 @@ class CreateObjectDto extends DtoDecorator
     {
         return [
             'dtoId' => function ($value) {
-                return $value >= 0;
+                if ($value < 0) {
+                    throw new DtoValidationError('CreateObjectDto::$dtoId should be positive!');
+                }
             },
             'dtoName' => function ($value) {
                 return true;

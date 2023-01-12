@@ -42,6 +42,7 @@ final class DtoTest extends TestCase
     public function testUnvalidDtoOverCustomValidation(): void
     {
         $this->expectException(DtoValidationError::class);
+        $this->expectExceptionMessage('CreateObjectDto::$dtoId should be positive!');
 
         $data = new Data();
         $data->getUnvalidDataOverCustomValidation();
