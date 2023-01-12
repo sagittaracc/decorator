@@ -30,12 +30,6 @@ class CreateObjectDto extends DtoDecorator
                     throw new DtoValidationError('CreateObjectDto::$dtoId should be positive!');
                 }
             },
-            'dtoName' => function ($value) {
-                // ...
-            },
-            'dtoCaption' => function ($value) {
-                // ...
-            },
         ];
     }
 }

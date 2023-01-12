@@ -2,6 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
+use Closure;
 use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
@@ -22,7 +23,10 @@ abstract class DtoDecorator extends DecoratorAttribute
                 try
                 {
                     $this->$dtoField = $row[$field];
-                    $validateList[$dtoField]($this->$dtoField);
+
+                    if (isset($validateList[$dtoField]) && $validateList[$dtoField] instanceof Closure) {
+                        $validateList[$dtoField]($this->$dtoField);
+                    }
                 }
                 catch (TypeError $e)
                 {
