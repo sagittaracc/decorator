@@ -23,7 +23,7 @@ final class DtoTest extends TestCase
     public function testFailDto(): void
     {
         $this->expectException(DtoException::class);
-        $this->expectExceptionMessage('Dto::$dtoCaption can not be set because Data::$caption is not defined!');
+        $this->expectExceptionMessage('CreateObjectDto::$dtoCaption can not be set because Data::$caption is not defined!');
 
         $data = new Data();
         $data->getFailData();
