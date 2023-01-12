@@ -19,17 +19,18 @@ class Retry
 
     public function main($func, ...$args)
     {
-        $attemptTotal = 1;
+        $attemptTotal = 0;
 
         for ($i = 1; $i <= $this->maxAttemptCount; $i++) {
             try
             {
+                $attemptTotal++;
+
                 if ($i < 3) {
                     throw new Exception;
                 }
                 else {
                     $result = $func($args);
-                    $attemptTotal = $i;
                 }
             }
             catch (Exception $e)
