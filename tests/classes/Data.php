@@ -4,8 +4,8 @@ namespace Sagittaracc\PhpPythonDecorator\tests\classes;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateRoleListDto;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateUserListDto;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateListDto;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateItemsDto;
 
 class Data
 {
@@ -51,20 +51,24 @@ class Data
         ];
     }
 
-    #[CreateUserListDto]
-    protected function getUserList()
+    #[CreateListDto]
+    protected function getList()
     {
         return [
-            'users' => ['me', 'friend'],
-            'roles' => $this->run('getRoleList'),
+            '_id' => 1,
+            '_items' => $this->run('getItems'),
         ];
     }
 
-    #[CreateRoleListDto]
-    protected function getRoleList()
+    #[CreateItemsDto]
+    protected function getItems()
     {
         return [
-            'list' => ['guest', 'user', 'admin']
+            '_list' => [
+                'item-1',
+                'item-2',
+                'item-3'
+            ],
         ];
     }
 }

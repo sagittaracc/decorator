@@ -51,9 +51,9 @@ final class DtoTest extends TestCase
     public function testNestedDto(): void
     {
         $data = new Data();
-        $users = $data->getUserList();
+        $list = $data->getList();
 
-        $this->assertSame(['me', 'friend'], $users->list);
-        $this->assertSame(['guest', 'user', 'admin'], $users->roles->list);
+        $this->assertSame(1, $list->id);
+        $this->assertSame(['item-1', 'item-2', 'item-3'], $list->items->list);
     }
 }

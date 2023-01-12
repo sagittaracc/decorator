@@ -6,17 +6,14 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Dto\DtoDecorator;
 
 #[Attribute]
-class CreateUserListDto extends DtoDecorator
+class CreateItemsDto extends DtoDecorator
 {
     public array $list;
-
-    public CreateRoleListDto $roles;
 
     public function props()
     {
         return [
-            'list' => 'users',
-            'roles' => 'roles',
+            'list' => '_list',
         ];
     }
 
