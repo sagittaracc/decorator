@@ -4,7 +4,6 @@ namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
 use Attribute;
 use Exception;
-use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
 
 /**
  * Данный декоратор искусственно моделирует процесс успешных и не успешных попыток выполнения какой-либо функции
@@ -12,7 +11,7 @@ use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
  */
 
 #[Attribute]
-class Retry extends DecoratorAttribute
+class Retry extends \Sagittaracc\PhpPythonDecorator\Attribute\Attribute
 {
     function __construct(
         private int $maxAttemptCount

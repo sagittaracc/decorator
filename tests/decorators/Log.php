@@ -3,10 +3,9 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
 
 #[Attribute]
-class Log extends DecoratorAttribute
+class Log extends \Sagittaracc\PhpPythonDecorator\Attribute\Attribute
 {
     public function main($func, ...$args)
     {

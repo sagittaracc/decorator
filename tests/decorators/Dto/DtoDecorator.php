@@ -3,12 +3,12 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
 use Closure;
-use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
+use Sagittaracc\PhpPythonDecorator\Attribute\Attribute;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
 use TypeError;
 
-abstract class DtoDecorator extends DecoratorAttribute
+abstract class DtoDecorator extends Attribute
 {
     public function main($func, ...$args)
     {
