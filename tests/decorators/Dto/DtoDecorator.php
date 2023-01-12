@@ -51,5 +51,8 @@ abstract class DtoDecorator extends Attribute
 
     abstract public function props();
 
-    abstract public function validate();
+    public function validate()
+    {
+        return [];
+    }
 }

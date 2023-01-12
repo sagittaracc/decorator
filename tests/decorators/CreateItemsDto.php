@@ -16,9 +16,4 @@ class CreateItemsDto extends DtoDecorator
             'list' => '_list',
         ];
     }
-
-    public function validate()
-    {
-        return [];
-    }
 }
