@@ -5,7 +5,7 @@ namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 use Attribute;
 
 #[Attribute]
-class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute\Attribute
+class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute
 {
     public function main($func, ...$args)
     {

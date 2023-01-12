@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\Decorator;
+namespace Sagittaracc\PhpPythonDecorator;
 
 use ReflectionMethod;
 

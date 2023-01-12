@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\Attribute;
+namespace Sagittaracc\PhpPythonDecorator;
 
 class Attribute
 {

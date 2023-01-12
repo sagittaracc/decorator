@@ -3,7 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
 use Closure;
-use Sagittaracc\PhpPythonDecorator\Attribute\Attribute;
+use Sagittaracc\PhpPythonDecorator\Attribute;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
 use TypeError;

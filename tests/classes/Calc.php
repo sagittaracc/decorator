@@ -2,7 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\classes;
 
-use Sagittaracc\PhpPythonDecorator\Decorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
 

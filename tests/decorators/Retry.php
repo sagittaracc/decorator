@@ -11,7 +11,7 @@ use Exception;
  */
 
 #[Attribute]
-class Retry extends \Sagittaracc\PhpPythonDecorator\Attribute\Attribute
+class Retry extends \Sagittaracc\PhpPythonDecorator\Attribute
 {
     function __construct(
         private int $maxAttemptCount
