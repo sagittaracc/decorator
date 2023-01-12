@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Sagittaracc\PhpPythonDecorator\tests\classes\Calc;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Calc;
 
 final class CalcTest extends TestCase
 {

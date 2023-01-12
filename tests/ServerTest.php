@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Sagittaracc\PhpPythonDecorator\tests\classes\Server;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Server;
 
 final class ServerTest extends TestCase
 {

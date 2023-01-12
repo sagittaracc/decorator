@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Sagittaracc\PhpPythonDecorator\tests\classes\Data;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Data;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
@@ -25,7 +25,7 @@ final class DtoTest extends TestCase
     public function testFailDto(): void
     {
         $this->expectException(DtoException::class);
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto::$dtoCaption can not be set because in method Sagittaracc\PhpPythonDecorator\tests\classes\Data::getFailData() property `caption` was not returned!');
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto::$dtoCaption can not be set because in method Sagittaracc\PhpPythonDecorator\tests\examples\Data::getFailData() property `caption` was not returned!');
 
         $data = new Data();
         $data->getFailData();
