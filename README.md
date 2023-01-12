@@ -22,8 +22,11 @@ class Calc
 Декоратор `Timer` вычисляет время выполнения функции
 ```php
 
+use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
+
 #[Attribute]
-class Timer {
+class Timer extends DecoratorAttribute
+{
     public function main($func, ...$args)
     {
         $time_start = microtime(true);
@@ -40,8 +43,11 @@ class Timer {
 Декоратор `Log` выводит результат на экран
 ```php
 
+use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
+
 #[Attribute]
-class Log {
+class Log extends DecoratorAttribute
+{
     public function main($func, ...$args)
     {
         echo $func();
