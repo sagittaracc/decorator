@@ -13,18 +13,15 @@ use Exception;
 #[Attribute]
 class Retry
 {
-    private int $attempts;
-
-    function __construct(int $attempts)
-    {
-        $this->attempts = $attempts;
-    }
+    function __construct(
+        private int $maxAttemptCount
+    ) {}
 
     public function main($func, ...$args)
     {
-        $attemptsNeeded = 1;
+        $attemptTotal = 1;
 
-        for ($i = 1; $i <= $this->attempts; $i++) {
+        for ($i = 1; $i <= $this->maxAttemptCount; $i++) {
             try
             {
                 if ($i < 3) {
@@ -32,7 +29,7 @@ class Retry
                 }
                 else {
                     $result = $func($args);
-                    $attemptsNeeded = $i;
+                    $attemptTotal = $i;
                 }
             }
             catch (Exception $e)
@@ -42,11 +39,11 @@ class Retry
         }
 
         if ($result === null) {
-            throw new Exception("{$this->attempts} attempts was not enough!");
+            throw new Exception("{$this->maxAttemptCount} attempts was not enough!");
         }
 
         return [
-            'attempts' => $attemptsNeeded,
+            'attempts' => $attemptTotal,
             'result' => $result,
         ];
     }

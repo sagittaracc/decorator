@@ -5,7 +5,8 @@ namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 use Attribute;
 
 #[Attribute]
-class Timer {
+class Timer
+{
     public function main($func, ...$args)
     {
         $time_start = microtime(true);

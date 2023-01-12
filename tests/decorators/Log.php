@@ -5,7 +5,8 @@ namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 use Attribute;
 
 #[Attribute]
-class Log {
+class Log
+{
     public function main($func, ...$args)
     {
         echo $func();
