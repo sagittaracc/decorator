@@ -28,4 +28,14 @@ class Data
             'wrong_caption' => 'caption',
         ];
     }
+
+    #[CreateObjectDto]
+    protected function getUnvalidData()
+    {
+        return [
+            'id'      => 'unvalid_id',
+            'name'    => 'name',
+            'caption' => 'caption',
+        ];
+    }
 }

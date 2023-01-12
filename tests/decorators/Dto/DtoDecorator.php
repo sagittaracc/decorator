@@ -4,6 +4,8 @@ namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
 use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
+use TypeError;
 
 abstract class DtoDecorator extends DecoratorAttribute
 {
@@ -15,7 +17,14 @@ abstract class DtoDecorator extends DecoratorAttribute
 
         foreach ($dtoFields as $dtoField => $field) {
             if (isset($row[$field])) {
-                $this->$dtoField = $row[$field];
+                try
+                {
+                    $this->$dtoField = $row[$field];
+                }
+                catch (TypeError $e)
+                {
+                    throw new DtoTypeError;
+                }
             }
             else {
                 throw new DtoException(

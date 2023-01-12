@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\tests\classes\Data;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
 
 final class DtoTest extends TestCase
 {
@@ -27,5 +28,13 @@ final class DtoTest extends TestCase
 
         $data = new Data();
         $data->getFailData();
+    }
+
+    public function testUnvalidDto(): void
+    {
+        $this->expectException(DtoTypeError::class);
+
+        $data = new Data();
+        $data->getUnvalidData();
     }
 }
