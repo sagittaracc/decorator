@@ -17,7 +17,8 @@ trait Decorator
 
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
-                // $instance->func = [$this, $func] // Сюда можно поместить функцию к которой применяется декоратор
+                $instance->className = get_class($this);
+                $instance->methodName = $func;
                 $f = fn() => $instance->main($f, $args);
             }
 
