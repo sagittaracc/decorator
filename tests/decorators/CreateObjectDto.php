@@ -31,10 +31,10 @@ class CreateObjectDto extends DtoDecorator
                 }
             },
             'dtoName' => function ($value) {
-                return true;
+                // ...
             },
             'dtoCaption' => function ($value) {
-                return true;
+                // ...
             },
         ];
     }
