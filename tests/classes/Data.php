@@ -18,4 +18,14 @@ class Data
             'caption' => 'caption',
         ];
     }
+    
+    #[CreateObjectDto]
+    protected function getFailData()
+    {
+        return [
+            'id'       => 1,
+            'name'     => 'name',
+            'caption1' => 'caption',
+        ];
+    }
 }

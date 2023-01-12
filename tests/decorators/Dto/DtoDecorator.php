@@ -2,17 +2,22 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
+use Exception;
+
 abstract class DtoDecorator
 {
     public function main($func, ...$args)
     {
         $row = $func($args);
 
-        $dtoFields = array_flip($this->props());
+        $dtoFields = $this->props();
 
-        foreach ($row as $key => $value) {
-            if (isset($dtoFields[$key])) {
-                $this->{$dtoFields[$key]} = $value;
+        foreach ($dtoFields as $dtoField => $field) {
+            if (isset($row[$field])) {
+                $this->$dtoField = $row[$field];
+            }
+            else {
+                throw new Exception("'\${$dtoField}' can not be set because '\${$field}' is not defined!");
             }
         }
 

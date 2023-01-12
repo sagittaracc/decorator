@@ -18,4 +18,12 @@ final class DtoTest extends TestCase
         $this->assertSame('name', $dtoData->dtoName);
         $this->assertSame('caption', $dtoData->dtoCaption);
     }
+
+    public function testFailDto(): void
+    {
+        $this->expectExceptionMessage('\'$dtoCaption\' can not be set because \'$caption\' is not defined!');
+
+        $data = new Data();
+        $data->getFailData();
+    }
 }
