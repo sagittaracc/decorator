@@ -7,6 +7,7 @@ use Sagittaracc\PhpPythonDecorator\tests\classes\Data;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoValidationError;
 
 final class DtoTest extends TestCase
 {
@@ -36,5 +37,13 @@ final class DtoTest extends TestCase
 
         $data = new Data();
         $data->getUnvalidData();
+    }
+
+    public function testUnvalidDtoOverCustomValidation(): void
+    {
+        $this->expectException(DtoValidationError::class);
+
+        $data = new Data();
+        $data->getUnvalidDataOverCustomValidation();
     }
 }

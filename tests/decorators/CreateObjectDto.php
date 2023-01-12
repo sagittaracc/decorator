@@ -20,4 +20,19 @@ class CreateObjectDto extends DtoDecorator
             'dtoCaption' => 'caption',
         ];
     }
+
+    public function validate()
+    {
+        return [
+            'dtoId' => function ($value) {
+                return $value >= 0;
+            },
+            'dtoName' => function ($value) {
+                return true;
+            },
+            'dtoCaption' => function ($value) {
+                return true;
+            },
+        ];
+    }
 }

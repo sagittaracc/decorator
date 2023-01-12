@@ -38,4 +38,14 @@ class Data
             'caption' => 'caption',
         ];
     }
+
+    #[CreateObjectDto]
+    protected function getUnvalidDataOverCustomValidation()
+    {
+        return [
+            'id'      => -1,
+            'name'    => 'name',
+            'caption' => 'caption',
+        ];
+    }
 }

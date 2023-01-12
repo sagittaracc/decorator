@@ -5,6 +5,7 @@ namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoValidationError;
 use TypeError;
 
 abstract class DtoDecorator extends DecoratorAttribute
@@ -14,12 +15,16 @@ abstract class DtoDecorator extends DecoratorAttribute
         $row = $func($args);
 
         $dtoFields = $this->props();
+        $validateList = $this->validate();
 
         foreach ($dtoFields as $dtoField => $field) {
             if (isset($row[$field])) {
                 try
                 {
                     $this->$dtoField = $row[$field];
+                    if ($validateList[$dtoField]($this->$dtoField) === false) {
+                        throw new DtoValidationError;
+                    }
                 }
                 catch (TypeError $e)
                 {
@@ -44,4 +49,6 @@ abstract class DtoDecorator extends DecoratorAttribute
     }
 
     abstract public function props();
+
+    abstract public function validate();
 }
