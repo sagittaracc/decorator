@@ -47,4 +47,13 @@ final class DtoTest extends TestCase
         $data = new Data();
         $data->getUnvalidDataOverCustomValidation();
     }
+
+    public function testNestedDto(): void
+    {
+        $data = new Data();
+        $users = $data->getUserList();
+
+        $this->assertSame(['me', 'friend'], $users->list);
+        $this->assertSame(['guest', 'user', 'admin'], $users->roles->list);
+    }
 }

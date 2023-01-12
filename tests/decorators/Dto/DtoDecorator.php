@@ -6,7 +6,6 @@ use Closure;
 use Sagittaracc\PhpPythonDecorator\Decorator\DecoratorAttribute;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
-use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoValidationError;
 use TypeError;
 
 abstract class DtoDecorator extends DecoratorAttribute
