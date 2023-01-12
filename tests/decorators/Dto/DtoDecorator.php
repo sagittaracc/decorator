@@ -8,7 +8,7 @@ abstract class DtoDecorator
     {
         $row = $func($args);
 
-        $dtoFields = $this->fields();
+        $dtoFields = $this->props();
 
         foreach ($row as $key => $value) {
             $this->{$dtoFields[$key]} = $value;
@@ -17,5 +17,5 @@ abstract class DtoDecorator
         return $this;
     }
 
-    abstract public function fields();
+    abstract public function props();
 }

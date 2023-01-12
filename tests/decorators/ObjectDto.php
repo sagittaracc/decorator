@@ -12,7 +12,7 @@ class ObjectDto extends DtoDecorator
     public $dtoName;
     public $dtoCaption;
 
-    public function fields()
+    public function props()
     {
         return [
             'id'      => 'dtoId',
