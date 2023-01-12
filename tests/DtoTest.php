@@ -23,7 +23,7 @@ final class DtoTest extends TestCase
     public function testFailDto(): void
     {
         $this->expectException(DtoException::class);
-        $this->expectExceptionMessage('CreateObjectDto::$dtoCaption can not be set because Data::$caption is not defined!');
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto::$dtoCaption can not be set because in method ... property $caption was not returned!');
 
         $data = new Data();
         $data->getFailData();
