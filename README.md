@@ -19,7 +19,9 @@ class Calc extends PythonObject
     }
 }
 ```
+
 `Timer` decorator calculates how long it takes to execute the function
+
 ```php
 
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
@@ -43,7 +45,9 @@ class Timer extends PythonDecorator
     }
 }
 ```
+
 This is how you call the decorated method
+
 ```php
 
 $calc = new Calc();
