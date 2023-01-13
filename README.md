@@ -1,5 +1,5 @@
 # php-python-decorator
-Python style decorator for PHP
+Python style decorators for PHP
 
 # Example
 ```php
