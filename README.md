@@ -1,14 +1,18 @@
 # php-python-decorator
-Python style decorator for PHP
+Python style decorators for PHP
+
+## *** Important
+All the methods that will be decorated should start with the `_` prefix but be called without `_`
 
 # Example
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\PythonObject;
 
-class Calc
+class Calc extends PythonObject
 {
-    use Decorator;
+    use Decorator;  // <-- comment this line out to not apply the decorators
 
     #[Timer]
     #[Log]
@@ -22,8 +26,10 @@ class Calc
 `Timer` decorator calculates how much it takes to execute the function
 ```php
 
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
+
 #[Attribute]
-class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute
+class Timer extends PythonDecorator
 {
     public function main($func, ...$args)
     {
@@ -41,8 +47,10 @@ class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute
 `Log` decorator prints the output
 ```php
 
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
+
 #[Attribute]
-class Log extends \Sagittaracc\PhpPythonDecorator\Attribute
+class Log extends PythonDecorator
 {
     public function main($func, ...$args)
     {
