@@ -26,8 +26,10 @@ class Calc extends PythonObject
 `Timer` decorator calculates how much it takes to execute the function
 ```php
 
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
+
 #[Attribute]
-class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute
+class Timer extends PythonDecorator
 {
     public function main($func, ...$args)
     {
@@ -45,8 +47,10 @@ class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute
 `Log` decorator prints the output
 ```php
 
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
+
 #[Attribute]
-class Log extends \Sagittaracc\PhpPythonDecorator\Attribute
+class Log extends PythonDecorator
 {
     public function main($func, ...$args)
     {
