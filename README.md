@@ -1,7 +1,7 @@
 # php-python-decorator
 Python style decorator for PHP
 
-# Пример
+# Example
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
@@ -12,14 +12,14 @@ class Calc
 
     #[Timer]
     #[Log]
-    protected function sum($a, $b)
+    function _sum($a, $b)
     {
         sleep(1);
         return $a + $b;
     }
 }
 ```
-Декоратор `Timer` вычисляет время выполнения функции
+`Timer` decorator calculates how much it takes to execute the function
 ```php
 
 #[Attribute]
@@ -38,7 +38,7 @@ class Timer extends \Sagittaracc\PhpPythonDecorator\Attribute
     }
 }
 ```
-Декоратор `Log` выводит результат на экран
+`Log` decorator prints the output
 ```php
 
 #[Attribute]
@@ -50,7 +50,7 @@ class Log extends \Sagittaracc\PhpPythonDecorator\Attribute
     }
 }
 ```
-Вызов декорируемого метода
+This is how you call the decorated method
 ```php
 
 $calc = new Calc();
