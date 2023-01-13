@@ -1,9 +1,6 @@
 # php-python-decorator
 Python style decorators for PHP
 
-## *** Important
-All the methods that will be decorated should start with the `_` prefix but be called without `_`
-
 # Example
 ```php
 
@@ -53,3 +50,6 @@ $calc = new Calc();
 echo $calc->sum(1, 2); // Total execution: 1.012572; Result: 3
 
 ```
+
+## *** Important
+All the methods that will be decorated should start with the `_` prefix but be called without `_`
