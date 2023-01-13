@@ -8,11 +8,7 @@ trait Decorator
 {
     public function __call($func, $args)
     {
-        return $this->run($func, ...$args);
-    }
-
-    public function run($func, ...$args)
-    {
+        $func = "_$func";
         $method = new ReflectionMethod($this, $func);
         $attributes = $method->getAttributes();
 

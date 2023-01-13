@@ -12,7 +12,7 @@ class Data
     use Decorator;
 
     #[CreateObjectDto]
-    protected function getData()
+    function _getData()
     {
         return [
             'id'      => 1,
@@ -22,7 +22,7 @@ class Data
     }
     
     #[CreateObjectDto]
-    protected function getFailData()
+    function _getFailData()
     {
         return [
             'id'            => 1,
@@ -32,7 +32,7 @@ class Data
     }
 
     #[CreateObjectDto]
-    protected function getUnvalidData()
+    function _getUnvalidData()
     {
         return [
             'id'      => 'unvalid_id',
@@ -42,7 +42,7 @@ class Data
     }
 
     #[CreateObjectDto]
-    protected function getUnvalidDataOverCustomValidation()
+    function _getUnvalidDataOverCustomValidation()
     {
         return [
             'id'      => -1,
@@ -52,16 +52,16 @@ class Data
     }
 
     #[CreateListDto]
-    protected function getList()
+    function _getList()
     {
         return [
             '_id' => 1,
-            '_items' => $this->run('getItems'),
+            '_items' => $this->getItems(),
         ];
     }
 
     #[CreateItemsDto]
-    protected function getItems()
+    function _getItems()
     {
         return [
             '_list' => [

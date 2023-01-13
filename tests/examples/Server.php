@@ -10,13 +10,13 @@ class Server
     use Decorator;
 
     #[Retry(3)]
-    protected function successConnect()
+    function _successConnect()
     {
         return true;
     }
 
     #[Retry(2)]
-    protected function failConnect()
+    function _failConnect()
     {
         return false;
     }

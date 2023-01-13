@@ -12,12 +12,12 @@ class Calc
 
     #[Timer]
     #[Log]
-    protected function sum1($a, $b)
+    function _sum1($a, $b)
     {
         return $a + $b;
     }
 
-    protected function sum2($a, $b)
+    function _sum2($a, $b)
     {
         return $a + $b;
     }
