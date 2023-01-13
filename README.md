@@ -5,14 +5,13 @@ Python style decorators for PHP
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\PythonObject;
 
-class Calc extends PythonObject
+class Calc
 {
     use Decorator;
 
     #[Timer]
-    function _sum($a, $b)
+    function sum($a, $b)
     {
         sleep(1);
         return $a + $b;
@@ -51,9 +50,9 @@ This is how you call the decorated method
 ```php
 
 $calc = new Calc();
-echo $calc->sum(1, 2); // Total execution: 1.012572; Result: 3
+echo $calc->_sum(1, 2); // Total execution: 1.012572; Result: 3
 
 ```
 
 ## *** Important
-All the methods that will be decorated should start with the `_` prefix but be called without `_`
+To make a method apply its decorators you have to call this method with the `_` prefix
