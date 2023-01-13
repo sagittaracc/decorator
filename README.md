@@ -5,8 +5,9 @@ Python style decorator for PHP
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\PythonObject;
 
-class Calc
+class Calc extends PythonObject
 {
     use Decorator;
 
