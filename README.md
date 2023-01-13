@@ -12,7 +12,7 @@ class Calc
 
     #[Timer]
     #[Log]
-    protected function sum($a, $b)
+    function _sum($a, $b)
     {
         sleep(1);
         return $a + $b;
