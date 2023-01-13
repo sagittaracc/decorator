@@ -7,9 +7,9 @@ use Sagittaracc\PhpPythonDecorator\PythonObject;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
 
-class Calc extends PythonObject
+class CalcDecoratorOff extends PythonObject
 {
-    use Decorator;
+    // use Decorator;
 
     #[Timer]
     #[Log]

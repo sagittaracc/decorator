@@ -3,11 +3,12 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\PythonObject;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateListDto;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateItemsDto;
 
-class Data
+class Data extends PythonObject
 {
     use Decorator;
 

@@ -3,9 +3,10 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\PythonObject;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Retry;
 
-class Server
+class Server extends PythonObject
 {
     use Decorator;
 
