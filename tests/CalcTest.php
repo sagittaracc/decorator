@@ -12,7 +12,7 @@ final class CalcTest extends TestCase
         $calc = new Calc();
 
         ob_start();
-        $calc->sum1(1, 2);
+        $calc->_sum1(1, 2);
         $output = ob_get_clean();
 
         $this->assertSame("Total execution: 1; Result: 3", $output);
@@ -22,6 +22,13 @@ final class CalcTest extends TestCase
     {
         $calc = new Calc();
 
-        $this->assertSame(3, $calc->sum2(1, 2));
+        $this->assertSame(3, $calc->_sum2(1, 2));
+    }
+
+    public function testNoUsingDecorator(): void
+    {
+        $calc = new Calc();
+
+        $this->assertSame($calc->sum1(1, 2), $calc->sum2(1, 2));
     }
 }

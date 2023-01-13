@@ -14,7 +14,7 @@ final class DtoTest extends TestCase
     public function testDto(): void
     {
         $data = new Data();
-        $dtoData = $data->getData();
+        $dtoData = $data->_getData();
 
         $this->assertInstanceOf(CreateObjectDto::class, $dtoData);
         $this->assertSame(1, $dtoData->dtoId);
@@ -25,10 +25,10 @@ final class DtoTest extends TestCase
     public function testFailDto(): void
     {
         $this->expectException(DtoException::class);
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto::$dtoCaption can not be set because in method Sagittaracc\PhpPythonDecorator\tests\examples\Data::_getFailData() property `caption` was not returned!');
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto::$dtoCaption can not be set because in method Sagittaracc\PhpPythonDecorator\tests\examples\Data::getFailData() property `caption` was not returned!');
 
         $data = new Data();
-        $data->getFailData();
+        $data->_getFailData();
     }
 
     public function testUnvalidDto(): void
@@ -36,7 +36,7 @@ final class DtoTest extends TestCase
         $this->expectException(DtoTypeError::class);
 
         $data = new Data();
-        $data->getUnvalidData();
+        $data->_getUnvalidData();
     }
 
     public function testUnvalidDtoOverCustomValidation(): void
@@ -45,13 +45,13 @@ final class DtoTest extends TestCase
         $this->expectExceptionMessage('CreateObjectDto::$dtoId should be positive!');
 
         $data = new Data();
-        $data->getUnvalidDataOverCustomValidation();
+        $data->_getUnvalidDataOverCustomValidation();
     }
 
     public function testNestedDto(): void
     {
         $data = new Data();
-        $list = $data->getList();
+        $list = $data->_getList();
 
         $this->assertSame(1, $list->id);
         $this->assertSame(['item-1', 'item-2', 'item-3'], $list->items->list);

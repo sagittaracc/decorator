@@ -13,14 +13,14 @@ final class ServerTest extends TestCase
 
         $server = new Server();
 
-        $server->failConnect();
+        $server->_failConnect();
     }
 
     public function testSuccessRetryDecorator(): void
     {
         $server = new Server();
 
-        $result = $server->successConnect();
+        $result = $server->_successConnect();
 
         $this->assertTrue($result['result']);
         $this->assertSame(3, $result['attempts']);

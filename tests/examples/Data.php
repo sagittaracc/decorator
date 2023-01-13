@@ -3,17 +3,16 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\PythonObject;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateListDto;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateItemsDto;
 
-class Data extends PythonObject
+class Data
 {
     use Decorator;
 
     #[CreateObjectDto]
-    function _getData()
+    function getData()
     {
         return [
             'id'      => 1,
@@ -23,7 +22,7 @@ class Data extends PythonObject
     }
     
     #[CreateObjectDto]
-    function _getFailData()
+    function getFailData()
     {
         return [
             'id'            => 1,
@@ -33,7 +32,7 @@ class Data extends PythonObject
     }
 
     #[CreateObjectDto]
-    function _getUnvalidData()
+    function getUnvalidData()
     {
         return [
             'id'      => 'unvalid_id',
@@ -43,7 +42,7 @@ class Data extends PythonObject
     }
 
     #[CreateObjectDto]
-    function _getUnvalidDataOverCustomValidation()
+    function getUnvalidDataOverCustomValidation()
     {
         return [
             'id'      => -1,
@@ -53,16 +52,16 @@ class Data extends PythonObject
     }
 
     #[CreateListDto]
-    function _getList()
+    function getList()
     {
         return [
             '_id' => 1,
-            '_items' => $this->getItems(),
+            '_items' => $this->_getItems(),
         ];
     }
 
     #[CreateItemsDto]
-    function _getItems()
+    function getItems()
     {
         return [
             '_list' => [

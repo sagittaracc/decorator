@@ -3,21 +3,20 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\PythonObject;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Retry;
 
-class Server extends PythonObject
+class Server
 {
     use Decorator;
 
     #[Retry(3)]
-    function _successConnect()
+    function successConnect()
     {
         return true;
     }
 
     #[Retry(2)]
-    function _failConnect()
+    function failConnect()
     {
         return false;
     }
