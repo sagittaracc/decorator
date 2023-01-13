@@ -9,7 +9,7 @@ use Sagittaracc\PhpPythonDecorator\PythonObject;
 
 class Calc extends PythonObject
 {
-    use Decorator;  // <-- comment this line out to not apply the decorators
+    use Decorator;
 
     #[Timer]
     function _sum($a, $b)
