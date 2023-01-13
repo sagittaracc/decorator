@@ -37,9 +37,12 @@ class Timer extends PythonDecorator
         $result = $func($args);
 
         $time_end = microtime(true);
-        $execution_time = $time_end - $time_start;
 
-        return "Total execution: $execution_time; Result: $result";
+        return sprintf(
+            "Total execution: %f; Result: %d",
+            $time_end - $time_start,
+            $result
+        );
     }
 }
 ```
