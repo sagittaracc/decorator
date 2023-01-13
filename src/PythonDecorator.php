@@ -2,7 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator;
 
-class Attribute
+class PythonDecorator
 {
     public string $className;
 
