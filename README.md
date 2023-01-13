@@ -9,7 +9,7 @@ use Sagittaracc\PhpPythonDecorator\PythonObject;
 
 class Calc extends PythonObject
 {
-    use Decorator;
+    use Decorator;  // <-- comment this line out to not apply the decorators
 
     #[Timer]
     #[Log]
