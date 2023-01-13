@@ -1,4 +1,4 @@
-# PHP Python-Decorator
+# PHP Python Decorator
 Python style decorators for PHP
 
 # Example
