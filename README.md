@@ -50,6 +50,6 @@ This is how you call the decorated method
 ```php
 
 $calc = new Calc();
-echo $calc->sum(1, 2); // Total execution: 1.00000343; Result: 3
+echo $calc->sum(1, 2); // Total execution: 1.012572; Result: 3
 
 ```
