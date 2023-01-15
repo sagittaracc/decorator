@@ -6,6 +6,10 @@ use ReflectionMethod;
 
 trait Decorator
 {
+    public string $className;
+
+    public string $methodName;
+
     public function __call($func, $args)
     {
         $func = ltrim($func, '_');

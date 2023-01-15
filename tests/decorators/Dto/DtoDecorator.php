@@ -3,13 +3,15 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
 use Closure;
-use Sagittaracc\PhpPythonDecorator\PythonDecorator;
+use Sagittaracc\PhpPythonDecorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
 use TypeError;
 
-abstract class DtoDecorator extends PythonDecorator
+abstract class DtoDecorator
 {
+    use Decorator;
+
     public function main($func, ...$args)
     {
         $row = $func($args);

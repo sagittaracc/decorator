@@ -3,10 +3,9 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
-class Timer extends PythonDecorator
+class Timer
 {
     public function main($func, ...$args)
     {
