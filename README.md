@@ -29,10 +29,8 @@ class Calc
 
 ```php
 
-use Sagittaracc\PhpPythonDecorator\PythonDecorator;
-
 #[Attribute]
-class Timer extends PythonDecorator
+class Timer
 {
     public function main($func, ...$args)
     {
