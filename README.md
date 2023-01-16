@@ -65,3 +65,4 @@ To make a method apply its decorators you have to call this method with the `_` 
 
 ## Examples
 [Cache](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Cache.php)
+[Dto](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Dto/DtoDecorator.php)
