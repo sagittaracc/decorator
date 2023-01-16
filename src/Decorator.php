@@ -6,9 +6,7 @@ use ReflectionMethod;
 
 trait Decorator
 {
-    public string $className;
-
-    public string $methodName;
+    public array $scope = [];
 
     public function __call($func, $args)
     {
@@ -24,6 +22,7 @@ trait Decorator
                 $instance = $attribute->newInstance();
                 $instance->className = get_class($this);
                 $instance->methodName = $func;
+                $instance->parent = $this;
                 $f = fn() => $instance->main($f, $args);
             }
 

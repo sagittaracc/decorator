@@ -3,6 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Cache;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateObjectDto;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateListDto;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\CreateItemsDto;
@@ -70,5 +71,11 @@ class Data
                 'item-3'
             ],
         ];
+    }
+
+    #[Cache]
+    function getExpensiveData()
+    {
+        return ['foo' => 'bar'];
     }
 }
