@@ -6,7 +6,7 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
-class Log extends PythonDecorator
+final class Log extends PythonDecorator
 {
     public function main($func, ...$args)
     {

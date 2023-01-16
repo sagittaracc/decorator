@@ -12,7 +12,7 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
  */
 
 #[Attribute]
-class Retry extends PythonDecorator
+final class Retry extends PythonDecorator
 {
     function __construct(
         private int $maxAttemptCount

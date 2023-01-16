@@ -22,7 +22,7 @@ trait Decorator
                 $instance = $attribute->newInstance();
                 $instance->className = get_class($this);
                 $instance->methodName = $func;
-                $instance->parent = $this;
+                $instance->setParent($this);
                 $f = fn() => $instance->main($f, $args);
             }
 

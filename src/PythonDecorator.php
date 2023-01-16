@@ -8,5 +8,15 @@ class PythonDecorator
 
     public string $methodName;
 
-    public $parent;
+    private $parent = null;
+
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+
+    public function getParent()
+    {
+        return $this->parent;
+    }
 }

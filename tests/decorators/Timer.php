@@ -6,7 +6,7 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
-class Timer extends PythonDecorator
+final class Timer extends PythonDecorator
 {
     public function main($func, ...$args)
     {
