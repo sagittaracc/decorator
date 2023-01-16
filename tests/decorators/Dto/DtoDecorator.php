@@ -4,12 +4,12 @@ namespace Sagittaracc\PhpPythonDecorator\tests\decorators\Dto;
 
 use Closure;
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\PythonObject;
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoException;
 use Sagittaracc\PhpPythonDecorator\tests\exceptions\DtoTypeError;
 use TypeError;
 
-abstract class DtoDecorator extends PythonObject
+abstract class DtoDecorator extends PythonDecorator
 {
     use Decorator;
 
