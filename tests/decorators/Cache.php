@@ -10,16 +10,24 @@ final class Cache extends PythonDecorator
 {
     public function main($func, ...$args)
     {
-        $object = $this->getObject();
-
-        if (isset($object->scope[$this->method])) {
-            // return $parent->scope[$this->method];
+        if ($cache = $this->getCache($this->method)) {
+            // return $cache
             return 'cache';
         }
 
         $result = $func($args);
-        $object->scope[$this->method] = $result;
+        $this->setCache($this->method, $result);
 
         return $result;
+    }
+
+    private function getCache($key)
+    {
+        return $this->getObject()->scope['cache'][$key] ?? null;
+    }
+
+    private function setCache($key, $value)
+    {
+        $this->getObject()->scope['cache'][$key] = $value;
     }
 }

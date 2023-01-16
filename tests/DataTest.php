@@ -10,9 +10,15 @@ final class DataTest extends TestCase
     public function testDto(): void
     {
         $data = new Data();
+
         $expensiveData = $data->_getExpensiveData();
         $this->assertSame(['foo' => 'bar'], $expensiveData);
+
         $expensiveData = $data->_getExpensiveData();
         $this->assertSame('cache', $expensiveData);
+
+        // Ignore cache
+        $expensiveData = $data->getExpensiveData();
+        $this->assertSame(['foo' => 'bar'], $expensiveData);
     }
 }
