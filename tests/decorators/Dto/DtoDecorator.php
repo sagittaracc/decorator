@@ -41,8 +41,8 @@ abstract class DtoDecorator extends PythonDecorator
                         "%s::$%s can not be set because in method %s::%s() property `%s` was not returned!",
                         get_class($this),
                         $dtoField,
-                        $this->className,
-                        $this->methodName,
+                        get_class($this->getObject()),
+                        $this->method,
                         $field
                     )
                 );

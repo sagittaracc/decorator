@@ -4,19 +4,17 @@ namespace Sagittaracc\PhpPythonDecorator;
 
 class PythonDecorator
 {
-    public string $className;
+    private $object = null;
 
-    public string $methodName;
+    public string $method;
 
-    private $parent = null;
-
-    public function setParent($parent)
+    public function setObject($object)
     {
-        $this->parent = $parent;
+        $this->object = $object;
     }
 
-    public function getParent()
+    public function getObject()
     {
-        return $this->parent;
+        return $this->object;
     }
 }

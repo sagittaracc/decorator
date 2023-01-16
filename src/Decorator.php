@@ -20,9 +20,8 @@ trait Decorator
 
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
-                $instance->className = get_class($this);
-                $instance->methodName = $func;
-                $instance->setParent($this);
+                $instance->setObject($this);
+                $instance->method = $func;
                 $f = fn() => $instance->main($f, $args);
             }
 
