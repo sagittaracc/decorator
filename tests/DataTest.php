@@ -7,7 +7,7 @@ use Sagittaracc\PhpPythonDecorator\tests\examples\Data;
 
 final class DataTest extends TestCase
 {
-    public function testDto(): void
+    public function testCache(): void
     {
         $data = new Data();
 
