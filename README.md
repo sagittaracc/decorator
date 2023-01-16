@@ -62,3 +62,10 @@ echo $calc->_sum(1, 2); // Total execution: 1.012572; Result: 3
 
 ## *** Important
 To make a method apply its decorators you have to call this method with the `_` prefix
+
+## Examples
+[Cache](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Cache.php)
+
+[Dto](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Dto/DtoDecorator.php)
+
+[Timer](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php)
