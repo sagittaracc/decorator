@@ -19,9 +19,7 @@ trait Decorator
             $f = fn() => $this->$func(...$args);
 
             foreach ($attributes as $attribute) {
-                $instance = $attribute->newInstance();
-                $instance->setObject($this);
-                $instance->method = $func;
+                $instance = $attribute->newInstance()->bindTo($this, $func);
                 $f = fn() => $instance->main($f, $args);
             }
 
