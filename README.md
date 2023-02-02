@@ -76,4 +76,4 @@ See the [Controller](https://github.com/sagittaracc/php-python-decorator/blob/ma
 
 [Timer](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php)
 
-[Controller](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/examples/Controller.php)
+[Router](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/examples/Controller.php)
