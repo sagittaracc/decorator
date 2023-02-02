@@ -10,7 +10,7 @@ class Controller
     use Decorator;
 
     #[Router('/hello')]
-    function action()
+    function greetings()
     {
         return "Hello world!";
     }

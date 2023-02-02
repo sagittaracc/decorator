@@ -2,6 +2,9 @@
 
 namespace Sagittaracc\PhpPythonDecorator;
 
+use ReflectionClass;
+use ReflectionMethod;
+
 /**
  * @author <sagittaracc@gmail.com> Yuriy Arutyunyan
  */
@@ -56,5 +59,28 @@ class PythonDecorator
     public function isAppliable(): bool
     {
         return $this->appliable;
+    }
+    /**
+     * Выполняет метод декорируемый в $objectClass данным декоратором
+     * @param string $objectClass
+     * @return mixed
+     */
+    public function runIn($objectClass)
+    {
+        $class = new ReflectionClass($objectClass);
+        $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
+
+        foreach ($methods as $method) {
+            $attributes = $method->getAttributes();
+
+            foreach ($attributes as $attribute) {
+                $instance = $attribute->newInstance();
+                if ($instance == $this) {
+                    return call_user_func_array([new $method->class, $method->name], []);
+                }
+            }
+        }
+
+        return null;
     }
 }

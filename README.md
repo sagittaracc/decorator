@@ -69,3 +69,5 @@ To make a method apply its decorators you have to call this method with the `_` 
 [Dto](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Dto/DtoDecorator.php)
 
 [Timer](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php)
+
+[Router](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/examples/Controller.php)
