@@ -6,7 +6,7 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
-final class Router extends PythonDecorator
+final class Route extends PythonDecorator
 {
     protected bool $appliable = false;
 
