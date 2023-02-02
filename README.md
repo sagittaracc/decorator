@@ -1,9 +1,6 @@
 # PHP Python Decorator
 Python style decorators for PHP
 
-# Install
-`composer require sagittaracc/php-python-decorator`
-
 # Requirements
 PHP >= 8
 
