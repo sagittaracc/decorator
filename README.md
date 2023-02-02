@@ -8,7 +8,7 @@ Python style decorators for PHP
 PHP >= 8
 
 # Examples
-### Calc how long it takes to run a method
+### Calc how long it takes to run a method. See the [`Timer`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php) decorator
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
@@ -26,7 +26,7 @@ class Calc
     }
 }
 ```
-### This is how you can do a simple `Router` implementation
+### This is how you can do a simple `Router` implementation. See the [`Route`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Route.php) decorator
 ```php
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
