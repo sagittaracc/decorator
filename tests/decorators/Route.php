@@ -14,7 +14,7 @@ final class Route extends PythonDecorator
         private string $route
     ) {}
 
-    public function compareTo($object)
+    protected function compareTo($object)
     {
         if (preg_match("`^$this->route$`", $object->route, $matches)) {
             array_shift($matches);

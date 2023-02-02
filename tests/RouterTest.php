@@ -14,4 +14,12 @@ final class RouterTest extends TestCase
         $this->assertSame('Hello, yuriy', (new Route('/hello/yuriy'))->runIn(Controller::class));
         $this->assertNull((new Route('/notFound'))->runIn(Controller::class));
     }
+
+    public function testRouterLog(): void
+    {
+        ob_start();
+        (new Route('/log'))->runIn(Controller::class);
+        $content = ob_get_clean();
+        $this->assertSame('log', $content);
+    }
 }

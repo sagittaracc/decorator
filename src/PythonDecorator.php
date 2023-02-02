@@ -61,6 +61,13 @@ class PythonDecorator
         return $this->appliable;
     }
     /**
+     * @return bool
+     */
+    protected function compareTo($object)
+    {
+        return false;
+    }
+    /**
      * Выполняет метод декорируемый в $objectClass данным декоратором
      * @param string $objectClass
      * @return mixed
@@ -77,7 +84,7 @@ class PythonDecorator
                 $instance = $attribute->newInstance();
                 $matches = $instance->compareTo($this);
                 if ($matches !== false) {
-                    return call_user_func_array([new $method->class, $method->name], $matches);
+                    return call_user_func_array([new $method->class, "_{$method->name}"], $matches);
                 }
             }
         }
