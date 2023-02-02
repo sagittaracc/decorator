@@ -7,10 +7,12 @@ Python style decorators for PHP
 # Requirements
 PHP >= 8
 
-# Example
+# Examples
+### Calc how long it takes to run a method
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
 
 class Calc
 {
@@ -24,56 +26,27 @@ class Calc
     }
 }
 ```
-
-`Timer` decorator calculates how long it takes to execute the function
-
+### This is how you can do a simple `Router` implementation
 ```php
+namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
-use Sagittaracc\PhpPythonDecorator\PythonDecorator;
+use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Router;
 
-#[Attribute]
-class Timer extends PythonDecorator
+class Controller
 {
-    public function main($func, ...$args)
+    use Decorator;
+
+    #[Router('/hello')]
+    function greetings()
     {
-        $time_start = microtime(true);
+        return "Hello world!";
+    }
 
-        $result = $func($args);
-
-        $time_end = microtime(true);
-
-        return sprintf(
-            "Total execution: %f; Result: %d",
-            $time_end - $time_start,
-            $result
-        );
+    #[Router('/hello/(\w+)')]
+    function greetingPerson($name)
+    {
+        return "Hello, $name";
     }
 }
 ```
-
-This is how you call the decorated method
-
-```php
-
-$calc = new Calc();
-echo $calc->_sum(1, 2); // Total execution: 1.012572; Result: 3
-
-```
-
-## *** Important
-To make a method apply its decorators you have to call this method with the `_` prefix
-
-Also you can run a class method by the decorator applied to it, e.g.
-
-`(new Router('/hello'))->runIn(Controller::class)`
-
-See the [Controller](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/examples/Controller.php) class
-
-## Examples
-[Cache](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Cache.php)
-
-[Dto](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Dto/DtoDecorator.php)
-
-[Timer](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php)
-
-[Router](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/examples/Controller.php)
