@@ -9,4 +9,8 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 final class Router extends PythonDecorator
 {
     protected bool $appliable = false;
+
+    function __construct(
+        private string $route
+    ) {}
 }

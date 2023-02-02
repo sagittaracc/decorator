@@ -9,7 +9,7 @@ class Controller
 {
     use Decorator;
 
-    #[Router]
+    #[Router('/hello')]
     function action()
     {
         return "Hello world!";
