@@ -75,8 +75,9 @@ class PythonDecorator
 
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
-                if ($instance == $this) {
-                    return call_user_func_array([new $method->class, $method->name], []);
+                $matches = $instance->compareTo($this);
+                if ($matches !== false) {
+                    return call_user_func_array([new $method->class, $method->name], $matches);
                 }
             }
         }

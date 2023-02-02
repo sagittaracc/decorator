@@ -14,4 +14,10 @@ class Controller
     {
         return "Hello world!";
     }
+
+    #[Router('/hello/(\w+)')]
+    function greetingPerson($name)
+    {
+        return "Hello, $name";
+    }
 }

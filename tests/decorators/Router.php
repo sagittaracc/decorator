@@ -13,4 +13,14 @@ final class Router extends PythonDecorator
     function __construct(
         private string $route
     ) {}
+
+    public function compareTo($object)
+    {
+        if (preg_match("`^$this->route$`", $object->route, $matches)) {
+            array_shift($matches);
+            return $matches;
+        }
+
+        return false;
+    }
 }
