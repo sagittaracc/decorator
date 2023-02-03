@@ -9,9 +9,8 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Middleware extends PythonDecorator
 {
-    protected bool $appliable = false;
-
-    function __construct() {
+    public function main($func, ...$args)
+    {
         throw new Exception('Access denied!');
     }
 }
