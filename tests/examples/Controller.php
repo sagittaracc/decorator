@@ -22,7 +22,7 @@ class Controller
     {
         return "Hello, $name";
     }
-
+    
     #[Route('/log')]
     #[Log]
     function log()

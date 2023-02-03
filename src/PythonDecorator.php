@@ -81,6 +81,10 @@ class PythonDecorator
             $attributes = $method->getAttributes();
 
             foreach ($attributes as $attribute) {
+                if ($attribute->getName() !== get_class($this)) {
+                    continue;
+                }
+
                 $instance = $attribute->newInstance();
                 $matches = $instance->compareTo($this);
                 if ($matches !== false) {
