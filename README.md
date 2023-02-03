@@ -60,7 +60,30 @@ class Controller
 (new Route('/hello/yuriy'))->runIn(Controller::class) // Hello, yuriy!
 ```
 ---
-### 3. This is how you can implement a `Middleware` for a `Route` method. See the [`Middleware`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Middleware.php) decorator
+### 3. This is how you can do a simple `Rpc` implementation. See the [`Rpc`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Rpc.php) decorator
+```php
+namespace Sagittaracc\PhpPythonDecorator\tests\examples;
+
+use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Rpc;
+
+class Controller
+{
+    use Decorator;
+
+    #[Rpc('hello')]
+    function greetings($name)
+    {
+        return "Hello, $name!";
+    }
+}
+```
+### This is how you call an `Rpc` inside your `router`
+```php
+(new Rpc('hello', ['yuriy']))->runIn(Controller::class) // Hello, yuriy!
+```
+---
+### 4. This is how you can implement a `Middleware` for a `Route` method. See the [`Middleware`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Middleware.php) decorator
 ```php
 <?php
 
