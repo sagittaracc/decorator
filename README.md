@@ -8,7 +8,7 @@ PHP >= 8
 `composer require sagittaracc/php-python-decorator`
 
 # Examples
-### Calc how long it takes to run a method. See the [`Timer`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php) decorator
+### 1. Calc how long it takes to run a method. See the [`Timer`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php) decorator
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
@@ -36,7 +36,8 @@ $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 // not using any decorators
 $calc->sum(1, 2); // 3
 ```
-### This is how you can do a simple `Router` implementation. See the [`Route`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Route.php) decorator
+---
+### 2. This is how you can do a simple `Router` implementation. See the [`Route`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Route.php) decorator
 ```php
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
