@@ -22,4 +22,10 @@ final class RouterTest extends TestCase
         $content = ob_get_clean();
         $this->assertSame('log', $content);
     }
+
+    public function testMiddleware(): void
+    {
+        $this->expectExceptionMessage('Access denied!');
+        (new Route('/data'))->runIn(Controller::class);
+    }
 }
