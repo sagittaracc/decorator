@@ -59,3 +59,26 @@ class Controller
 ```php
 (new Route('/hello/yuriy'))->runIn(Controller::class) // Hello, yuriy!
 ```
+---
+### 3. This is how you can implement a `Middleware` for a `Route` method. See the [`Middleware`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Middleware.php) decorator
+```php
+<?php
+
+namespace Sagittaracc\PhpPythonDecorator\tests\examples;
+
+use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Middleware;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Route;
+
+class Controller
+{
+    use Decorator;
+
+    #[Route('/data')]
+    #[Middleware]
+    function data()
+    {
+        return 'secret data';
+    }
+}
+```
