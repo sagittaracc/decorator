@@ -26,6 +26,11 @@ class Calc
     }
 }
 ```
+### This is how you call a decorated method
+```php
+$calc = new Calc();
+$calc->_sum(1, 2);
+```
 ### This is how you can do a simple `Router` implementation. See the [`Route`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Route.php) decorator
 ```php
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
