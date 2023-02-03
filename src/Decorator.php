@@ -21,7 +21,7 @@ trait Decorator
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
 
-                if (!($instance->isAppliable())) {
+                if ($instance instanceof PhpAttribute) {
                     continue;
                 }
 

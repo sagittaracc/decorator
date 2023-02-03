@@ -3,9 +3,11 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Auth;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Middleware;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Route;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Rpc;
 
 class Controller
 {
@@ -18,6 +20,7 @@ class Controller
     }
 
     #[Route('/hello/(\w+)')]
+    #[Rpc('hello')]
     function greetingPerson($name)
     {
         return "Hello, $name";
@@ -35,5 +38,12 @@ class Controller
     function data()
     {
         return 'secret data';
+    }
+
+    #[Rpc('data1')]
+    #[Auth]
+    function data1($jwt)
+    {
+        return ['foo' => 'bar'];
     }
 }

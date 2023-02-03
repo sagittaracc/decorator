@@ -7,11 +7,16 @@ use Exception;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
-final class Middleware extends PythonDecorator
+final class Auth extends PythonDecorator
 {
     function main($func, ...$args)
     {
+        $jwt = $args[0][0];
+
+        if ($jwt === '123456') {
+            return $func($args);
+        }
+
         throw new Exception('Access denied!');
-        return $func($args);
     }
 }

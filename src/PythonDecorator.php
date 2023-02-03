@@ -21,13 +21,6 @@ class PythonDecorator
      */
     private string $method;
     /**
-     * Указывает тип применения декоратора
-     * @var boolean
-     * true - тогда декоратор применяется к вызываемому методу
-     * false - тогда по данному декоратору вызывается метод
-     */
-    protected bool $appliable = true;
-    /**
      * Привязывает декоратор к методу объекта
      * @param mixed $object
      * @param string $method
@@ -52,47 +45,5 @@ class PythonDecorator
     public function getMethod(): string
     {
         return $this->method;
-    }
-    /**
-     * @return bool
-     */
-    public function isAppliable(): bool
-    {
-        return $this->appliable;
-    }
-    /**
-     * @return bool
-     */
-    protected function compareTo($object)
-    {
-        return false;
-    }
-    /**
-     * Выполняет метод декорируемый в $objectClass данным декоратором
-     * @param string $objectClass
-     * @return mixed
-     */
-    public function runIn($objectClass)
-    {
-        $class = new ReflectionClass($objectClass);
-        $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
-
-        foreach ($methods as $method) {
-            $attributes = $method->getAttributes();
-
-            foreach ($attributes as $attribute) {
-                if ($attribute->getName() !== get_class($this)) {
-                    continue;
-                }
-
-                $instance = $attribute->newInstance();
-                $matches = $instance->compareTo($this);
-                if ($matches !== false) {
-                    return call_user_func_array([new $method->class, "_{$method->name}"], $matches);
-                }
-            }
-        }
-
-        return null;
     }
 }

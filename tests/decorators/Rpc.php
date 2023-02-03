@@ -6,17 +6,17 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\PhpAttribute;
 
 #[Attribute]
-final class Route extends PhpAttribute
+final class Rpc extends PhpAttribute
 {
     function __construct(
-        private string $route
+        private string $method,
+        private array $params = []
     ) {}
 
     protected function compareTo($object)
     {
-        if (preg_match("`^$this->route$`", $object->route, $matches)) {
-            array_shift($matches);
-            return $matches;
+        if ($this->method === $object->method) {
+            return $object->params;
         }
 
         return false;
