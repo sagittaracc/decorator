@@ -4,6 +4,9 @@ Python style decorators for PHP
 # Requirements
 PHP >= 8
 
+# Install
+`composer require sagittaracc/php-python-decorator`
+
 # Examples
 ### Calc how long it takes to run a method. See the [`Timer`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php) decorator
 ```php
