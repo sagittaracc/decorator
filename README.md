@@ -48,20 +48,14 @@ class Controller
 {
     use Decorator;
 
-    #[Route('/hello')]
-    function greetings()
-    {
-        return "Hello world!";
-    }
-
     #[Route('/hello/(\w+)')]
-    function greetingPerson($name)
+    function greetings($name)
     {
-        return "Hello, $name";
+        return "Hello, $name!";
     }
 }
 ```
 ### This is how you call a `Route` inside your `router`
 ```php
-(new Route('/hello'))->runIn(Controller::class)
+(new Route('/hello/yuriy'))->runIn(Controller::class) // Hello, yuriy!
 ```
