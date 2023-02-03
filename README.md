@@ -50,3 +50,7 @@ class Controller
     }
 }
 ```
+### This is how you call a `Route` inside your `router`
+```php
+(new Route('/hello'))->runIn(Controller::class)
+```
