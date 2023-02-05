@@ -26,6 +26,6 @@ final class RouterTest extends TestCase
     public function testMiddleware(): void
     {
         $this->expectExceptionMessage('Access denied!');
-        (new Route('/data'))->runIn(Controller::class);
+        (new Route(url: '/data', method: 'POST'))->runIn(Controller::class);
     }
 }

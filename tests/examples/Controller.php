@@ -33,7 +33,7 @@ class Controller
         return 'log';
     }
 
-    #[Route('/data')]
+    #[Route(url: '/data', method: 'POST')]
     #[Middleware]
     function data()
     {
