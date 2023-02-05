@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
+namespace Sagittaracc\PhpPythonDecorator\tests\attributes;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\PhpAttribute;
@@ -13,7 +13,7 @@ final class Rpc extends PhpAttribute
         private array $params = []
     ) {}
 
-    protected function compareTo($object)
+    protected function equalTo($object)
     {
         if ($this->method === $object->method) {
             return $object->params;

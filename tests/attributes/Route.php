@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
+namespace Sagittaracc\PhpPythonDecorator\tests\attributes;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\PhpAttribute;
@@ -12,7 +12,7 @@ final class Route extends PhpAttribute
         private string $route
     ) {}
 
-    protected function compareTo($object)
+    protected function equalTo($object)
     {
         if (preg_match("`^$this->route$`", $object->route, $matches)) {
             array_shift($matches);

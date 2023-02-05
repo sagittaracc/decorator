@@ -5,19 +5,22 @@ namespace Sagittaracc\PhpPythonDecorator;
 use ReflectionClass;
 use ReflectionMethod;
 
-class PhpAttribute
+/**
+ * Расширение понятия PHP атрибута
+ * @author <sagittaracc@gmail.com> Yuriy Arutyunyan
+ */
+abstract class PhpAttribute
 {
     /**
+     * Сравнивает данный атрибут с переданным
+     * @param PhpAttribute $object
      * @return bool
      */
-    protected function compareTo($object)
-    {
-        return false;
-    }
+    abstract protected function equalTo(PhpAttribute $object);
     /**
-     * Выполняет метод декорируемый в $objectClass данным декоратором
+     * Выполняет метод помеченный в $objectClass данным атрибутом
      * @param string $objectClass
-     * @return mixed
+     * @return null|mixed
      */
     public function runIn($objectClass)
     {
@@ -33,7 +36,7 @@ class PhpAttribute
                 }
 
                 $instance = $attribute->newInstance();
-                $matches = $instance->compareTo($this);
+                $matches = $instance->equalTo($this);
                 if ($matches !== false) {
                     return call_user_func_array([new $method->class, "_{$method->name}"], $matches);
                 }

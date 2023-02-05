@@ -21,7 +21,7 @@ trait Decorator
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
 
-                if ($instance instanceof PhpAttribute) {
+                if (!($instance instanceof PythonDecorator)) {
                     continue;
                 }
 

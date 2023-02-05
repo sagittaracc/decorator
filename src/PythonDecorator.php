@@ -2,21 +2,19 @@
 
 namespace Sagittaracc\PhpPythonDecorator;
 
-use ReflectionClass;
-use ReflectionMethod;
-
 /**
- * @author <sagittaracc@gmail.com> Yuriy Arutyunyan
+ * Интерпретация PHP атрибута как Python декоратора
+ * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
  */
-class PythonDecorator
+abstract class PythonDecorator
 {
     /**
-     * Ссылка на объект в котором применяется декоратор
+     * Ссылка на объект в котором применяется данный декоратор
      * @var mixed
      */
     private $object = null;
     /**
-     * Название метода в объекте к которому применяется декоратор
+     * Название метода в объекте к которому применяется данный декоратор
      * @var string
      */
     private string $method;
@@ -46,4 +44,11 @@ class PythonDecorator
     {
         return $this->method;
     }
+    /**
+     * Реализация декоратора
+     * @param string $func
+     * @param array $args
+     * @return mixed
+     */
+    abstract public function main($func, ...$args);
 }

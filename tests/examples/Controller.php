@@ -6,8 +6,8 @@ use Sagittaracc\PhpPythonDecorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Auth;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Middleware;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\Route;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\Rpc;
+use Sagittaracc\PhpPythonDecorator\tests\attributes\Route;
+use Sagittaracc\PhpPythonDecorator\tests\attributes\Rpc;
 
 class Controller
 {
