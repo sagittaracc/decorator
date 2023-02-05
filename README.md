@@ -37,7 +37,7 @@ $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 $calc->sum(1, 2); // 3
 ```
 ---
-### 2. This is how you can do a simple `Router` implementation. See the [`Route`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Route.php) decorator
+### 2. This is how you can do a simple `Router` implementation. See the [`Route`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/attributes/Route.php) decorator
 ```php
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
@@ -60,7 +60,7 @@ class Controller
 (new Route('/hello/yuriy'))->runIn(Controller::class) // Hello, yuriy!
 ```
 ---
-### 3. This is how you can do a simple `Rpc` implementation. See the [`Rpc`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Rpc.php) decorator
+### 3. This is how you can do a simple `Rpc` implementation. See the [`Rpc`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/attributes/Rpc.php) decorator
 ```php
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
