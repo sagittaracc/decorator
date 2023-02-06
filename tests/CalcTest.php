@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Calc;
 
 final class CalcTest extends TestCase
@@ -30,5 +31,16 @@ final class CalcTest extends TestCase
         $calc = new Calc();
 
         $this->assertSame($calc->sum1(1, 2), $calc->sum2(1, 2));
+    }
+
+    public function testJustTimer(): void
+    {
+        $timer = new Timer();
+        $result = $timer->main(
+            function($args){
+                return $args[0] + $args[1];
+            }, 1, 2
+        );
+        $this->assertSame("Total execution: 1; Result: 3", $result);
     }
 }
