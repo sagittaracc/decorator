@@ -8,7 +8,7 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Timer extends PythonDecorator
 {
-    public function main($func, ...$args)
+    public function wrapper($func, ...$args)
     {
         $time_start = microtime(true);
 

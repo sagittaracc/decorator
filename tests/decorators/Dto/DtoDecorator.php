@@ -13,7 +13,7 @@ abstract class DtoDecorator extends PythonDecorator
 {
     use Decorator;
 
-    public function main($func, ...$args)
+    public function wrapper($func, ...$args)
     {
         $row = $func($args);
 

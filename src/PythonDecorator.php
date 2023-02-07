@@ -45,10 +45,10 @@ abstract class PythonDecorator
         return $this->method;
     }
     /**
-     * Реализация декоратора
+     * Враппер декоратора
      * @param string $func
      * @param array $args
      * @return mixed
      */
-    abstract public function main($func, ...$args);
+    abstract public function wrapper($func, ...$args);
 }

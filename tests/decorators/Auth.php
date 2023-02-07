@@ -9,7 +9,7 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Auth extends PythonDecorator
 {
-    function main($func, ...$args)
+    function wrapper($func, ...$args)
     {
         $jwt = $args[0][0];
 

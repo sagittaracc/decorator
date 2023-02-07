@@ -36,7 +36,7 @@ final class CalcTest extends TestCase
     public function testJustTimer(): void
     {
         $timer = new Timer();
-        $result = $timer->main(
+        $result = $timer->wrapper(
             function($args){
                 return $args[0] + $args[1];
             }, 1, 2

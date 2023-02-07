@@ -9,7 +9,7 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Middleware extends PythonDecorator
 {
-    function main($func, ...$args)
+    function wrapper($func, ...$args)
     {
         throw new Exception('Access denied!');
         return $func($args);

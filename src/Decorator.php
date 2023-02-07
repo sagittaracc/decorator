@@ -26,7 +26,7 @@ trait Decorator
                 }
 
                 $instance->bindTo($this, $func);
-                $f = fn() => $instance->main($f, $args);
+                $f = fn() => $instance->wrapper($f, $args);
             }
 
             return $f();
