@@ -18,7 +18,7 @@ trait Decorator
         {
             $f = fn() => $this->$func(...$args);
 
-            foreach ($attributes as $attribute) {
+            foreach (array_reverse($attributes) as $attribute) {
                 $instance = $attribute->newInstance();
 
                 if (!($instance instanceof PythonDecorator)) {

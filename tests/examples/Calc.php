@@ -10,8 +10,8 @@ class Calc
 {
     use Decorator;
 
-    #[Timer]
     #[Log]
+    #[Timer]
     function sum1($a, $b)
     {
         return $a + $b;
