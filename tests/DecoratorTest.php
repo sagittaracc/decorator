@@ -13,11 +13,11 @@ final class DecoratorTest extends TestCase
 
         $result = $timer->wrapper(
 
-            function ($a, $b) {
+            func: function ($a, $b) {
                 return $a + $b;
             },
 
-            [1, 2]
+            args: [1, 2]
 
         );
 
