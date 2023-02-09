@@ -2,7 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator;
 
-use ReflectionMethod;
+use ReflectionClass;
 
 trait Decorator
 {
@@ -10,9 +10,14 @@ trait Decorator
 
     public function __call($func, $args)
     {
+        $class = new ReflectionClass($this);
+        $classAttributes = $class->getAttributes();
+
         $func = ltrim($func, '_');
-        $method = new ReflectionMethod($this, $func);
-        $attributes = $method->getAttributes();
+        $method = $class->getMethod($func);
+        $methodAttributes = $method->getAttributes();
+
+        $attributes = array_merge($classAttributes, $methodAttributes);
 
         if (count($attributes) > 0)
         {
