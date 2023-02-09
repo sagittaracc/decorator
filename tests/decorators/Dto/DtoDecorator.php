@@ -13,9 +13,9 @@ abstract class DtoDecorator extends PythonDecorator
 {
     use Decorator;
 
-    public function wrapper($func, ...$args)
+    public function wrapper($func, $args)
     {
-        $row = $func($args);
+        $row = $func(...$args);
 
         $dtoFields = $this->props();
         $validateList = $this->validate();

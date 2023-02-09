@@ -50,5 +50,5 @@ abstract class PythonDecorator
      * @param array $args
      * @return mixed
      */
-    abstract public function wrapper($func, ...$args);
+    abstract public function wrapper($func, $args);
 }

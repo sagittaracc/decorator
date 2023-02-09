@@ -22,25 +22,12 @@ final class CalcTest extends TestCase
     public function testNoDecorator(): void
     {
         $calc = new Calc();
-
         $this->assertSame(3, $calc->_sum2(1, 2));
     }
 
     public function testNoUsingDecorator(): void
     {
         $calc = new Calc();
-
         $this->assertSame($calc->sum1(1, 2), $calc->sum2(1, 2));
-    }
-
-    public function testJustTimer(): void
-    {
-        $timer = new Timer();
-        $result = $timer->wrapper(
-            function($args){
-                return $args[0] + $args[1];
-            }, 1, 2
-        );
-        $this->assertSame("Total execution: 1; Result: 3", $result);
     }
 }

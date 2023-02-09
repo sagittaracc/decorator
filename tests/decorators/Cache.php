@@ -8,14 +8,14 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Cache extends PythonDecorator
 {
-    public function wrapper($func, ...$args)
+    public function wrapper($func, $args)
     {
         if ($cache = $this->getCache($this->getMethod())) {
             // return $cache
             return 'cache';
         }
 
-        $result = $func($args);
+        $result = $func(...$args);
         $this->setCache($this->getMethod(), $result);
 
         return $result;

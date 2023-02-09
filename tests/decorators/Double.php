@@ -8,8 +8,8 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Double extends PythonDecorator
 {
-    public function wrapper($func, ...$args)
+    public function wrapper($func, $args)
     {
-        return 2 * $func($args);
+        return 2 * $func(...$args);
     }
 }
