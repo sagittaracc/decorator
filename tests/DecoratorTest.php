@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Double;
 
 final class DecoratorTest extends TestCase
 {
-    public function testTimerDecorator(): void
+    public function testDoubleDecorator(): void
     {
-        $timer = new Timer();
+        $decorator = new Double();
 
-        $result = $timer->wrapper(
+        $result = $decorator->wrapper(
 
             func: function ($a, $b) {
                 return $a + $b;
@@ -21,6 +21,6 @@ final class DecoratorTest extends TestCase
 
         );
 
-        $this->assertSame("Total execution: 1; Result: 3", $result);
+        $this->assertSame(6, $result);
     }
 }
