@@ -8,7 +8,7 @@ use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
 
 final class DecoratorTest extends TestCase
 {
-    public function testDoubleDecorator(): void
+    public function testDecorator(): void
     {
         $timer = new Timer();
         $double = new Double();
