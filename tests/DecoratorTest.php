@@ -4,23 +4,34 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Double;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
 
 final class DecoratorTest extends TestCase
 {
     public function testDoubleDecorator(): void
     {
-        $decorator = new Double();
+        $timer = new Timer();
+        $double = new Double();
 
-        $result = $decorator->wrapper(
+        $result = $timer->wrapper(
 
-            func: function ($a, $b) {
-                return $a + $b;
+            func: function ($double) {
+
+                return $double->wrapper(
+
+                    func: function ($a, $b) {
+                        return $a + $b;
+                    },
+
+                    args: [1, 2]
+                );
+
             },
-
-            args: [1, 2]
+            
+            args: [$double]
 
         );
 
-        $this->assertSame(6, $result);
+        $this->assertSame('Total execution: 1; Result: 6', $result);
     }
 }
