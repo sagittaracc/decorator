@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Calc;
-use Sagittaracc\PhpPythonDecorator\tests\exceptions\NotPublicMethodException;
 
 final class CalcTest extends TestCase
 {
@@ -33,7 +33,8 @@ final class CalcTest extends TestCase
 
     public function testCallPrivateMethod(): void
     {
-        $this->expectException(NotPublicMethodException::class);
+        $this->expectException(DecoratorError::class);
+        $this->expectExceptionMessage('Only public methods can be decorated!');
         $calc = new Calc();
         $calc->_sum3(1, 2);
     }
