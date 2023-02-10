@@ -21,4 +21,10 @@ class Calc
     {
         return $a + $b;
     }
+
+    #[Timer]
+    private function sum3($a, $b)
+    {
+        return $a + $b;
+    }
 }

@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Calc;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\NotPublicMethodException;
 
 final class CalcTest extends TestCase
 {
@@ -29,5 +29,12 @@ final class CalcTest extends TestCase
     {
         $calc = new Calc();
         $this->assertSame($calc->sum1(1, 2), $calc->sum2(1, 2));
+    }
+
+    public function testCallPrivateMethod(): void
+    {
+        $this->expectException(NotPublicMethodException::class);
+        $calc = new Calc();
+        $calc->_sum3(1, 2);
     }
 }

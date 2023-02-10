@@ -3,6 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator;
 
 use ReflectionClass;
+use Sagittaracc\PhpPythonDecorator\tests\exceptions\NotPublicMethodException;
 
 trait Decorator
 {
@@ -13,6 +14,11 @@ trait Decorator
         $func = ltrim($func, '_');
         $class = new ReflectionClass($this);
         $method = $class->getMethod($func);
+
+        if (!($method->isPublic())) {
+            throw new NotPublicMethodException;
+        }
+
         $attributes = array_merge($class->getAttributes(), $method->getAttributes());
 
         if (count($attributes) > 0)
