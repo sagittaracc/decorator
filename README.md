@@ -7,8 +7,8 @@ PHP 8 or higher
 # Install
 `composer require sagittaracc/php-python-decorator`
 
-# Examples
-### 1. Calc how long it takes to run a method. See the [`Timer`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php) decorator
+# Example
+Calc how long it takes to run a method. See the [`Timer`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/decorators/Timer.php) decorator
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
@@ -26,7 +26,7 @@ class Calc
     }
 }
 ```
-### This is how you call it
+This is how you call it
 ```php
 $calc = new Calc();
 
