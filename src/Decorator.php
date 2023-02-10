@@ -10,14 +10,10 @@ trait Decorator
 
     public function __call($func, $args)
     {
-        $class = new ReflectionClass($this);
-        $classAttributes = $class->getAttributes();
-
         $func = ltrim($func, '_');
+        $class = new ReflectionClass($this);
         $method = $class->getMethod($func);
-        $methodAttributes = $method->getAttributes();
-
-        $attributes = array_merge($classAttributes, $methodAttributes);
+        $attributes = array_merge($class->getAttributes(), $method->getAttributes());
 
         if (count($attributes) > 0)
         {
