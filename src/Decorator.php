@@ -43,4 +43,11 @@ trait Decorator
             return $this->$func(...$args);
         }
     }
+
+    public function __invoke()
+    {
+        return $this->_pass();
+    }
+
+    public function pass() {}
 }
