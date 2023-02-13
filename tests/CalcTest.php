@@ -38,4 +38,12 @@ final class CalcTest extends TestCase
         $calc = new Calc();
         $calc->_sum3(1, 2);
     }
+
+    public function testSingleton(): void
+    {
+        $calc = new Calc();
+        $this->assertSame(6, $calc->_sum4(1, 2));
+        $this->assertSame(6, $calc->_sum5(1, 2));
+        $this->assertSame(9, $calc->_sum6(1, 2));
+    }
 }
