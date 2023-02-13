@@ -7,7 +7,7 @@ use Sagittaracc\PhpPythonDecorator\tests\examples\Model;
 
 final class TableTest extends TestCase
 {
-    public function testNoDecorator(): void
+    public function testClassDecoratorsOnly(): void
     {
         $model = new Model();
         $this->assertNull($model->table);
