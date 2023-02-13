@@ -12,14 +12,19 @@ final class OrmTest extends TestCase
     {
         $products = Category::findOne(1)->_getProducts();
 
-        $this->assertInstanceOf(Category::class, $products['self']);
-        $this->assertSame('categories', $products['self']->table);
-        $this->assertSame(1, $products['self']->getId());
-        $this->assertSame(Product::class, $products['return']);
-        $this->assertSame('many', $products['count']);
+        $self = $products['self'];
+        $return = $products['return'];
+        $count = $products['count'];
 
+        $this->assertInstanceOf(Category::class, $self);
+        $this->assertSame('categories', $self->table);
+        $this->assertSame(1, $self->getId());
         $this->assertSame([
             ['column' => 'product_id', 'referencedTable' => 'products', 'referencedColumn' => 'id']
-        ], $products['self']->getJoins());
+        ], $self->getJoins());
+
+        $this->assertSame('many', $count);
+        $this->assertSame(Product::class, $return);
+
     }
 }
