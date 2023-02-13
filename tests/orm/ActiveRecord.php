@@ -10,6 +10,8 @@ abstract class ActiveRecord
 
     private int $id;
     public string $table;
+    public string $returnObjectClass;
+    public string $returnObjectCount;
     private $joins = [];
 
     public static function findOne(int $id)
@@ -26,11 +28,9 @@ abstract class ActiveRecord
 
     protected function hasMany(string $objectClass)
     {
-        return [
-            'self' => $this,
-            'return' => $objectClass,
-            'count' => 'many',
-        ];
+        $this->returnObjectClass = $objectClass;
+        $this->returnObjectCount = 'many';
+        return $this;
     }
 
     public function addJoin($column, $referencedTable, $referencedColumn)

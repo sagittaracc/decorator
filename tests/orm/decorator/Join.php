@@ -15,16 +15,15 @@ class Join extends PythonDecorator
 
     public function wrapper($func, $args)
     {
-        $options = $func(...$args);
-        $referencedModel = new $options['return'];
+        /**
+         * @var \Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord $ar
+         */
+        $ar = $func(...$args);
+        $referencedModel = new $ar->returnObjectClass;
         $referencedModel();
 
-        /**
-         * @var \Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord $query
-         */
-        $query = $this->getObject();
-        $query->addJoin($this->column, $referencedModel->table, $this->reference);
+        $ar->addJoin($this->column, $referencedModel->table, $this->reference);
 
-        return $options;
+        return $ar;
     }
 }
