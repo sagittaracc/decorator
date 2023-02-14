@@ -24,8 +24,12 @@ class Database extends PythonDecorator
             // self::$connection = new PDO("mysql:dbname={$this->dbname};host={$this->host}", $this->user, $this->pass);
         }
 
-        $query = (new Query('mysql'))->wrapper($func, $args);
+        $ar = (new Query('mysql'))->wrapper($func, $args);
 
-        return $query;
+        // $sth = self::$connection->prepare($ar->rawQuery);
+        // $sth->execute();
+        // $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        return $ar;
     }
 }
