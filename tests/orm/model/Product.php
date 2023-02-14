@@ -8,4 +8,6 @@ use Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord;
 #[Table('products')]
 class Product extends ActiveRecord
 {
+    public int $id;
+    public string $name;
 }
