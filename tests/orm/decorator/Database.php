@@ -21,14 +21,12 @@ class Database extends PythonDecorator
     public function wrapper($func, $args)
     {
         if (self::$connection === null) {
-            // self::$connection = $this->connect();
+            self::$connection = $this->connect();
         }
 
         $ar = (new Query('mysql'))->wrapper($func, $args);
 
-        // $rows = $this->query($ar->rawQuery);
-
-        return $ar;
+        return (new Serialize($ar->returnObjectClass, $ar->returnObjectCount))->wrapper(fn($query) => $this->query($query), [$ar->rawQuery]);
     }
 
     private function connect()
