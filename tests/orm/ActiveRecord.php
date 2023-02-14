@@ -8,11 +8,13 @@ abstract class ActiveRecord
 {
     use Decorator;
 
+    public string $primaryKey;
     private int $id;
     public string $table;
     public string $returnObjectClass;
     public string $returnObjectCount;
     private $joins = [];
+    public string $rawQuery;
 
     public static function findOne(int $id)
     {

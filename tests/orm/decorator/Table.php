@@ -9,7 +9,8 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 class Table extends PythonDecorator
 {
     function __construct(
-        private string $name
+        private string $name,
+        private string $primaryKey = 'id'
     ) {}
 
     public function wrapper($func, $args)
@@ -19,6 +20,7 @@ class Table extends PythonDecorator
          */
         $query = $this->getObject();
         $query->table = $this->name;
+        $query->primaryKey = $this->primaryKey;
 
         return $func(...$args);
     }

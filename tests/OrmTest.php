@@ -22,5 +22,6 @@ final class OrmTest extends TestCase
         $this->assertSame(Product::class, $ar->returnObjectClass);
         $this->assertSame('many', $ar->returnObjectCount);
 
+        $this->assertSame('select * from `categories` join `products` on `categories`.`product_id` = `products`.`id` where `categories`.`id` = 1', $ar->rawQuery);
     }
 }
