@@ -16,12 +16,12 @@ final class OrmTest extends TestCase
         $this->assertSame('categories', $ar->table);
         $this->assertSame(1, $ar->getId());
         $this->assertSame([
-            ['column' => 'product_id', 'referencedTable' => 'products', 'referencedColumn' => 'id']
+            ['column' => 'id', 'referencedTable' => 'products', 'referencedColumn' => 'category_id']
         ], $ar->getJoins());
 
         $this->assertSame(Product::class, $ar->returnObjectClass);
         $this->assertSame('many', $ar->returnObjectCount);
 
-        $this->assertSame('select * from `categories` join `products` on `categories`.`product_id` = `products`.`id` where `categories`.`id` = 1', $ar->rawQuery);
+        $this->assertSame('select * from `categories` join `products` on `categories`.`id` = `products`.`category_id` where `categories`.`id` = 1', $ar->rawQuery);
     }
 }

@@ -11,7 +11,7 @@ use Sagittaracc\PhpPythonDecorator\tests\orm\decorator\Table;
 #[Table('categories')]
 class Category extends ActiveRecord
 {
-    #[Join(column: 'product_id', reference: 'id')]
+    #[Join(column: 'id', reference: 'category_id')]
     public function getProducts()
     {
         return $this->hasMany(Product::class);
