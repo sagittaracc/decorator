@@ -50,4 +50,15 @@ trait Decorator
     }
 
     public function pass() {}
+
+    public function __get($name)
+    {
+        $name = ltrim($name, '_');
+
+        $class = new ReflectionClass($this);
+        $prop = $class->getProperty($name);
+        $attributes = $prop->getAttributes();
+
+        return $attributes > 0 ? $attributes[0]->newInstance() : $this->$name;
+    }
 }
