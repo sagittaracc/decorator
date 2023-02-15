@@ -16,12 +16,12 @@ class Table extends PythonDecorator
     public function wrapper($func, $args)
     {
         /**
-         * @var \Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord $query
+         * @var \Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord $ar
          */
-        $query = $this->getObject();
-        $query->table = $this->name;
-        $query->primaryKey = $this->primaryKey;
+        $ar = $func(...$args);
+        $ar->table = $this->name;
+        $ar->primaryKey = $this->primaryKey;
 
-        return $func(...$args);
+        return $ar;
     }
 }

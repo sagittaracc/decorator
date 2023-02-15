@@ -8,13 +8,23 @@ abstract class ActiveRecord
 {
     use Decorator;
 
-    public string $primaryKey;
-    private int $id;
+    private string $primaryKey;
+    private null|int $id = null;
     public string $table;
     public string $returnObjectClass;
     public string $returnObjectCount;
     private $joins = [];
     public string $rawQuery;
+
+    public static function find()
+    {
+        return new static();
+    }
+
+    public function all()
+    {
+        return $this->hasMany(static::class);
+    }
 
     public static function findOne(int $id)
     {
@@ -23,7 +33,7 @@ abstract class ActiveRecord
         return $instance;
     }
 
-    public function getId(): int
+    public function getId(): null|int
     {
         return $this->id;
     }

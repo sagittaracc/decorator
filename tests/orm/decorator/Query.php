@@ -57,6 +57,6 @@ class Query extends PythonDecorator
 
     private function buildWhere(ActiveRecord $ar)
     {
-        return "where `$ar->table`.`$ar->primaryKey` = {$ar->getId()}";
+        return $ar->getId() === null ? '' : "where `$ar->table`.`$ar->primaryKey` = {$ar->getId()}";
     }
 }

@@ -11,6 +11,9 @@ use Sagittaracc\PhpPythonDecorator\tests\orm\decorator\Table;
 #[Table('categories')]
 class Category extends ActiveRecord
 {
+    public int $id;
+    public string $title;
+
     #[Join(column: 'id', reference: 'category_id')]
     public function getProducts()
     {

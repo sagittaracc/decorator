@@ -22,6 +22,13 @@ final class OrmTest extends TestCase
 
         // $this->assertSame(2, $secondProduct->id);
         // $this->assertSame('phone', $secondProduct->name);
+        
+        // $categories = Category::find()->_all();
+        
+        // $firstCategory = $categories[0];
+        
+        // $this->assertSame(1, $firstCategory->id);
+        // $this->assertSame('device', $firstCategory->title);
 
         $this->assertNull(null);
     }
