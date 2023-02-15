@@ -3,9 +3,10 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\di\decorator;
 
 use Attribute;
+use Sagittaracc\PhpPythonDecorator\tests\di\interface\GeolocationServiceInterface;
 
 #[Attribute]
-class GeolocationService
+class GeolocationService implements GeolocationServiceInterface
 {
     public function getCoordinatesFromAddress()
     {

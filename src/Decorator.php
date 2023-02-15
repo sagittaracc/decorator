@@ -59,6 +59,11 @@ trait Decorator
         $prop = $class->getProperty($name);
         $attributes = $prop->getAttributes();
 
-        return $attributes > 0 ? $attributes[0]->newInstance() : $this->$name;
+        if (count($attributes) === 1) {
+            $instance = $attributes[0]->newInstance();
+            $this->$name = $instance;
+        }
+
+        return $this->$name;
     }
 }
