@@ -1,9 +1,8 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\tests\di\decorator;
+namespace Sagittaracc\PhpPythonDecorator\tests\di\service\geo;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\tests\di\interface\GeolocationServiceInterface;
 
 #[Attribute]
 class GeolocationService implements GeolocationServiceInterface

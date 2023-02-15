@@ -2,16 +2,11 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\di\service;
 
-use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\tests\di\decorator\GeolocationService;
-use Sagittaracc\PhpPythonDecorator\tests\di\interface\GeolocationServiceInterface;
+use Sagittaracc\PhpPythonDecorator\tests\di\container\Container;
 
 class StoreService
 {
-    use Decorator;
-
-    #[GeolocationService]
-    private GeolocationServiceInterface $geolocationService;
+    use Container;
 
     public function getStoreCoordinates() {
         return $this->_geolocationService->getCoordinatesFromAddress();
