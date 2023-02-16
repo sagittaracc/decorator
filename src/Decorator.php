@@ -61,9 +61,7 @@ trait Decorator
 
         if (count($attributes) === 1) {
             $instance = $attributes[0]->newInstance();
-            $instance->setContainer($this);
-            $instance->createObject();
-            $this->$name = $instance->getObject();
+            $this->$name = $instance;
         }
 
         return $this->$name;
