@@ -21,13 +21,13 @@ trait Container
 
     #[Di(
         class: Logger::class,
-        construct: [FileTarget::class]
+        construct: [[FileTarget::class]]
     )]
     private LoggerInterface $logger;
 
     #[Di(
         class: FileTarget::class,
-        construct: ['app.log']
+        construct: ['./app.log']
     )]
     private FileTarget $fileTarget;
 }

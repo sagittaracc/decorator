@@ -11,4 +11,9 @@ class StoreService
     public function getStoreCoordinates() {
         return $this->_geolocationService->getCoordinatesFromAddress();
     }
+
+    public function test() {
+        $logger = $this->_logger;
+        $logger->emergency('Emergency message');
+    }
 }

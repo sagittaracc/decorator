@@ -12,4 +12,11 @@ final class DiTest extends TestCase
         $service = new StoreService;
         $this->assertSame([33.333, 55.555], $service->getStoreCoordinates());
     }
+
+    public function testTest(): void
+    {
+        $service = new StoreService;
+        $service->test();
+        $this->assertNull(null);
+    }
 }
