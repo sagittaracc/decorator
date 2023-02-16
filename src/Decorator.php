@@ -64,7 +64,7 @@ trait Decorator
 
             $instance =
                 $attribute instanceof ClassWrapperInterface
-                    ? $attribute->getInstance()
+                    ? $attribute->bindTo($this)->getInstance()
                     : $attribute;
 
             $this->$name = $instance;

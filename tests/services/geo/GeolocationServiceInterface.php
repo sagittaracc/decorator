@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\tests\service\geo;
+namespace Sagittaracc\PhpPythonDecorator\tests\services\geo;
 
 interface GeolocationServiceInterface
 {

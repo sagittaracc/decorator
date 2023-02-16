@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\tests\service;
+namespace Sagittaracc\PhpPythonDecorator\tests\di;
 
 use Attribute;
 use Exception;
@@ -11,11 +11,18 @@ use Sagittaracc\PhpPythonDecorator\ClassWrapperInterface;
 class Di implements ClassWrapperInterface
 {
     private $object;
+    private $container;
 
     function __construct(
         private string $class,
         private null|array $constructor = null
     ) {}
+
+    public function bindTo($container): self
+    {
+        $this->container = $container;
+        return $this;
+    }
     
     public function getInstance()
     {
@@ -56,6 +63,18 @@ class Di implements ClassWrapperInterface
 
     private function containerResolver(string $type)
     {
-        throw new Exception('Not supported yet!');
+        $class = new ReflectionClass($this->container);
+        $properties = $class->getProperties();
+        
+        foreach ($properties as $property) {
+            $propertyType = $property->getType()->getName();
+
+            if ($propertyType === $type) {
+                $propertyName = '_' . $property->getName();
+                return $this->container->$propertyName;
+            }
+        }
+
+        throw new Exception('Can not resolve in container!');
     }
 }
