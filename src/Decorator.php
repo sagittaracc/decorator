@@ -60,7 +60,13 @@ trait Decorator
         $attributes = $prop->getAttributes();
 
         if (count($attributes) === 1) {
-            $instance = $attributes[0]->newInstance();
+            $attribute = $attributes[0]->newInstance();
+
+            $instance =
+                $attribute instanceof ClassWrapperInterface
+                    ? $attribute->getInstance()
+                    : $attribute;
+
             $this->$name = $instance;
         }
 

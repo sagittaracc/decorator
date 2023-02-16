@@ -13,7 +13,14 @@ class StoreService
     #[GeolocationService]
     private GeolocationServiceInterface $geolocationService;
 
+    #[Di(GeolocationService::class)]
+    private GeolocationServiceInterface $geolocationService1;
+
     public function getStoreCoordinates() {
         return $this->_geolocationService->getCoordinatesFromAddress();
+    }
+
+    public function getStoreCoordinates1() {
+        return $this->_geolocationService1->getCoordinatesFromAddress();
     }
 }

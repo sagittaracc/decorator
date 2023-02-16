@@ -11,5 +11,6 @@ final class ServiceTest extends TestCase
     {
         $service = new StoreService;
         $this->assertSame([33.333, 55.555], $service->getStoreCoordinates());
+        $this->assertSame([33.333, 55.555], $service->getStoreCoordinates1());
     }
 }
