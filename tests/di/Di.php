@@ -8,10 +8,21 @@ use Attribute;
 class Di
 {
     private $object;
+    private $container;
 
-    function __construct(string $classObject)
+    function __construct(
+        private string $class,
+        private array $construct = []
+    ) {}
+
+    public function setContainer($container)
     {
-        $this->object = new $classObject;
+        $this->container = $container;
+    }
+
+    public function createObject()
+    {
+        $this->object = new $this->class;
     }
 
     public function getObject()
