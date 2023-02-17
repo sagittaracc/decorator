@@ -55,6 +55,8 @@ trait Decorator
     {
         $name = ltrim($name, '_');
 
+        // TODO: Проверить, проперти может не существовать вообще
+
         $class = new ReflectionClass($this);
         $prop = $class->getProperty($name);
         $attributes = $prop->getAttributes();
