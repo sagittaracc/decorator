@@ -56,6 +56,7 @@ trait Decorator
         $name = ltrim($name, '_');
 
         // TODO: Проверить, проперти может не существовать вообще
+        // TODO: Вернуть если уже установлено (либо вручную, либо при повторном обращении) (оптимизация :))
 
         $class = new ReflectionClass($this);
         $prop = $class->getProperty($name);
