@@ -24,6 +24,10 @@ abstract class PhpAttribute
      */
     public function runIn($objectClass)
     {
+        /**
+         * $objectClass or $object
+         * TODO: Сделать чтобы можно было передать как объект класса так и сам класс
+         */
         $class = new ReflectionClass($objectClass);
         $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
 
@@ -38,6 +42,11 @@ abstract class PhpAttribute
                 $instance = $attribute->newInstance();
                 $matches = $instance->equalTo($this);
                 if ($matches !== false) {
+                    /**
+                     * Чтобы здесь можно было либо создать его
+                     * new $objectClass
+                     * либо вызвать в самом объекте
+                     */
                     return call_user_func_array([new $objectClass, "_{$method->name}"], $matches);
                 }
             }
