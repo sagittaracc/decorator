@@ -38,7 +38,7 @@ abstract class PhpAttribute
                 $instance = $attribute->newInstance();
                 $matches = $instance->equalTo($this);
                 if ($matches !== false) {
-                    return call_user_func_array([new $method->class, "_{$method->name}"], $matches);
+                    return call_user_func_array([new $objectClass, "_{$method->name}"], $matches);
                 }
             }
         }
