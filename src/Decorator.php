@@ -28,12 +28,11 @@ trait Decorator
             foreach (array_reverse($attributes) as $attribute) {
                 $instance = $attribute->newInstance();
 
-                if (!($instance instanceof PythonDecorator)) {
-                    continue;
+                if ($instance instanceof PythonDecorator) {
+                    $instance->bindTo($this, $func);
+                    $f = fn() => $instance->wrapper($f, $args);
                 }
 
-                $instance->bindTo($this, $func);
-                $f = fn() => $instance->wrapper($f, $args);
             }
 
             return $f();
@@ -49,7 +48,9 @@ trait Decorator
         return $this->_pass();
     }
 
-    public function pass() {}
+    public function pass(): void
+    {
+    }
 
     public function __get($name)
     {
