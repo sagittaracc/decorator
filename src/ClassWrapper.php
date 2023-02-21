@@ -2,9 +2,10 @@
 
 namespace Sagittaracc\PhpPythonDecorator;
 
-use Sagittaracc\PhpPythonDecorator\PhpDecorator;
-
-abstract class ClassWrapper extends PhpDecorator
+abstract class ClassWrapper extends PythonDecorator
 {
     abstract public function getInstance();
+    public function wrapper($func, $args)
+    {
+    }
 }
