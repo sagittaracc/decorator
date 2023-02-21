@@ -55,11 +55,6 @@ trait Decorator
     {
         $name = ltrim($name, '_');
 
-        // TODO: Проверить, проперти может не существовать вообще
-        // TODO: Вернуть если уже установлено (либо вручную, либо при повторном обращении) (оптимизация :))
-        // TODO: Возможно предыдущий второй пункт лучше сделать не здесь,
-        // а на уровне где этот механизм используется в контейнере для резолвинга
-
         $class = new ReflectionClass($this);
         $prop = $class->getProperty($name);
         $attributes = $prop->getAttributes();
@@ -68,8 +63,8 @@ trait Decorator
             $attribute = $attributes[0]->newInstance();
 
             $instance =
-                $attribute instanceof ClassWrapperInterface
-                    ? $attribute->bindTo($this)->getInstance()
+                $attribute instanceof ClassWrapper
+                    ? $attribute->bindTo($this, $name)->getInstance()
                     : $attribute;
 
             $this->$name = $instance;

@@ -1,9 +1,8 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\core;
+namespace Sagittaracc\PhpPythonDecorator;
 
 /**
- * Интерпретация PHP атрибута как декоратора
  * @author <sagittaracc@gmail.com> Yuriy Arutyunyan
  */
 abstract class PhpDecorator
@@ -22,12 +21,26 @@ abstract class PhpDecorator
      * Привязывается к методу или свойству объекта
      * @param mixed $object
      * @param string $propOrMethod
-     * @return self
+     * @return static
      */
-    public function bindTo($object, string $propOrMethod): self
+    public function bindTo($object, string $propOrMethod): static
     {
         $this->object = $object;
         $this->propOrMethod = $propOrMethod;
         return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getObject()
+    {
+        return $this->object;
+    }
+    /**
+     * @return string
+     */
+    public function getMethod(): string
+    {
+        return $this->propOrMethod;
     }
 }

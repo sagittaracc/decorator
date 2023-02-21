@@ -5,33 +5,26 @@ namespace Sagittaracc\PhpPythonDecorator\tests\di;
 use Attribute;
 use Exception;
 use ReflectionClass;
-use Sagittaracc\PhpPythonDecorator\ClassWrapperInterface;
+use Sagittaracc\PhpPythonDecorator\ClassWrapper;
 
 #[Attribute]
-class Di implements ClassWrapperInterface
+class Di extends ClassWrapper
 {
-    private $object;
-    private $container;
+    private $instance;
 
     function __construct(
         private string $class,
         private null|array $constructor = null
     ) {}
-
-    public function bindTo($container): self
-    {
-        $this->container = $container;
-        return $this;
-    }
     
     public function getInstance()
     {
         $class = new ReflectionClass($this->class);
         $constructor = $this->constructor ?? $class?->getConstructor()?->getParameters();
 
-        $this->object = new $this->class(...$this->resolve($constructor));
+        $this->instance = new $this->class(...$this->resolve($constructor));
 
-        return $this->object;
+        return $this->instance;
     }
 
     private function resolve(null|array $constructor): array
@@ -63,7 +56,7 @@ class Di implements ClassWrapperInterface
 
     private function containerResolver(string $type)
     {
-        $class = new ReflectionClass($this->container);
+        $class = new ReflectionClass($this->object);
         $properties = $class->getProperties();
         
         foreach ($properties as $property) {
@@ -71,7 +64,7 @@ class Di implements ClassWrapperInterface
 
             if ($propertyType === $type) {
                 $propertyName = '_' . $property->getName();
-                return $this->container->$propertyName;
+                return $this->object->$propertyName;
             }
         }
 
