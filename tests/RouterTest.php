@@ -12,13 +12,18 @@ final class RouterTest extends TestCase
     {
         $this->assertSame('Hello world!', (new Route('/hello'))->runIn(Controller::class));
         $this->assertSame('Hello, yuriy', (new Route('/hello/yuriy'))->runIn(Controller::class));
-        $this->assertNull((new Route('/notFound'))->runIn(Controller::class));
     }
 
     public function testRouteInInstansiateController(): void
     {
         $controller = new Controller;
         $this->assertSame('Hello world!', (new Route('/hello'))->runIn($controller));
+    }
+
+    public function testNotFoundRoute(): void
+    {
+        $this->expectExceptionCode(404);
+        (new Route('/notFound'))->runIn(Controller::class);
     }
 
     public function testRouterLog(): void

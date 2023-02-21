@@ -4,6 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator;
 
 use ReflectionClass;
 use ReflectionMethod;
+use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 
 /**
  * Расширение понятия PHP атрибута
@@ -20,7 +21,8 @@ abstract class PhpAttribute
     /**
      * Выполняет метод помеченный в $objectOrClass данным атрибутом
      * @param object|string $objectOrClass
-     * @return null|mixed
+     * @throws DecoratorError
+     * @return mixed
      */
     public function runIn($objectOrClass)
     {
@@ -44,7 +46,8 @@ abstract class PhpAttribute
             }
         }
 
-        return null;
+        // TODO: В Exception message выдать какую то информацию по $this (атрибуту который мы запускаем в $objectOrClass)
+        throw new DecoratorError('', 404);
     }
     /**
      * Правило преобразования имени чтобы оно требовало преобразование декоратора
