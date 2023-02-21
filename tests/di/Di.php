@@ -5,10 +5,10 @@ namespace Sagittaracc\PhpPythonDecorator\tests\di;
 use Attribute;
 use Exception;
 use ReflectionClass;
-use Sagittaracc\PhpPythonDecorator\ClassWrapper;
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
-class Di extends ClassWrapper
+class Di extends PythonDecorator
 {
     private $instance;
 
@@ -17,7 +17,7 @@ class Di extends ClassWrapper
         private null|array $constructor = null
     ) {}
     
-    public function getInstance()
+    public function wrapper($property)
     {
         $class = new ReflectionClass($this->class);
         $constructor = $this->constructor ?? $class?->getConstructor()?->getParameters();

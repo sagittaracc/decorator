@@ -61,15 +61,12 @@ trait Decorator
 
         if (count($attributes) === 1) {
             $attribute = $attributes[0]->newInstance();
+            $propertyValue = $this->$name ?? null;
 
             $instance =
-                $attribute instanceof ClassWrapper
-                    ? $attribute->bindTo($this, $name)->getInstance()
-                    : (
-                        $attribute instanceof PythonDecorator
-                            ? $attribute->bindTo($this, $name)->wrapper($this->$name)
-                            : $attribute
-                    );
+                $attribute instanceof PythonDecorator
+                    ? $attribute->bindTo($this, $name)->wrapper($propertyValue)
+                    : $attribute;
 
             $this->$name = $instance;
         }
