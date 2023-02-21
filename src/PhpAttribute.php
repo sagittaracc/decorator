@@ -52,6 +52,7 @@ abstract class PhpAttribute
     /**
      * Правило преобразования имени чтобы оно требовало преобразование декоратора
      * @param string $name
+     * @return string
      */
     protected function getDecoratedName(string $name): string
     {
