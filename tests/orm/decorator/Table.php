@@ -13,12 +13,12 @@ class Table extends PythonDecorator
         private string $primaryKey = 'id'
     ) {}
 
-    public function wrapper($func, $args)
+    public function wrapper($func)
     {
         /**
-         * @var \Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord $ar
+         * @var \Sagittaracc\PhpPythonDecorator\tests\orm\decorator\ActiveRecord $ar
          */
-        $ar = $func(...$args);
+        $ar = $func();
         $ar->table = $this->name;
         $ar->primaryKey = $this->primaryKey;
 

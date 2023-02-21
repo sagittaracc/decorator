@@ -18,15 +18,15 @@ class Database extends PythonDecorator
         private string $pass
     ) {}
 
-    public function wrapper($func, $args)
+    public function wrapper($func)
     {
         if (self::$connection === null) {
             self::$connection = $this->connect();
         }
 
-        $ar = (new Query('mysql'))->wrapper($func, $args);
+        $ar = (new Query('mysql'))->wrapper($func);
 
-        return (new Serialize($ar->returnObjectClass, $ar->returnObjectCount))->wrapper(fn($query) => $this->query($query), [$ar->rawQuery]);
+        return (new Serialize($ar->returnObjectClass, $ar->returnObjectCount))->wrapper(fn() => $this->query($ar->rawQuery));
     }
 
     private function connect()

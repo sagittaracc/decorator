@@ -6,10 +6,10 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
-final class Double extends PythonDecorator
+final class DoubleProperty extends PythonDecorator
 {
-    public function wrapper($func)
+    public function wrapper($property)
     {
-        return 2 * $func();
+        return 2 * $property;
     }
 }

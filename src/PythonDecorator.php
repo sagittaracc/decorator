@@ -56,9 +56,8 @@ abstract class PythonDecorator extends PhpAttribute
     }
     /**
      * Враппер декоратора
-     * @param string $func
-     * @param array $args
+     * @param string $methodOrProperty
      * @return mixed
      */
-    abstract public function wrapper($func, $args);
+    abstract public function wrapper($methodOrProperty);
 }

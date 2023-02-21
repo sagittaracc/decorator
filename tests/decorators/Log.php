@@ -8,7 +8,7 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Log extends PythonDecorator
 {
-    public function wrapper($func, $args)
+    public function wrapper($func)
     {
         echo $func();
     }

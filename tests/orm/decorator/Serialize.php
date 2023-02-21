@@ -16,9 +16,9 @@ class Serialize extends PythonDecorator
         private string $count
     ) {}
 
-    public function wrapper($func, $args)
+    public function wrapper($func)
     {
-        $rows = $func(...$args);
+        $rows = $func();
 
         if ($this->count === 'many') {
             return $this->serializeMany($rows);

@@ -13,12 +13,12 @@ class Join extends PythonDecorator
         private string $reference
     ) {}
 
-    public function wrapper($func, $args)
+    public function wrapper($func)
     {
         /**
          * @var \Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord $ar
          */
-        $ar = $func(...$args);
+        $ar = $func();
         $referencedModel = new $ar->returnObjectClass;
         $referencedModel();
 

@@ -30,7 +30,7 @@ trait Decorator
 
                 if ($instance instanceof PythonDecorator) {
                     $instance->bindTo($this, $func);
-                    $f = fn() => $instance->wrapper($f, $args);
+                    $f = fn() => $instance->wrapper($f);
                 }
 
             }
@@ -66,7 +66,11 @@ trait Decorator
             $instance =
                 $attribute instanceof ClassWrapper
                     ? $attribute->bindTo($this, $name)->getInstance()
-                    : $attribute;
+                    : (
+                        $attribute instanceof PythonDecorator
+                            ? $attribute->wrapper($this->$name)
+                            : $attribute
+                    );
 
             $this->$name = $instance;
         }

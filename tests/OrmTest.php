@@ -12,24 +12,24 @@ final class OrmTest extends TestCase
         /**
          * Orm example
          */
-        // $products = Category::findOne(1)->_getProducts();
+        $products = Category::findOne(1)->_getProducts();
 
-        // $firstProduct = $products[0];
-        // $secondProduct = $products[1];
+        $firstProduct = $products[0];
+        $secondProduct = $products[1];
 
-        // $this->assertSame(1, $firstProduct->id);
-        // $this->assertSame('computer', $firstProduct->name);
+        $this->assertSame(1, $firstProduct->id);
+        $this->assertSame('computer', $firstProduct->name);
 
-        // $this->assertSame(2, $secondProduct->id);
-        // $this->assertSame('phone', $secondProduct->name);
+        $this->assertSame(2, $secondProduct->id);
+        $this->assertSame('phone', $secondProduct->name);
         
-        // $categories = Category::find()->_all();
+        $categories = Category::find()->_all();
         
-        // $firstCategory = $categories[0];
+        $firstCategory = $categories[0];
         
-        // $this->assertSame(1, $firstCategory->id);
-        // $this->assertSame('device', $firstCategory->title);
+        $this->assertSame(1, $firstCategory->id);
+        $this->assertSame('device', $firstCategory->title);
 
-        $this->assertNull(null);
+        // $this->assertNull(null);
     }
 }

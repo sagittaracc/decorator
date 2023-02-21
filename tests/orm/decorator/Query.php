@@ -13,12 +13,12 @@ class Query extends PythonDecorator
         private string $dbms
     ) {}
 
-    public function wrapper($func, $args)
+    public function wrapper($func)
     {
         /**
          * @var \Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord $query
          */
-        $ar = $func(...$args);
+        $ar = $func();
         
         $ar->rawQuery =
             $this->buildSelect($ar) .
