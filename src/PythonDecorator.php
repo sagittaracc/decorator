@@ -44,10 +44,12 @@ abstract class PythonDecorator extends PhpAttribute
         return $this->propOrMethod;
     }
     /**
-     * Пока что нет необходимости сопоставлять Python декоратор и PHP атрибут
+     * По дефолту декораторы ни с чем не сравниваются
+     * {@inheritdoc}
      */
-    protected function equalTo(PhpAttribute $object)
+    protected function equalTo(PhpAttribute $object): array|false
     {
+        return false;
     }
     /**
      * Враппер декоратора

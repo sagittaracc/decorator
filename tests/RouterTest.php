@@ -15,6 +15,12 @@ final class RouterTest extends TestCase
         $this->assertNull((new Route('/notFound'))->runIn(Controller::class));
     }
 
+    public function testRouteInInstansiateController(): void
+    {
+        $controller = new Controller;
+        $this->assertSame('Hello world!', (new Route('/hello'))->runIn($controller));
+    }
+
     public function testRouterLog(): void
     {
         ob_start();

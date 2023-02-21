@@ -4,7 +4,6 @@ namespace Sagittaracc\PhpPythonDecorator\tests\attributes;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\PhpAttribute;
-use Sagittaracc\PhpPythonDecorator\PhpAttributeInterface;
 
 #[Attribute]
 final class Route extends PhpAttribute
@@ -14,7 +13,7 @@ final class Route extends PhpAttribute
         private string $method = 'GET'
     ) {}
 
-    protected function equalTo($object)
+    protected function equalTo($object): array|false
     {
         if (preg_match("`^$this->url$`", $object->url, $matches)
          && $this->method === $object->method) {

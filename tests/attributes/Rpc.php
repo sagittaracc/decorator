@@ -13,7 +13,7 @@ final class Rpc extends PhpAttribute
         private array $params = []
     ) {}
 
-    protected function equalTo($object)
+    protected function equalTo($object): array|false
     {
         if ($this->method === $object->method) {
             return $object->params;
