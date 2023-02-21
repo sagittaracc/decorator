@@ -10,42 +10,44 @@ abstract class PythonDecorator extends PhpAttribute
 {
     /**
      * Ссылка на объект в котором применяется данный декоратор
-     * @var mixed
+     * @var object
      */
-    protected $object;
+    protected object $object;
     /**
      * Название метода или свойства в объекте к которому применяется данный декоратор
      * @var string
      */
-    protected string $propOrMethod;
+    protected string $propertyOrMethod;
     /**
      * Привязывается к методу или свойству объекта
-     * @param mixed $object
-     * @param string $propOrMethod
+     * @param object $object
+     * @param string $propertyOrMethod
      * @return static
      */
-    public function bindTo($object, string $propOrMethod): static
+    public function bindTo(object $object, string $propertyOrMethod): static
     {
         $this->object = $object;
-        $this->propOrMethod = $propOrMethod;
+        $this->propertyOrMethod = $propertyOrMethod;
         return $this;
     }
     /**
-     * @return mixed
+     * @return object
      */
-    public function getObject()
+    public function getObject(): object
     {
         return $this->object;
     }
     /**
+     * TODO: Подумать как лучше назвать этот геттер
      * @return string
      */
-    public function getMethod(): string
+    public function getPropertyOrMethod(): string
     {
-        return $this->propOrMethod;
+        return $this->propertyOrMethod;
     }
     /**
      * По дефолту декораторы ни с чем не сравниваются
+     * Их логика отлична от логики метаданных PHP атрибутов
      * {@inheritdoc}
      */
     protected function equalTo(PhpAttribute $object): array|false

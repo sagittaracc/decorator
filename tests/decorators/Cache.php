@@ -10,13 +10,13 @@ final class Cache extends PythonDecorator
 {
     public function wrapper($func, $args)
     {
-        if ($cache = $this->getCache($this->getMethod())) {
+        if ($cache = $this->getCache($this->getPropertyOrMethod())) {
             // return $cache
             return 'cache';
         }
 
         $result = $func(...$args);
-        $this->setCache($this->getMethod(), $result);
+        $this->setCache($this->getPropertyOrMethod(), $result);
 
         return $result;
     }

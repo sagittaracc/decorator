@@ -42,7 +42,7 @@ abstract class DtoDecorator extends PythonDecorator
                         get_class($this),
                         $dtoField,
                         get_class($this->getObject()),
-                        $this->getMethod(),
+                        $this->getPropertyOrMethod(),
                         $field
                     )
                 );
