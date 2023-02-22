@@ -68,14 +68,24 @@ trait Decorator
 
         $f = fn() => $this->$name ?? null;
 
-        $attributes = $property->getAttributes();
+        $attributes = array_reverse($property->getAttributes());
 
-        foreach (array_reverse($attributes) as $attribute) {
+        // Первый атрибут проперти обрабатывается по особенному
+        // 1. Если он отнаследован от PythonDecorator то в него проперти оборачивается
+        // 2. Если от другого класса то его инстанс присваивается этому проперти
+        $firstAttribute = array_shift($attributes);
+        $firstInstance = $firstAttribute->newInstance();
+        $f = fn() => $firstInstance instanceof PythonDecorator
+            ? $firstInstance->bindTo($this, $name)->wrapper($f)
+            : $firstInstance;
+
+        foreach ($attributes as $attribute) {
             $instance = $attribute->newInstance();
 
-            $f = fn() => $instance instanceof PythonDecorator
-                ? $instance->bindTo($this, $name)->wrapper($f)
-                : $instance;
+            if ($instance instanceof PythonDecorator) {
+                $instance->bindTo($this, $name);
+                $f = fn() => $instance->wrapper($f);
+            }
         }
 
         $this->$name = $f();
