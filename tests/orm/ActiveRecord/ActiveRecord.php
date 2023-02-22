@@ -96,16 +96,4 @@ abstract class ActiveRecord
         $instance->setId($id);
         return $instance;
     }
-
-    public function getRawQuery(): string
-    {
-        $reference = new $this->returnObjectClass;
-        $reference();
-
-        $table = $this->getTable();
-        $primaryKey = $this->getPrimaryKey();
-        $referenceTable = $reference->getTable();
-
-        return "SELECT * from `$table` join `$referenceTable` on `$table`.`$primaryKey` = `$referenceTable`.`{$this->reference}` where `$table`.`$primaryKey` = :id";
-    }
 }

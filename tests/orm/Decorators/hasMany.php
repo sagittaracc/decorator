@@ -3,7 +3,6 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\orm\Decorators;
 
 use Attribute;
-use PDO;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
@@ -27,10 +26,6 @@ class hasMany extends PythonDecorator
         $ar->setReference($this->reference);
         $ar();
 
-        $dbh = $ar->getConnection();
-        $sth = $dbh->prepare($ar->getRawQuery());
-        $sth->execute([':id' => $ar->getId()]);
-
-        return $sth->fetchAll(PDO::FETCH_CLASS, $ar->getReturnObjectClass());
+        return (new Query)->wrapper(fn() => $ar);
     }
 }
