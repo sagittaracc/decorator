@@ -3,7 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\DoubleProperty;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Double;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Singleton;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
@@ -14,7 +14,7 @@ class Calc
     use Decorator;
 
     #[Triple]
-    #[DoubleProperty]
+    #[Double]
     public int $sum = 3;
 
     #[Log]

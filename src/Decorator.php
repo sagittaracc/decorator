@@ -39,13 +39,12 @@ trait Decorator
     public function __invoke()
     {
         $class = new ReflectionClass($this);
-        $attributes = array_reverse($class->getAttributes());
-        $attribute = array_shift($attributes);
-        $instance = $attribute->newInstance();
-        $instance->bindTo($this);
-        $f = fn() => $instance instanceof PythonDecorator ? $instance->wrapper($this): null;
 
-        foreach ($attributes as $attribute) {
+        $f = fn() => $this;
+
+        $attributes = $class->getAttributes();
+
+        foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
             
             if ($instance instanceof PythonDecorator) {
@@ -67,18 +66,16 @@ trait Decorator
             throw new DecoratorError('Only public properties can be decorated!');
         }
 
-        $propertyValue = $this->$name ?? null;
+        $f = fn() => $this->$name ?? null;
 
-        $attributes = array_reverse($property->getAttributes());
-        $attribute = array_shift($attributes);
-        $instance = $attribute->newInstance();
-        $instance->bindTo($this, $name);
-        $f = fn() => $instance instanceof PythonDecorator ? $instance->wrapper($propertyValue) : $instance;
+        $attributes = $property->getAttributes();
 
-        foreach ($attributes as $attribute) {
+        foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
-            $instance->bindTo($this, $name);
-            $f = fn() => $instance instanceof PythonDecorator ? $instance->wrapper($f) : $instance;
+
+            $f = fn() => $instance instanceof PythonDecorator
+                ? $instance->bindTo($this, $name)->wrapper($f)
+                : $instance;
         }
 
         $this->$name = $f();
