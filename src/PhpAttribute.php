@@ -50,6 +50,27 @@ abstract class PhpAttribute
         throw new DecoratorError('', 404);
     }
     /**
+     * Получает значение свойства в $objectOrClass помеченное данным атрибутом
+     * @param object|string $objectOrClass
+     * @return null|mixed
+     */
+    public function getFrom($objectOrClass)
+    {
+        $class = new ReflectionClass($objectOrClass);
+        $properties = $class->getProperties(ReflectionMethod::IS_PUBLIC);
+
+        foreach ($properties as $property) {
+            $attributes = $property->getAttributes(static::class);
+            $object = is_object($objectOrClass) ? $objectOrClass : new $objectOrClass;
+
+            if (count($attributes) === 1) {
+                return $property;
+            }
+        }
+
+        return null;
+    }
+    /**
      * Правило преобразования имени чтобы оно требовало преобразование декоратора
      * @param string $name
      * @return string

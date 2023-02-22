@@ -4,13 +4,13 @@ namespace Sagittaracc\PhpPythonDecorator\tests\orm\Decorators;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
+use Sagittaracc\PhpPythonDecorator\tests\orm\Attributes\Primary;
 
 #[Attribute]
 class hasMany extends PythonDecorator
 {
     function __construct(
         private string $objectClass,
-        private string $id,
         private string $reference,
     ) {}
 
@@ -22,7 +22,7 @@ class hasMany extends PythonDecorator
         $ar = $this->getObject();
         $ar->setReturnObjectClass($this->objectClass);
         $ar->setReturnObjectCount('many');
-        $ar->setPrimaryKey($this->id);
+        $ar->setPrimaryKey((new Primary)->getFrom($ar)->name);
         $ar->setReference($this->reference);
         $ar();
 
