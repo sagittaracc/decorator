@@ -17,14 +17,14 @@ abstract class PythonDecorator extends PhpAttribute
      * Название метода или свойства в объекте к которому применяется данный декоратор
      * @var string
      */
-    protected string $propertyOrMethod;
+    protected ?string $propertyOrMethod;
     /**
      * Привязывается к методу или свойству объекта
      * @param object $object
-     * @param string $propertyOrMethod
+     * @param ?string $propertyOrMethod
      * @return static
      */
-    public function bindTo(object $object, string $propertyOrMethod): static
+    public function bindTo(object $object, ?string $propertyOrMethod = null): static
     {
         $this->object = $object;
         $this->propertyOrMethod = $propertyOrMethod;

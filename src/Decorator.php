@@ -21,7 +21,7 @@ trait Decorator
 
         $f = fn() => $this->$func(...$args);
 
-        $attributes = array_merge($class->getAttributes(), $method->getAttributes());
+        $attributes = $method->getAttributes();
 
         foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
@@ -38,11 +38,23 @@ trait Decorator
 
     public function __invoke()
     {
-        return $this->_pass();
-    }
+        $class = new ReflectionClass($this);
+        $attributes = array_reverse($class->getAttributes());
+        $attribute = array_shift($attributes);
+        $instance = $attribute->newInstance();
+        $instance->bindTo($this);
+        $f = fn() => $instance instanceof PythonDecorator ? $instance->wrapper($this): null;
 
-    public function pass(): void
-    {
+        foreach ($attributes as $attribute) {
+            $instance = $attribute->newInstance();
+            
+            if ($instance instanceof PythonDecorator) {
+                $instance->bindTo($this);
+                $f = fn() => $instance->wrapper($f);
+            }
+        }
+
+        return $f();
     }
 
     public function __get($name)
