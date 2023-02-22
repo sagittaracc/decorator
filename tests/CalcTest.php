@@ -50,6 +50,6 @@ final class CalcTest extends TestCase
     public function testProperty(): void
     {
         $calc = new Calc();
-        $this->assertSame(6, $calc->_sum);
+        $this->assertSame(18, $calc->_sum);
     }
 }

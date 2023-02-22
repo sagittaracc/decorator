@@ -19,27 +19,21 @@ trait Decorator
             throw new DecoratorError('Only public methods can be decorated!');
         }
 
+        $f = fn() => $this->$func(...$args);
+
         $attributes = array_merge($class->getAttributes(), $method->getAttributes());
 
-        if (count($attributes) > 0)
-        {
-            $f = fn() => $this->$func(...$args);
+        foreach (array_reverse($attributes) as $attribute) {
+            $instance = $attribute->newInstance();
 
-            foreach (array_reverse($attributes) as $attribute) {
-                $instance = $attribute->newInstance();
-
-                if ($instance instanceof PythonDecorator) {
-                    $f = fn() => $instance->bindTo($this, $func)->wrapper($f);
-                }
-
+            if ($instance instanceof PythonDecorator) {
+                $instance->bindTo($this, $func);
+                $f = fn() => $instance->wrapper($f);
             }
 
-            return $f();
         }
-        else
-        {
-            return $this->$func(...$args);
-        }
+
+        return $f();
     }
 
     public function __invoke()
@@ -54,22 +48,28 @@ trait Decorator
     public function __get($name)
     {
         $name = ltrim($name, '_');
-
         $class = new ReflectionClass($this);
-        $prop = $class->getProperty($name);
-        $attributes = $prop->getAttributes();
+        $property = $class->getProperty($name);
 
-        if (count($attributes) === 1) {
-            $attribute = $attributes[0]->newInstance();
-            $propertyValue = $this->$name ?? null;
-
-            $instance =
-                $attribute instanceof PythonDecorator
-                    ? $attribute->bindTo($this, $name)->wrapper($propertyValue)
-                    : $attribute;
-
-            $this->$name = $instance;
+        if (!($property->isPublic())) {
+            throw new DecoratorError('Only public properties can be decorated!');
         }
+
+        $propertyValue = $this->$name ?? null;
+
+        $attributes = array_reverse($property->getAttributes());
+        $attribute = array_shift($attributes);
+        $instance = $attribute->newInstance();
+        $instance->bindTo($this, $name);
+        $f = fn() => $instance instanceof PythonDecorator ? $instance->wrapper($propertyValue) : $instance;
+
+        foreach ($attributes as $attribute) {
+            $instance = $attribute->newInstance();
+            $instance->bindTo($this, $name);
+            $f = fn() => $instance instanceof PythonDecorator ? $instance->wrapper($f) : $instance;
+        }
+
+        $this->$name = $f();
 
         return $this->$name;
     }
