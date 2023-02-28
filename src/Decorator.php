@@ -11,8 +11,8 @@ trait Decorator
 
     public function __call($func, $args)
     {
-        $func = ltrim($func, '_');
         $class = new ReflectionClass($this);
+        $func = ltrim($func, '_');
         $method = $class->getMethod($func);
 
         if (!($method->isPublic())) {
@@ -20,7 +20,6 @@ trait Decorator
         }
 
         $f = fn() => $this->$func(...$args);
-
         $attributes = $method->getAttributes();
 
         foreach (array_reverse($attributes) as $attribute) {
@@ -39,14 +38,12 @@ trait Decorator
     public function __invoke()
     {
         $class = new ReflectionClass($this);
-
         $f = fn() => $this;
-
         $attributes = $class->getAttributes();
 
         foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
-            
+
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this);
                 $f = fn() => $instance->wrapper($f);
@@ -58,8 +55,8 @@ trait Decorator
 
     public function __get($name)
     {
-        $name = ltrim($name, '_');
         $class = new ReflectionClass($this);
+        $name = ltrim($name, '_');
         $property = $class->getProperty($name);
 
         if (!($property->isPublic())) {
@@ -67,7 +64,6 @@ trait Decorator
         }
 
         $f = fn() => $this->$name ?? null;
-
         $attributes = array_reverse($property->getAttributes());
 
         // Первый атрибут проперти обрабатывается по особенному
