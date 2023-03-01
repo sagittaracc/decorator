@@ -23,4 +23,9 @@ final class Route extends PhpAttribute
 
         return false;
     }
+
+    public function __toString()
+    {
+        return "{$this->method} {$this->url}" . parent::__toString();
+    }
 }

@@ -46,8 +46,14 @@ abstract class PhpAttribute
             }
         }
 
-        // TODO: В Exception message выдать какую то информацию по $this (атрибуту который мы запускаем в $objectOrClass)
-        throw new DecoratorError('', 404);
+        throw new DecoratorError("$this not found in $objectOrClass", 404);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return '';
     }
     /**
      * Получает значение свойства в $objectOrClass помеченное данным атрибутом

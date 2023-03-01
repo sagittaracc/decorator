@@ -23,6 +23,7 @@ final class RouterTest extends TestCase
     public function testNotFoundRoute(): void
     {
         $this->expectExceptionCode(404);
+        $this->expectExceptionMessage('GET /notFound not found in Sagittaracc\PhpPythonDecorator\tests\examples\Controller');
         (new Route('/notFound'))->runIn(Controller::class);
     }
 
