@@ -13,16 +13,50 @@ use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 abstract class PhpAttribute
 {
     /**
-     * TODO: Переделать методы запуска методов помеченных атрибутом и получение свойств помеченных атрибутом
-     * (new Route('...'))->getMethod(Controller::class)->run();
+     * Возвращает объект на выполнение метода помеченного в $objectOrClass данным атрибутом
+     * @param object|string $objectOrClass
+     * @throws DecoratorError
+     * @return object
      */
-    public function getMethod($objectOrClass): static
+    public function getMethod($objectOrClass): object
     {
-        return $this;
-    }
-    public function run()
-    {
-        // TODO: Если метод найден
+        $object = $function = $arguments = null;
+        $class = new ReflectionClass($objectOrClass);
+        $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
+
+        foreach ($methods as $method) {
+            $attributes = $method->getAttributes(static::class);
+
+            foreach ($attributes as $attribute) {
+                $instance = $attribute->newInstance();
+                $matches = $instance->equalTo($this);
+
+                if ($matches !== false) {
+                    $object = is_object($objectOrClass) ? $objectOrClass : new $objectOrClass;
+                    $function = $this->getDecoratedName($method->name);
+                    $arguments = $matches;
+
+                    break 2;
+                }
+            }
+        }
+
+        if ($object === null && $function === null) {
+            throw new DecoratorError("$this not found in $objectOrClass", 404);
+        }
+
+        return new class($object, $function, $arguments) {
+            function __construct(
+                private $object,
+                private $function, 
+                private $arguments
+            ) {}
+
+            public function run()
+            {
+                return call_user_func_array([$this->object, $this->function], $this->arguments);
+            }
+        };
     }
     /**
      * Получает значение свойства в $objectOrClass помеченное данным атрибутом
@@ -45,35 +79,10 @@ abstract class PhpAttribute
 
         return null;
     }
-    /**
-     * Выполняет метод помеченный в $objectOrClass данным атрибутом
-     * @param object|string $objectOrClass
-     * @throws DecoratorError
-     * @return mixed
-     */
+    // TODO: Избавиться от данного метода
     public function runIn($objectOrClass)
     {
-        $class = new ReflectionClass($objectOrClass);
-        $methods = $class->getMethods(ReflectionMethod::IS_PUBLIC);
-
-        foreach ($methods as $method) {
-            $attributes = $method->getAttributes(static::class);
-
-            foreach ($attributes as $attribute) {
-                $instance = $attribute->newInstance();
-                $matches = $instance->equalTo($this);
-
-                if ($matches !== false) {
-                    $object = is_object($objectOrClass) ? $objectOrClass : new $objectOrClass;
-                    $function = $this->getDecoratedName($method->name);
-                    $arguments = $matches;
-
-                    return call_user_func_array([$object, $function], $arguments);
-                }
-            }
-        }
-
-        throw new DecoratorError("$this not found in $objectOrClass", 404);
+        return $this->getMethod($objectOrClass)->run();
     }
     // TODO: Избавиться от данного метода
     public function getFrom($objectOrClass)
