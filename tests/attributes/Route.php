@@ -13,7 +13,7 @@ final class Route extends PhpAttribute
         private string $method = 'GET'
     ) {}
 
-    protected function equalTo($object): array|false
+    protected function matchTo($object): array|false
     {
         if (preg_match("`^$this->url$`", $object->url, $matches)
          && $this->method === $object->method) {

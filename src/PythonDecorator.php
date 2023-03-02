@@ -50,7 +50,7 @@ abstract class PythonDecorator extends PhpAttribute
      * Их логика отлична от логики метаданных PHP атрибутов
      * {@inheritdoc}
      */
-    protected function equalTo(PhpAttribute $object): array|false
+    protected function matchTo(PhpAttribute $object): array|false
     {
         return false;
     }

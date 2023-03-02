@@ -8,7 +8,7 @@ use Sagittaracc\PhpPythonDecorator\PhpAttribute;
 #[Attribute]
 class Primary extends PhpAttribute
 {
-    protected function equalTo(PhpAttribute $object): array|false
+    protected function matchTo(PhpAttribute $object): array|false
     {
         return [];
     }

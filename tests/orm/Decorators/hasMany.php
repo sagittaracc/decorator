@@ -22,7 +22,7 @@ class hasMany extends PythonDecorator
         $ar = $this->getObject();
         $ar->setReturnObjectClass($this->objectClass);
         $ar->setReturnObjectCount('many');
-        $ar->setPrimaryKey((new Primary)->getFrom($ar)->name);
+        $ar->setPrimaryKey((new Primary)->getProperty($ar)->name);
         $ar->setReference($this->reference);
         $ar();
 

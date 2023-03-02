@@ -29,7 +29,7 @@ abstract class PhpAttribute
 
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
-                $matches = $instance->equalTo($this);
+                $matches = $instance->matchTo($this);
 
                 if ($matches !== false) {
                     $object = is_object($objectOrClass) ? $objectOrClass : new $objectOrClass;
@@ -79,16 +79,6 @@ abstract class PhpAttribute
 
         return null;
     }
-    // TODO: Избавиться от данного метода
-    public function runIn($objectOrClass)
-    {
-        return $this->getMethod($objectOrClass)->run();
-    }
-    // TODO: Избавиться от данного метода
-    public function getFrom($objectOrClass)
-    {
-        return $this->getProperty($objectOrClass);
-    }
     /**
      * Правило преобразования имени чтобы оно требовало преобразование декоратора
      * @param string $name
@@ -105,12 +95,10 @@ abstract class PhpAttribute
     {
         return '';
     }
-    // TODO: функцию equalTo переименовать в matchTo
-    // abstract protected function matchTo(PhpAttribute $object): array|false;
     /**
      * Сравнивает данный атрибут с переданным
      * @param PhpAttribute $object
      * @return array|false
      */
-    abstract protected function equalTo(PhpAttribute $object): array|false;
+    abstract protected function matchTo(PhpAttribute $object): array|false;
 }
