@@ -13,6 +13,25 @@ use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 abstract class PhpAttribute
 {
     /**
+     * TODO: Переделать методы запуска методов помеченных атрибутом и получение свойств помеченных атрибутом
+     * (new Route('...'))->getMethod(Controller::class)->run();
+     * (new Primary)->getProperty(Model::class);
+     */
+    public function getMethod($objectOrClass): static
+    {
+        return $this;
+    }
+    public function run()
+    {
+        // TODO: Если метод найден
+    }
+    public function getProperty($objectOrClass)
+    {
+        return null;
+    }
+    // TODO: функцию equalTo переименовать в matchTo
+    // abstract protected function matchTo(PhpAttribute $object): array|false;
+    /**
      * Сравнивает данный атрибут с переданным
      * @param PhpAttribute $object
      * @return array|false
