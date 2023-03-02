@@ -15,7 +15,6 @@ abstract class PhpAttribute
     /**
      * TODO: Переделать методы запуска методов помеченных атрибутом и получение свойств помеченных атрибутом
      * (new Route('...'))->getMethod(Controller::class)->run();
-     * (new Primary)->getProperty(Model::class);
      */
     public function getMethod($objectOrClass): static
     {
@@ -25,18 +24,27 @@ abstract class PhpAttribute
     {
         // TODO: Если метод найден
     }
+    /**
+     * Получает значение свойства в $objectOrClass помеченное данным атрибутом
+     * @param object|string $objectOrClass
+     * @return null|mixed
+     */
     public function getProperty($objectOrClass)
     {
+        $class = new ReflectionClass($objectOrClass);
+        $properties = $class->getProperties(ReflectionMethod::IS_PUBLIC);
+
+        foreach ($properties as $property) {
+            $attributes = $property->getAttributes(static::class);
+            // $object = is_object($objectOrClass) ? $objectOrClass : new $objectOrClass;
+
+            if (count($attributes) === 1) {
+                return $property;
+            }
+        }
+
         return null;
     }
-    // TODO: функцию equalTo переименовать в matchTo
-    // abstract protected function matchTo(PhpAttribute $object): array|false;
-    /**
-     * Сравнивает данный атрибут с переданным
-     * @param PhpAttribute $object
-     * @return array|false
-     */
-    abstract protected function equalTo(PhpAttribute $object): array|false;
     /**
      * Выполняет метод помеченный в $objectOrClass данным атрибутом
      * @param object|string $objectOrClass
@@ -67,33 +75,10 @@ abstract class PhpAttribute
 
         throw new DecoratorError("$this not found in $objectOrClass", 404);
     }
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return '';
-    }
-    /**
-     * Получает значение свойства в $objectOrClass помеченное данным атрибутом
-     * @param object|string $objectOrClass
-     * @return null|mixed
-     */
+    // TODO: Избавиться от данного метода
     public function getFrom($objectOrClass)
     {
-        $class = new ReflectionClass($objectOrClass);
-        $properties = $class->getProperties(ReflectionMethod::IS_PUBLIC);
-
-        foreach ($properties as $property) {
-            $attributes = $property->getAttributes(static::class);
-            $object = is_object($objectOrClass) ? $objectOrClass : new $objectOrClass;
-
-            if (count($attributes) === 1) {
-                return $property;
-            }
-        }
-
-        return null;
+        return $this->getProperty($objectOrClass);
     }
     /**
      * Правило преобразования имени чтобы оно требовало преобразование декоратора
@@ -104,4 +89,19 @@ abstract class PhpAttribute
     {
         return "_$name";
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return '';
+    }
+    // TODO: функцию equalTo переименовать в matchTo
+    // abstract protected function matchTo(PhpAttribute $object): array|false;
+    /**
+     * Сравнивает данный атрибут с переданным
+     * @param PhpAttribute $object
+     * @return array|false
+     */
+    abstract protected function equalTo(PhpAttribute $object): array|false;
 }
