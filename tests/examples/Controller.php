@@ -12,13 +12,8 @@ class Controller
     use Decorator;
 
     #[Route('/hello')]
-    function greetings()
-    {
-        return "Hello world!";
-    }
-
     #[Route('/hello/(\w+)')]
-    function greetingPerson($name)
+    function greetingPerson($name = 'guest')
     {
         return "Hello, $name";
     }

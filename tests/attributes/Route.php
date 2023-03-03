@@ -5,7 +5,7 @@ namespace Sagittaracc\PhpPythonDecorator\tests\attributes;
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\PhpAttribute;
 
-#[Attribute]
+#[Attribute(Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 final class Route extends PhpAttribute
 {
     function __construct(
