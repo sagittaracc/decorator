@@ -28,4 +28,9 @@ final class Route extends PhpAttribute
     {
         return "{$this->method} {$this->url}" . parent::__toString();
     }
+
+    public function runIn($objectOrClass)
+    {
+        return $this->getMethod($objectOrClass)->run();
+    }
 }
