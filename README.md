@@ -31,10 +31,10 @@ This is how you call it
 $calc = new Calc();
 
 // using the decorators
-$calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
+echo $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 
 // not using any decorators
-$calc->sum(1, 2); // 3
+echo $calc->sum(1, 2); // 3
 ```
 # Testing
 This is how you can unit-test a decorator separately. See the [`Example`](https://github.com/sagittaracc/php-python-decorator/blob/main/tests/DecoratorTest.php)
