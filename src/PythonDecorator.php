@@ -4,7 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator;
 
 /**
  * Расширение PHP атрибута до декоратора
- * @author <sagittaracc@gmail.com> Yuriy Arutyunyan
+ * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
  */
 abstract class PythonDecorator extends PhpAttribute
 {

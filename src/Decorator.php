@@ -5,6 +5,9 @@ namespace Sagittaracc\PhpPythonDecorator;
 use ReflectionClass;
 use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 
+/**
+ * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
+ */
 trait Decorator
 {
     public array $scope = [];

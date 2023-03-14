@@ -8,7 +8,7 @@ use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 
 /**
  * Расширение понятия PHP атрибута
- * @author <sagittaracc@gmail.com> Yuriy Arutyunyan
+ * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
  */
 abstract class PhpAttribute
 {
