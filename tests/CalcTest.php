@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Double;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\ExtraRoom;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Wifi;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Booking;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Calc;
 
 final class CalcTest extends TestCase
@@ -51,5 +55,24 @@ final class CalcTest extends TestCase
     {
         $calc = new Calc();
         $this->assertSame(18, $calc->_sum);
+    }
+
+    public function testDecoratorOnDemand(): void
+    {
+        $needExtraRoom = true;
+        $needWifi = true;
+
+        $room = new Booking();
+        $price = $room->getPrice();
+
+        if ($needExtraRoom) {
+            $price = (new ExtraRoom)->decorate(fn() => $price);
+        }
+
+        if ($needWifi) {
+            $price = (new Wifi)->decorate(fn() => $price);
+        }
+
+        $this->assertSame(20000, $price);
     }
 }

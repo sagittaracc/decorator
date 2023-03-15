@@ -60,4 +60,13 @@ abstract class PythonDecorator extends PhpAttribute
      * @return mixed
      */
     abstract public function wrapper($closure);
+    /**
+     * Декорация
+     * @param \Closure $closure
+     * @return mixed
+     */
+    public function decorate($closure)
+    {
+        return $this->wrapper($closure);
+    }
 }
