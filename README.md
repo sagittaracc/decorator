@@ -12,7 +12,6 @@ How long it takes to run a method. See the [`Timer`](https://github.com/sagittar
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
 
 class Calc
 {
@@ -26,13 +25,11 @@ class Calc
     }
 }
 ```
-This is how you call it
+This is how you can call it
 ```php
 $calc = new Calc();
 
-// using the decorators
 echo $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
-
-// not using any decorators
-echo $calc->sum(1, 2); // 3
+// or
+echo (new Timer)->wrapper(fn() => $calc->sum(1, 2)); // Total execution: 1.00043689 ms; Result: 3
 ```
