@@ -30,6 +30,4 @@ This is how you can call it
 $calc = new Calc();
 
 echo $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
-// or
-echo (new Timer)->wrapper(fn() => $calc->sum(1, 2)); // Total execution: 1.00043689 ms; Result: 3
 ```
