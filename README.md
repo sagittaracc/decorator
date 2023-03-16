@@ -28,6 +28,5 @@ class Calc
 This is how you can call it
 ```php
 $calc = new Calc();
-
 echo $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 ```
