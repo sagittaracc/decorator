@@ -2,11 +2,9 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
-use Attribute;
-use Sagittaracc\PhpPythonDecorator\PythonDecorator;
+use Sagittaracc\PhpPythonDecorator\PhpDecorator;
 
-#[Attribute]
-final class Wifi extends PythonDecorator
+final class Wifi extends PhpDecorator
 {
     public function wrapper($func)
     {
