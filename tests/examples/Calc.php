@@ -6,7 +6,7 @@ use Sagittaracc\PhpPythonDecorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Double;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Singleton;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\TimerMock;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Triple;
 
 class Calc
@@ -18,7 +18,7 @@ class Calc
     public int $sum = 3;
 
     #[Log]
-    #[Timer]
+    #[TimerMock]
     function sum1($a, $b)
     {
         return $a + $b;
@@ -29,7 +29,7 @@ class Calc
         return $a + $b;
     }
 
-    #[Timer]
+    #[TimerMock]
     private function sum3($a, $b)
     {
         return $a + $b;

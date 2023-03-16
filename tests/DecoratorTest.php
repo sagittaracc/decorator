@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Sagittaracc\PhpPythonDecorator\tests\decorators\Timer;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\TimerMock;
 
 final class DecoratorTest extends TestCase
 {
     public function testDecorator(): void
     {
-        $timer = new Timer();
+        $timer = new TimerMock();
 
         $result = $timer->wrapper(
             function () {
