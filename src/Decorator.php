@@ -4,6 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator;
 
 use ReflectionClass;
 use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
+use function get_real_name;
 
 /**
  * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
@@ -15,7 +16,7 @@ trait Decorator
     public function __call($func, $args)
     {
         $class = new ReflectionClass($this);
-        $func = ltrim($func, '_');
+        $func = get_real_name($func);
         $method = $class->getMethod($func);
 
         if (!($method->isPublic())) {
@@ -59,7 +60,7 @@ trait Decorator
     public function __get($name)
     {
         $class = new ReflectionClass($this);
-        $name = ltrim($name, '_');
+        $name = get_real_name($name);
         $property = $class->getProperty($name);
 
         if (!($property->isPublic())) {

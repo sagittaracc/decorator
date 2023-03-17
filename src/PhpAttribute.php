@@ -5,6 +5,7 @@ namespace Sagittaracc\PhpPythonDecorator;
 use ReflectionClass;
 use ReflectionMethod;
 use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
+use function get_decor_name;
 
 /**
  * Расширение понятия PHP атрибута
@@ -33,7 +34,7 @@ abstract class PhpAttribute
 
                 if ($matches !== false) {
                     $object = is_object($objectOrClass) ? $objectOrClass : new $objectOrClass;
-                    $function = $this->getDecoratedName($method->name);
+                    $function = get_decor_name($method->name);
                     $arguments = $matches;
 
                     break 2;
@@ -78,15 +79,6 @@ abstract class PhpAttribute
         }
 
         return null;
-    }
-    /**
-     * Правило преобразования имени чтобы оно требовало преобразование декоратора
-     * @param string $name
-     * @return string
-     */
-    protected function getDecoratedName(string $name): string
-    {
-        return "_$name";
     }
     /**
      * {@inheritdoc}

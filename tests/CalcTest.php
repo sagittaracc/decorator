@@ -52,4 +52,15 @@ final class CalcTest extends TestCase
         $calc = new Calc();
         $this->assertSame(18, $calc->_sum);
     }
+
+    public function testDecoratorUsingDecorHelperFunction()
+    {
+        $calc = new Calc();
+
+        ob_start();
+        $calc->{get_decor_name('sum1')}(1, 2);
+        $output = ob_get_clean();
+
+        $this->assertSame("Total execution: 1; Result: 3", $output);
+    }
 }
