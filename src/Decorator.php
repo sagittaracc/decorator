@@ -23,8 +23,8 @@ trait Decorator
             throw new DecoratorError('Only public methods can be decorated!');
         }
 
-        $f = fn() => $this->$func(...$args);
         $attributes = $method->getAttributes();
+        $f = fn() => $this->$func(...$args);
 
         foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
@@ -42,8 +42,8 @@ trait Decorator
     public function __invoke()
     {
         $class = new ReflectionClass($this);
-        $f = fn() => $this;
         $attributes = $class->getAttributes();
+        $f = fn() => $this;
 
         foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
@@ -67,8 +67,8 @@ trait Decorator
             throw new DecoratorError('Only public properties can be decorated!');
         }
 
-        $f = fn() => $this->$name ?? null;
         $attributes = array_reverse($property->getAttributes());
+        $f = fn() => $this->$name ?? null;
 
         // Первый атрибут проперти обрабатывается по особенному
         // 1. Если он отнаследован от PythonDecorator то в него проперти оборачивается
