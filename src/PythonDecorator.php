@@ -38,7 +38,7 @@ abstract class PythonDecorator extends PhpAttribute
         return $this->object;
     }
     /**
-     * TODO: Подумать как лучше назвать этот геттер
+     * Получает название свойства или метода к которому привязан декоратор
      * @return string
      */
     public function getPropertyOrMethod(): string
