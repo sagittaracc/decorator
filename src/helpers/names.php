@@ -12,7 +12,7 @@
  */
 function get_decor_name($name)
 {
-    return '_' . $name . '_';
+    return "_$name";
 }
 /**
  * Данная функция возвращает реальное имя метода или свойства
@@ -23,5 +23,5 @@ function get_decor_name($name)
  */
 function get_real_name($name)
 {
-    return trim($name, '_');
+    return ltrim($name, '_');
 }
