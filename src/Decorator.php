@@ -92,4 +92,28 @@ trait Decorator
 
         return $this->$name;
     }
+
+    public function __set($name, $value)
+    {
+        $class = new ReflectionClass($this);
+        $name = get_real_name($name);
+        $property = $class->getProperty($name);
+
+        if (!($property->isProtected())) {
+            throw new DecoratorError('Only protected properties can be validated!');
+        }
+
+        $attributes = $property->getAttributes();
+
+        foreach ($attributes as $attribute) {
+            $instance = $attribute->newInstance();
+            
+            if ($instance instanceof PythonDecorator) {
+                $instance->bindTo($this, $name);
+                $instance->wrapper(fn() => [$this, $name, $value]);
+            }
+        }
+
+        $this->$name = $value;
+    }
 }
