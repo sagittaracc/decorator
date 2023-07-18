@@ -12,12 +12,20 @@ final class ValidationTest extends TestCase
         $this->expectNotToPerformAssertions();
         $request = new Request;
         $request->id = 1;
+        $request->uid = 255;
     }
 
-    public function testFailValidation(): void
+    public function testFailValidation1(): void
     {
         $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::id validation error! 255 is not Int8!');
         $request = new Request;
         $request->id = 255;
+    }
+
+    public function testFailValidation2(): void
+    {
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::uid validation error! 512 is not UInt8!');
+        $request = new Request;
+        $request->uid = 512;
     }
 }
