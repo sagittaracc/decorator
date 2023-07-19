@@ -3,6 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\validators\ArrayOf;
 use Sagittaracc\PhpPythonDecorator\tests\validators\Int8;
 use Sagittaracc\PhpPythonDecorator\tests\validators\Length;
 use Sagittaracc\PhpPythonDecorator\tests\validators\Str;
@@ -21,4 +22,7 @@ class Request
     #[Str]
     #[Length(5)]
     public $method;
+
+    #[ArrayOf(UInt8::class)]
+    public $params;
 }

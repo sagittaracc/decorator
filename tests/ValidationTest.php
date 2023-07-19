@@ -45,4 +45,16 @@ final class ValidationTest extends TestCase
         $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::method validation error! `method` is not satisfied by Length!');
         $this->request->_method = 'method';
     }
+
+    public function testSuccessValidation5(): void
+    {
+        $this->request->_params = [1,2,3];
+        $this->assertSame([1,2,3], $this->request->params);
+    }
+
+    public function testFailValidation6(): void
+    {
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::params validation error! `[1,2,300]` is not satisfied by ArrayOf(UInt8)!');
+        $this->request->_params = [1,2,300];
+    }
 }

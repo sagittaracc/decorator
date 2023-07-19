@@ -18,10 +18,16 @@ abstract class Validator extends PythonDecorator
         }
 
         $class = get_class($object);
-        $type = (new \ReflectionClass($this))->getShortName();
+        $value = is_array($value) ? json_encode($value) : $value;
 
-        throw new Exception("$class::$property validation error! `$value` is not satisfied by $type!");
+        // TODO: $value подставлять через sagittaracc/placeholder где есть подстановки в строку в зависимости от типа
+        throw new Exception("$class::$property validation error! `$value` is not satisfied by $this!");
     }
     
     abstract public function validation($value);
+
+    public function __toString()
+    {
+        return (new \ReflectionClass($this))->getShortName();
+    }
 }
