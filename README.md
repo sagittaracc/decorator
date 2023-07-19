@@ -30,3 +30,47 @@ This is how you can call it
 $calc = new Calc();
 echo $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 ```
+
+# Validation
+```php
+
+use Sagittaracc\PhpPythonDecorator\Decorator;
+
+class Container
+{
+    use Decorator;
+
+    #[ArrayOf(PDO::class)]
+    public $connections;
+}
+```
+Validator
+```php
+
+use Attribute;
+use Sagittaracc\PhpPythonDecorator\Validator;
+
+#[Attribute]
+class ArrayOf extends Validator
+{
+    function __construct(
+        public $classObject
+    )
+    {}
+
+    public function validation($array)
+    {
+        if (!is_array($array)) {
+            return false;
+        }
+
+        foreach ($array as $value) {
+            if (!($value instanceof $this->classObject)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+```
