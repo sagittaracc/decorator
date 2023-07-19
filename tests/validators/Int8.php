@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
+namespace Sagittaracc\PhpPythonDecorator\tests\validators;
 
 use Attribute;
 use Exception;

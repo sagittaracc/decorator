@@ -99,8 +99,8 @@ trait Decorator
         $name = get_real_name($name);
         $property = $class->getProperty($name);
 
-        if (!($property->isProtected())) {
-            throw new DecoratorError('Only protected properties can be validated!');
+        if (!($property->isPublic())) {
+            throw new DecoratorError('Only public properties can be validated!');
         }
 
         $attributes = $property->getAttributes();

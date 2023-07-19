@@ -20,7 +20,7 @@ abstract class Validator extends PythonDecorator
         $class = get_class($object);
         $type = (new \ReflectionClass($this))->getShortName();
 
-        throw new Exception("$class::$property validation error! $value is not $type!");
+        throw new Exception("$class::$property validation error! `$value` is not satisfied by $type!");
     }
     
     abstract public function validation($value);
