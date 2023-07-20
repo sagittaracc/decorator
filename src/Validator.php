@@ -19,7 +19,6 @@ abstract class Validator extends PythonDecorator
         }
 
         $class = get_class($object);
-        $value = is_array($value) ? json_encode($value) : $value;
 
         throw new Exception(
             (new PlaceholderHelper("$class::$property validation error! ? is not satisfied by $this!"))->bind($value)

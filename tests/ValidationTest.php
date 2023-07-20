@@ -54,7 +54,7 @@ final class ValidationTest extends TestCase
 
     public function testFailValidation6(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::params validation error! \'[1,2,300]\' is not satisfied by ArrayOf(UInt8)!');
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::params validation error! [1,2,300] is not satisfied by ArrayOf(UInt8)!');
         $this->request->_params = [1,2,300];
     }
 }
