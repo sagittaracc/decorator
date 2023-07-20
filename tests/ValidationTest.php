@@ -57,4 +57,28 @@ final class ValidationTest extends TestCase
         $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::params validation error! [1,2,300] is not satisfied by ArrayOf(UInt8)!');
         $this->request->_params = [1,2,300];
     }
+
+    public function testSuccessValidation7(): void
+    {
+        $this->request->_user = ['id' => 7];
+        $this->assertSame(['id' => 7], $this->request->user);
+    }
+
+    public function testFailValidation8(): void
+    {
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::user validation error! \'{"id":300}\' is not satisfied by SerializeOf(User)!');
+        $this->request->_user = ['id' => 300];
+    }
+
+    public function testSuccessValidation9(): void
+    {
+        $this->request->_userList = [['id' => 1], ['id' => 2]];
+        $this->assertSame([['id' => 1], ['id' => 2]], $this->request->userList);
+    }
+
+    public function testFailValidation10(): void
+    {
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::userList validation error! [#array,#array] is not satisfied by SerializeArrayOf!');
+        $this->request->_userList = [['id' => 1], ['id' => 300]];
+    }
 }
