@@ -3,6 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator;
 
 use Exception;
+use sagittaracc\PlaceholderHelper;
 
 /**
  * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
@@ -20,8 +21,9 @@ abstract class Validator extends PythonDecorator
         $class = get_class($object);
         $value = is_array($value) ? json_encode($value) : $value;
 
-        // TODO: $value подставлять через sagittaracc/placeholder где есть подстановки в строку в зависимости от типа
-        throw new Exception("$class::$property validation error! `$value` is not satisfied by $this!");
+        throw new Exception(
+            (new PlaceholderHelper("$class::$property validation error! ? is not satisfied by $this!"))->bind($value)
+        );
     }
     
     abstract public function validation($value);

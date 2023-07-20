@@ -30,7 +30,7 @@ final class ValidationTest extends TestCase
 
     public function testFailValidation2(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::uid validation error! `512` is not satisfied by UInt8!');
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::uid validation error! 512 is not satisfied by UInt8!');
         $this->request->_uid = 512;
     }
 
@@ -42,7 +42,7 @@ final class ValidationTest extends TestCase
 
     public function testFailValidation4(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::method validation error! `method` is not satisfied by Length!');
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::method validation error! \'method\' is not satisfied by Length!');
         $this->request->_method = 'method';
     }
 
@@ -54,7 +54,7 @@ final class ValidationTest extends TestCase
 
     public function testFailValidation6(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::params validation error! `[1,2,300]` is not satisfied by ArrayOf(UInt8)!');
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::params validation error! \'[1,2,300]\' is not satisfied by ArrayOf(UInt8)!');
         $this->request->_params = [1,2,300];
     }
 }
