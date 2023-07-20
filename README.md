@@ -60,3 +60,18 @@ class Request
     public array $userList = [['id' => 1], ['id' => 2]];
 }
 ```
+
+# Attributes
+```php
+class Controller
+{
+    use Decorator;
+
+    #[Route('/hello')]
+    #[Route('/hello/(\w+)')]
+    function greetingPerson($name = 'guest')
+    {
+        return "Hello, $name";
+    }
+}
+```
