@@ -36,41 +36,27 @@ echo $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
 
-class Container
+class Request
 {
     use Decorator;
 
-    #[ArrayOf(PDO::class)]
-    public $connections;
-}
-```
-Validator
-```php
+    #[Int8]
+    public $id;
 
-use Attribute;
-use Sagittaracc\PhpPythonDecorator\Validator;
+    #[UInt8]
+    public $uid;
 
-#[Attribute]
-class ArrayOf extends Validator
-{
-    function __construct(
-        public $classObject
-    )
-    {}
+    #[Str]
+    #[Length(5)]
+    public $method;
 
-    public function validation($array)
-    {
-        if (!is_array($array)) {
-            return false;
-        }
+    #[ArrayOf(UInt8::class)]
+    public array $params;
 
-        foreach ($array as $value) {
-            if (!($value instanceof $this->classObject)) {
-                return false;
-            }
-        }
+    #[SerializeOf(User::class)]
+    public array $user;
 
-        return true;
-    }
+    #[SerializeArrayOf(User::class)]
+    public array $userList;
 }
 ```
