@@ -51,12 +51,12 @@ class Request
     public $method;
 
     #[ArrayOf(UInt8::class)]
-    public array $params;
+    public array $params = [1, 2, 3];
 
     #[SerializeOf(User::class)]
-    public array $user;
+    public array $user = ['id' => 1];
 
     #[SerializeArrayOf(User::class)]
-    public array $userList;
+    public array $userList = [['id' => 1], ['id' => 2]];
 }
 ```
