@@ -79,7 +79,11 @@ class Progress
 
 class DataTable
 {
+    use Decorator;
+
+    #[ArrayOf(Str::class)]
     public array $header;
+
     public array $table;
 }
 ```
