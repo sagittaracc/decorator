@@ -10,6 +10,11 @@ final class UInt8 extends Validator
 {
     public function validation($value)
     {
-        return $value >= 0 && $value <= 255;
+        if ($value >= 0 && $value <= 255) {
+            return true;
+        }
+
+        $this->addDetail($this->getTmp() . " validation error! `$value` is not between 0 and 255");
+        return false;
     }
 }

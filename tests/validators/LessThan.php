@@ -16,6 +16,11 @@ final class LessThan extends Validator
     public function validation($value)
     {
         $supreme = $this->supreme;
-        return $value <= $this->getObject()->$supreme;
+        if ($value <= $this->getObject()->$supreme) {
+            return true;
+        }
+
+        $this->addDetail($this->getTmp() . " validation error! `$value` is not less than " . $this->getObject()->$supreme);
+        return false;
     }
 }

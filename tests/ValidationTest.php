@@ -35,7 +35,9 @@ final class ValidationTest extends TestCase
 
     public function testLengthFail(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request::name validation error! \'fucked_up_table_name\' is not satisfied by Length!');
+        $this->expectExceptionMessage(
+            "['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Request:name validation error! `fucked_up_table_name` is not length of 8']"
+        );
         new Request([
             'name' => 'fucked_up_table_name',
             'caption' => 'my_table_caption',
@@ -60,7 +62,9 @@ final class ValidationTest extends TestCase
 
     public function testUInt8Fail(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request::progress validation error! {"message":"Sagittaracc\PhpPythonDecorator\tests\examples\Progress::max validation error! 300 is not satisfied by UInt8!"} is not satisfied by SerializeOf(Progress)!');
+        $this->expectExceptionMessage(
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\Progress:max validation error! `300` is not between 0 and 255']']"
+        );
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',
@@ -85,14 +89,16 @@ final class ValidationTest extends TestCase
 
     public function testInFail(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request::progress validation error! {"message":"Sagittaracc\PhpPythonDecorator\tests\examples\Progress::status validation error! \'uknown\' is not satisfied by In!"} is not satisfied by SerializeOf(Progress)!');
+        $this->expectExceptionMessage(
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\Progress:status validation error! `unknown` is not one of ['progress','finish','aborted']']']"
+        );
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',
             'progress' => [
                 'max' => 255,
                 'pos' => 1,
-                'status' => 'uknown',
+                'status' => 'unknown',
                 'caption' => 'in progress...',
             ],
             'data' => [
@@ -110,7 +116,9 @@ final class ValidationTest extends TestCase
 
     public function testLessThanFail(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request::progress validation error! {"message":"Sagittaracc\PhpPythonDecorator\tests\examples\Progress::pos validation error! 101 is not satisfied by LessThan!"} is not satisfied by SerializeOf(Progress)!');
+        $this->expectExceptionMessage(
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\Progress:pos validation error! `101` is not less than 100']']"
+        );
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',
@@ -135,7 +143,9 @@ final class ValidationTest extends TestCase
 
     public function testArrayOfFail(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request::data validation error! {"message":"Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\DataTable::header validation error! [\'col-1\',1] is not satisfied by ArrayOf(Str)!"} is not satisfied by SerializeOf(DataTable)!');
+        $this->expectExceptionMessage(
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\DataTable:header validation error! Something wrong with `1`']']"
+        );
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',
@@ -160,7 +170,9 @@ final class ValidationTest extends TestCase
 
     public function testTableFail(): void
     {
-        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request::data validation error! {"message":"Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\DataTable::table validation error! {\"ins\":[[1,2],[1]]} is not satisfied by Table!"} is not satisfied by SerializeOf(DataTable)!');
+        $this->expectExceptionMessage(
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\DataTable:table validation error! Row count does not match col count!']']"
+        );
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',

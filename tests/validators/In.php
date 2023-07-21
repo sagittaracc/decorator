@@ -4,6 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator\tests\validators;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\Validator;
+use sagittaracc\PlaceholderHelper;
 
 #[Attribute]
 final class In extends Validator
@@ -17,6 +18,15 @@ final class In extends Validator
 
     public function validation($value)
     {
-        return in_array($value, $this->in);
+        if (in_array($value, $this->in)) {
+            return true;
+        }
+
+        $this->addDetail(
+            $this->getTmp() . ' validation error! ' .
+            (new PlaceholderHelper("`$value` is not one of ?"))->bind($this->in)
+        );
+
+        return false;
     }
 }

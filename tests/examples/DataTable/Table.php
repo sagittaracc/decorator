@@ -39,6 +39,7 @@ final class Table extends Validator
             }
 
             if (count($row) !== $colCount) {
+                $this->addDetail($this->getTmp() . ' validation error! Row count does not match col count!');
                 return false;
             }
         }

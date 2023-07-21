@@ -36,6 +36,7 @@ final class ArrayOf extends Validator
 
         foreach ($array as $value) {
             if (!$itemValidation($value)) {
+                $this->addDetail($this->getTmp() . ' validation error! Something wrong with `' . $value . '`');
                 return false;
             }
         }

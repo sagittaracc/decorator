@@ -17,6 +17,11 @@ final class Length extends Validator
 
     public function validation($value)
     {
-        return strlen($value) <= $this->length;
+        if (strlen($value) <= $this->length) {
+            return true;
+        }
+
+        $this->addDetail($this->getTmp() . " validation error! `$value` is not length of $this->length");
+        return false;
     }
 }
