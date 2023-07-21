@@ -84,6 +84,8 @@ class DataTable
     #[ArrayOf(Str::class)]
     public array $header;
 
+    // Custom validator
+    #[Table]
     public array $table;
 }
 ```
