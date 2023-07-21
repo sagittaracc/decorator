@@ -19,10 +19,8 @@ abstract class Validator extends PythonDecorator
      */
     protected array $errors;
 
-    public function wrapper($closure)
+    public function wrapper($value)
     {
-        [$object, $property, $value] = $closure();
-
         $this->errors = [];
         
         if ($this->validation($value)) {
