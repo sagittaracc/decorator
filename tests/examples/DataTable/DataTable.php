@@ -13,5 +13,6 @@ class DataTable
     #[ArrayOf(Str::class)]
     public array $header;
 
+    #[Table]
     public array $table;
 }
