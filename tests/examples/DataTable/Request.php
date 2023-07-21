@@ -23,7 +23,7 @@ class Request
     #[SerializeOf(DataTable::class)]
     public array $data;
 
-    public function load($request)
+    function __construct($request)
     {
         $this->_name = $request['name'];
         $this->_caption = $request['caption'];
