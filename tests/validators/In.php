@@ -6,17 +6,17 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\Validator;
 
 #[Attribute]
-final class Length extends Validator
+final class In extends Validator
 {
-    private int $length;
+    public array $in;
 
-    function __construct($length)
+    function __construct(...$in)
     {
-        $this->length = $length;
+        $this->in = $in;
     }
 
     public function validation($value)
     {
-        return strlen($value) <= $this->length;
+        return in_array($value, $this->in);
     }
 }

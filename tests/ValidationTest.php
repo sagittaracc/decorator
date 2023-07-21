@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request as DataTableRequest;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Progress;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Request;
 
 final class ValidationTest extends TestCase
@@ -80,5 +82,28 @@ final class ValidationTest extends TestCase
     {
         $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Request::userList validation error! [#array,#array] is not satisfied by SerializeArrayOf!');
         $this->request->_userList = [['id' => 1], ['id' => 300]];
+    }
+
+    public function testSuccess(): void
+    {
+        $req = new DataTableRequest;
+
+        $req->_name = 'my_table';
+        $req->_caption = 'my_table_caption';
+        $req->_progress = [
+            'max' => 255,
+            'pos' => 1,
+            'status' => 'progress',
+            'caption' => 'in progress...',
+        ];
+
+        $this->assertSame('my_table', $req->name);
+        $this->assertSame('my_table_caption', $req->caption);
+        $this->assertSame([
+            'max' => 255,
+            'pos' => 1,
+            'status' => 'progress',
+            'caption' => 'in progress...',
+        ], $req->progress);
     }
 }

@@ -6,17 +6,16 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\Validator;
 
 #[Attribute]
-final class Length extends Validator
+final class LessThan extends Validator
 {
-    private int $length;
-
-    function __construct($length)
-    {
-        $this->length = $length;
-    }
+    function __construct(
+        public $supreme
+    )
+    {}
 
     public function validation($value)
     {
-        return strlen($value) <= $this->length;
+        $supreme = $this->supreme;
+        return $value <= $this->getObject()->$supreme;
     }
 }
