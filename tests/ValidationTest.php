@@ -22,7 +22,13 @@ final class ValidationTest extends TestCase
             ],
             'data' => [
                 'header' => ['col-1', 'col-2'],
-                'table' => [],
+                'table' => [
+                    'ins' => [
+                        ['1', '2'],
+                        ['3', '4'],
+                        ['5', '6'],
+                    ]
+                ],
             ]
         ];;
     }
