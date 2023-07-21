@@ -171,7 +171,7 @@ final class ValidationTest extends TestCase
     public function testTableFail(): void
     {
         $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\DataTable:table validation error! Row count does not match col count!']']"
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\DataTable:table validation error! Row count does not match col count in `ins` section!']']"
         );
         new Request([
             'name' => 'my_table',

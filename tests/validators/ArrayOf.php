@@ -43,10 +43,4 @@ final class ArrayOf extends Validator
 
         return true;
     }
-
-    public function __toString()
-    {
-        $classObject = (new \ReflectionClass($this->classObject))->getShortName();
-        return "ArrayOf($classObject)";
-    }
 }

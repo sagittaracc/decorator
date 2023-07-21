@@ -34,10 +34,4 @@ final class SerializeOf extends Validator
 
         return true;
     }
-
-    public function __toString()
-    {
-        $classObject = (new \ReflectionClass($this->classObject))->getShortName();
-        return "SerializeOf($classObject)";
-    }
 }

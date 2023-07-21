@@ -35,13 +35,6 @@ abstract class Validator extends PythonDecorator
             );
         }
     }
-    
-    abstract public function validation($value);
-
-    public function __toString()
-    {
-        return (new \ReflectionClass($this))->getShortName();
-    }
 
     public function addError($error)
     {
@@ -57,4 +50,6 @@ abstract class Validator extends PythonDecorator
     {
         return get_class($this->getObject()) . ':' . $this->getPropertyOrMethod();
     }
+    
+    abstract public function validation($value);
 }

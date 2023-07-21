@@ -11,6 +11,7 @@ final class Table extends Validator
     public function validation($value)
     {
         if (isset($value['ins']) && !$this->validateIns($value['ins'])) {
+            $this->addError($this->getTmp() . ' validation error! Row count does not match col count in `ins` section!');
             return false;
         }
 
@@ -39,7 +40,6 @@ final class Table extends Validator
             }
 
             if (count($row) !== $colCount) {
-                $this->addError($this->getTmp() . ' validation error! Row count does not match col count!');
                 return false;
             }
         }

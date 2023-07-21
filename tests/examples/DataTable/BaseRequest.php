@@ -6,8 +6,6 @@ use Sagittaracc\PhpPythonDecorator\Decorator;
 
 class BaseRequest
 {
-    use Decorator;
-
     function __construct($request)
     {
         foreach ($request as $key => $value) {
