@@ -10,9 +10,13 @@ use sagittaracc\PlaceholderHelper;
  */
 abstract class Validator extends PythonDecorator
 {
+    public $errorValue;
+
     public function wrapper($closure)
     {
         [$object, $property, $value] = $closure();
+
+        $this->errorValue = $value;
         
         if ($this->validation($value)) {
             return;
@@ -21,7 +25,7 @@ abstract class Validator extends PythonDecorator
         $class = get_class($object);
         
         throw new Exception(
-            (new PlaceholderHelper("$class::$property validation error! ? is not satisfied by $this!"))->bind($value)
+            (new PlaceholderHelper("$class::$property validation error! ? is not satisfied by $this!"))->bind($this->errorValue)
         );
     }
     

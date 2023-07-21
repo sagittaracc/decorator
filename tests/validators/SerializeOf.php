@@ -4,7 +4,6 @@ namespace Sagittaracc\PhpPythonDecorator\tests\validators;
 
 use Attribute;
 use Exception;
-use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 use Sagittaracc\PhpPythonDecorator\Validator;
 
 #[Attribute]
@@ -28,6 +27,8 @@ final class SerializeOf extends Validator
                 $object->{"_$key"} = $value;
             }
             catch (Exception $e) {
+                $this->errorValue = [];
+                $this->errorValue['message'] = $e->getMessage();
                 return false;
             }
         }
