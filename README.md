@@ -35,29 +35,52 @@ echo $calc->_sum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 ```php
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Progress;
+use Sagittaracc\PhpPythonDecorator\tests\validators\Length;
+use Sagittaracc\PhpPythonDecorator\tests\validators\SerializeOf;
+use Sagittaracc\PhpPythonDecorator\tests\validators\In;
+use Sagittaracc\PhpPythonDecorator\tests\validators\LessThan;
+use Sagittaracc\PhpPythonDecorator\tests\validators\UInt8;
 
 class Request
 {
     use Decorator;
 
-    #[Int8]
-    public $id;
+    #[Length(8)]
+    public string $name;
+
+    #[Length(32)]
+    public string $caption;
+
+    #[SerializeOf(Progress::class)]
+    public array $progress;
+
+    #[SerializeOf(DataTable::class)]
+    public array $data;
+}
+
+class Progress
+{
+    use Decorator;
 
     #[UInt8]
-    public $uid;
+    public $max;
 
-    #[Str]
-    #[Length(5)]
-    public $method;
+    #[UInt8]
+    #[LessThan('max')]
+    public $pos;
 
-    #[ArrayOf(UInt8::class)]
-    public array $params = [1, 2, 3];
+    #[In('progress', 'finish', 'aborted')]
+    public $status;
 
-    #[SerializeOf(User::class)]
-    public array $user = ['id' => 1];
+    #[Length(32)]
+    public string $caption;
+}
 
-    #[SerializeArrayOf(User::class)]
-    public array $userList = [['id' => 1], ['id' => 2]];
+class DataTable
+{
+    public array $header;
+    public array $table;
 }
 ```
 
