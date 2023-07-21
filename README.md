@@ -86,6 +86,30 @@ class DataTable
     #[Table]
     public array $table;
 }
+
+/**
+ * Usage
+ */
+new Request([
+    'name' => 'my_table',
+    'caption' => 'my_table_caption',
+    'progress' => [
+        'max' => 255,
+        'pos' => 1,
+        'status' => 'progress',
+        'caption' => 'in progress...',
+    ],
+    'data' => [
+        'header' => ['col-1', 'col-2'],
+        'table' => [
+            'ins' => [
+                ['1', '2'],
+                ['3', '4'],
+                ['5', '6'],
+            ]
+        ],
+    ]
+]);
 ```
 
 # Attributes
