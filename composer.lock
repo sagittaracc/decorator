@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1c0c4288db04d5107d456c87494d78d",
+    "content-hash": "b0908db3bf92f380f73a5180dd02c596",
     "packages": [
         {
             "name": "sagittaracc/arrays",
@@ -38,16 +38,16 @@
         },
         {
             "name": "sagittaracc/placeholder",
-            "version": "v0.1.8",
+            "version": "v0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sagittaracc/placeholder.git",
-                "reference": "4c60ba06591c3f2456a1d38f35c8a1158b3fb083"
+                "reference": "dfddfd70293365e7fc9168bcb4c06a51eb4daa54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sagittaracc/placeholder/zipball/4c60ba06591c3f2456a1d38f35c8a1158b3fb083",
-                "reference": "4c60ba06591c3f2456a1d38f35c8a1158b3fb083",
+                "url": "https://api.github.com/repos/sagittaracc/placeholder/zipball/dfddfd70293365e7fc9168bcb4c06a51eb4daa54",
+                "reference": "dfddfd70293365e7fc9168bcb4c06a51eb4daa54",
                 "shasum": ""
             },
             "require": {
@@ -65,9 +65,9 @@
             "notification-url": "https://packagist.org/downloads/",
             "support": {
                 "issues": "https://github.com/sagittaracc/placeholder/issues",
-                "source": "https://github.com/sagittaracc/placeholder/tree/v0.1.8"
+                "source": "https://github.com/sagittaracc/placeholder/tree/v0.3"
             },
-            "time": "2022-11-24T11:21:08+00:00"
+            "time": "2023-07-21T14:34:54+00:00"
         }
     ],
     "packages-dev": [
@@ -1810,5 +1810,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }

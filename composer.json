@@ -20,6 +20,6 @@
         "phpunit/phpunit": "^9.5"
     },
     "require": {
-        "sagittaracc/placeholder": "^0.1.8"
+        "sagittaracc/placeholder": "^0.3"
     }
 }
