@@ -22,4 +22,12 @@ class Request
 
     #[SerializeOf(DataTable::class)]
     public array $data;
+
+    public function load($request)
+    {
+        $this->_name = $request['name'];
+        $this->_caption = $request['caption'];
+        $this->_progress = $request['progress'];
+        $this->_data = $request['data'];
+    }
 }
