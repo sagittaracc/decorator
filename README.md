@@ -42,10 +42,8 @@ use Sagittaracc\PhpPythonDecorator\tests\validators\In;
 use Sagittaracc\PhpPythonDecorator\tests\validators\LessThan;
 use Sagittaracc\PhpPythonDecorator\tests\validators\UInt8;
 
-class Request
+class Request extends BaseRequest
 {
-    use Decorator;
-
     #[Length(8)]
     public string $name;
 
