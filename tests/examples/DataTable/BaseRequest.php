@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\tests\examples;
+namespace Sagittaracc\PhpPythonDecorator\tests\examples\DataTable;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
 

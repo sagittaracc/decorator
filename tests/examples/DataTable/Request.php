@@ -2,8 +2,8 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\examples\DataTable;
 
-use Sagittaracc\PhpPythonDecorator\tests\examples\BaseRequest;
-use Sagittaracc\PhpPythonDecorator\tests\examples\Progress;
+use Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\BaseRequest;
+use Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Progress;
 use Sagittaracc\PhpPythonDecorator\tests\validators\Length;
 use Sagittaracc\PhpPythonDecorator\tests\validators\SerializeOf;
 

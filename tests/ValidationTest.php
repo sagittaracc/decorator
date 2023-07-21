@@ -63,7 +63,7 @@ final class ValidationTest extends TestCase
     public function testUInt8Fail(): void
     {
         $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\Progress:max validation error! `300` is not between 0 and 255']']"
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:max validation error! `300` is not between 0 and 255']']"
         );
         new Request([
             'name' => 'my_table',
@@ -90,7 +90,7 @@ final class ValidationTest extends TestCase
     public function testInFail(): void
     {
         $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\Progress:status validation error! `unknown` is not one of ['progress','finish','aborted']']']"
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:status validation error! `unknown` is not one of ['progress','finish','aborted']']']"
         );
         new Request([
             'name' => 'my_table',
@@ -117,7 +117,7 @@ final class ValidationTest extends TestCase
     public function testLessThanFail(): void
     {
         $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\Progress:pos validation error! `101` is not less than 100']']"
+            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:pos validation error! `101` is not less than 100']']"
         );
         new Request([
             'name' => 'my_table',

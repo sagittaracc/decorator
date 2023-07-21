@@ -27,7 +27,7 @@ final class SerializeOf extends Validator
                 $object->{"_$key"} = $value;
             }
             catch (Exception $e) {
-                $this->addDetail($e->getMessage());
+                $this->addError($e->getMessage());
                 return false;
             }
         }

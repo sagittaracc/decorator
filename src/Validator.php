@@ -10,39 +10,28 @@ use sagittaracc\PlaceholderHelper;
  */
 abstract class Validator extends PythonDecorator
 {
-    public $debug = true;
-    protected $details;
-
-    public function addDetail($detail)
-    {
-        $this->details[] = $detail;
-    }
-
-    public function getDetails()
-    {
-        return $this->details;
-    }
-
-    public function getTmp()
-    {
-        return get_class($this->getObject()) . ':' . $this->getPropertyOrMethod();
-    }
+    /**
+     * @var bool в режиме дебаг выбрасывается исключение
+     */
+    public bool $debug = true;
+    /**
+     * @var array ошибки валидации
+     */
+    protected array $errors;
 
     public function wrapper($closure)
     {
         [$object, $property, $value] = $closure();
 
-        $this->details = [];
+        $this->errors = [];
         
         if ($this->validation($value)) {
             return;
         }
 
-        $class = get_class($object);
-
         if ($this->debug) {
             throw new Exception(
-                (new PlaceholderHelper("?"))->bind($this->getDetails())
+                (new PlaceholderHelper("?"))->bind($this->getErrors())
             );
         }
     }
@@ -52,5 +41,20 @@ abstract class Validator extends PythonDecorator
     public function __toString()
     {
         return (new \ReflectionClass($this))->getShortName();
+    }
+
+    public function addError($error)
+    {
+        $this->errors[] = $error;
+    }
+
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    public function getTmp()
+    {
+        return get_class($this->getObject()) . ':' . $this->getPropertyOrMethod();
     }
 }

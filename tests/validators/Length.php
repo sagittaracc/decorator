@@ -21,7 +21,7 @@ final class Length extends Validator
             return true;
         }
 
-        $this->addDetail($this->getTmp() . " validation error! `$value` is not length of $this->length");
+        $this->addError($this->getTmp() . " validation error! `$value` is not length of $this->length");
         return false;
     }
 }
