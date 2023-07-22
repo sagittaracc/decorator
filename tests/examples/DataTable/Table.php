@@ -28,7 +28,7 @@ final class Table extends Validator
             return false;
         }
 
-        $colCount = count($this->getObject()->header);
+        $colCount = count($this->getObject()->header ?? []);
 
         foreach ($ins as $row) {
             if (!is_array($row)) {

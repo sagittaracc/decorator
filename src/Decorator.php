@@ -111,9 +111,8 @@ trait Decorator
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this, $name);
                 $instance->wrapper($value);
+                $this->$name = $value;
             }
         }
-
-        $this->$name = $value;
     }
 }

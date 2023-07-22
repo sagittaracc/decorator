@@ -181,4 +181,33 @@ final class ValidationTest extends TestCase
             ]
         ]);
     }
+
+    public function testManyValidationFail(): void
+    {
+        $this->expectExceptionMessage(
+            "Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Request:progress -> " .
+                "Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:max -> `300` is not between 0 and 255\n" .
+                "Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:pos -> `301` is not between 0 and 255\n" .
+                "Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:status -> `unknown` is not one of ['progress','finish','aborted']"
+        );
+        new Request([
+            'name' => 'my_table',
+            'caption' => 'my_table_caption',
+            'progress' => [
+                'max' => 300,
+                'pos' => 301,
+                'status' => 'unknown',
+                'caption' => 'in progress...',
+            ],
+            'data' => [
+                'header' => ['col-1', 'col-2'],
+                'table' => [
+                    'ins' => [
+                        [1, 2],
+                        [1],
+                    ]
+                ],
+            ]
+        ]);
+    }
 }

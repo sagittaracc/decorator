@@ -22,14 +22,21 @@ final class SerializeOf extends Validator
 
         $object = new $this->classObject;
 
+        $hasErrors = false;
+        $errors = [];
         foreach ($array as $key => $value) {
             try {
                 $object->{"_$key"} = $value;
             }
             catch (Exception $e) {
-                $this->addError($e->getMessage());
-                return false;
+                $hasErrors = true;
+                $errors[] = $e->getMessage();
             }
+        }
+
+        if ($hasErrors) {
+            $this->addError(implode("\n", $errors));
+            return false;
         }
 
         return true;
