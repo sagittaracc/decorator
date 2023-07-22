@@ -35,9 +35,7 @@ final class ValidationTest extends TestCase
 
     public function testLengthFail(): void
     {
-        $this->expectExceptionMessage(
-            "['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Request:name validation error! `fucked_up_table_name` is not length of 8']"
-        );
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request:name -> `fucked_up_table_name` is not length of 8');
         new Request([
             'name' => 'fucked_up_table_name',
             'caption' => 'my_table_caption',
@@ -62,9 +60,7 @@ final class ValidationTest extends TestCase
 
     public function testUInt8Fail(): void
     {
-        $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:max validation error! `300` is not between 0 and 255']']"
-        );
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request:progress -> Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Progress:max -> `300` is not between 0 and 255');
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',
@@ -89,9 +85,7 @@ final class ValidationTest extends TestCase
 
     public function testInFail(): void
     {
-        $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:status validation error! `unknown` is not one of ['progress','finish','aborted']']']"
-        );
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request:progress -> Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Progress:status -> `unknown` is not one of [\'progress\',\'finish\',\'aborted\']');
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',
@@ -116,9 +110,7 @@ final class ValidationTest extends TestCase
 
     public function testLessThanFail(): void
     {
-        $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\Progress:pos validation error! `101` is not less than 100']']"
-        );
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request:progress -> Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Progress:pos -> `101` is not less than 100');
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',
@@ -143,9 +135,7 @@ final class ValidationTest extends TestCase
 
     public function testArrayOfFail(): void
     {
-        $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\DataTable:header validation error! Something wrong with `1`']']"
-        );
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request:data -> Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\DataTable:header -> Something wrong with `1`');
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',
@@ -170,9 +160,7 @@ final class ValidationTest extends TestCase
 
     public function testTableFail(): void
     {
-        $this->expectExceptionMessage(
-            "['['Sagittaracc\PhpPythonDecorator\\tests\\examples\DataTable\DataTable:table validation error! Row count does not match col count in `ins` section!']']"
-        );
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request:data -> Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\DataTable:table -> Row count does not match col count in `ins` section!');
         new Request([
             'name' => 'my_table',
             'caption' => 'my_table_caption',

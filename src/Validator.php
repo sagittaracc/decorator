@@ -28,15 +28,17 @@ abstract class Validator extends PythonDecorator
         }
 
         if ($this->debug) {
-            throw new Exception(
-                (new PlaceholderHelper("?"))->bind($this->getErrors())
-            );
+            throw new Exception($this->dumpErrors());
         }
     }
 
     public function addError($error)
     {
-        $this->errors[] = $error;
+        $this->errors[] = [
+            'class' => get_class($this->getObject()),
+            'property' => $this->getPropertyOrMethod(),
+            'message' => $error,
+        ];
     }
 
     public function getErrors()
@@ -44,9 +46,13 @@ abstract class Validator extends PythonDecorator
         return $this->errors;
     }
 
-    public function getTmp()
+    public function dumpErrors()
     {
-        return get_class($this->getObject()) . ':' . $this->getPropertyOrMethod();
+        $errors = [];
+        foreach ($this->getErrors() as $error) {
+            $errors[] = "{$error['class']}:{$error['property']} -> {$error['message']}";
+        }
+        return implode("\n", $errors);
     }
     
     abstract public function validation($value);

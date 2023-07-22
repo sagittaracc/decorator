@@ -14,7 +14,7 @@ final class UInt8 extends Validator
             return true;
         }
 
-        $this->addError($this->getTmp() . " validation error! `$value` is not between 0 and 255");
+        $this->addError("`$value` is not between 0 and 255");
         return false;
     }
 }

@@ -22,10 +22,7 @@ final class In extends Validator
             return true;
         }
 
-        $this->addError(
-            $this->getTmp() . ' validation error! ' .
-            (new PlaceholderHelper("`$value` is not one of ?"))->bind($this->in)
-        );
+        $this->addError((new PlaceholderHelper("`$value` is not one of ?"))->bind($this->in));
 
         return false;
     }

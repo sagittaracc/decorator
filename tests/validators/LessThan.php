@@ -20,7 +20,7 @@ final class LessThan extends Validator
             return true;
         }
 
-        $this->addError($this->getTmp() . " validation error! `$value` is not less than " . $this->getObject()->$supreme);
+        $this->addError("`$value` is not less than {$this->getObject()->$supreme}");
         return false;
     }
 }
