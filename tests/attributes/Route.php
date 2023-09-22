@@ -15,6 +15,9 @@ final class Route extends PhpAttribute
 
     protected function matchTo($object): array|false
     {
+        /**
+         * @var Route $object
+         */
         if (preg_match("`^$this->url$`", $object->url, $matches)
          && $this->method === $object->method) {
             array_shift($matches);
@@ -27,10 +30,5 @@ final class Route extends PhpAttribute
     public function __toString()
     {
         return "{$this->method} {$this->url}" . parent::__toString();
-    }
-
-    public function runIn($objectOrClass)
-    {
-        return $this->getMethod($objectOrClass)->run();
     }
 }

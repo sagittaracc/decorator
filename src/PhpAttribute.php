@@ -60,6 +60,14 @@ abstract class PhpAttribute
         };
     }
     /**
+     * Ищет метод в $objectOrClass помеченный данным атрибутом
+     * TODO: Будущая замена методу getMethod. Производится рефакторинг наименований методов
+     */
+    public function look(object|string $objectOrClass): object
+    {
+        return $this->getMethod($objectOrClass);
+    }
+    /**
      * Получает значение свойства в $objectOrClass помеченное данным атрибутом
      * @param object|string $objectOrClass
      * @return null|mixed
@@ -89,8 +97,8 @@ abstract class PhpAttribute
     }
     /**
      * Сравнивает данный атрибут с переданным
-     * @param PhpAttribute $object
+     * @param self $object
      * @return array|false
      */
-    abstract protected function matchTo(PhpAttribute $object): array|false;
+    abstract protected function matchTo(self $object): array|false;
 }
