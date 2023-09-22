@@ -8,7 +8,7 @@
             "Sagittaracc\\PhpPythonDecorator\\": "src/",
             "Sagittaracc\\PhpPythonDecorator\\tests\\": "tests/"
         },
-        "files": ["src/helpers/names.php"]
+        "files": ["src/helpers/names.php", "src/helpers/call.php"]
     },
     "authors": [
         {
