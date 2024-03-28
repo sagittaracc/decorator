@@ -19,7 +19,7 @@ abstract class Validator extends PythonDecorator
      */
     protected array $errors;
 
-    public function wrapper($value)
+    public function wrapper($value, $args)
     {
         $this->errors = [];
         
