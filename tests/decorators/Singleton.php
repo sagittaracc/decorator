@@ -27,7 +27,7 @@ class Singleton extends PythonDecorator
         private bool $needSingleton = true
     ) {}
 
-    public function wrapper($func)
+    public function wrapper(callable $callback, array $args)
     {
         if ($this->needSingleton) {
             if (self::$instance === null) {
@@ -38,7 +38,7 @@ class Singleton extends PythonDecorator
             self::$instance = new SingletonObject($this->mult);
         }
 
-        $result = $func();
+        $result = call_user_func_array($callback, $args);
         return self::$instance->doSomething($result);
     }
 }

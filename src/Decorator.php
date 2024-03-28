@@ -23,20 +23,20 @@ trait Decorator
             throw new DecoratorError('Only public methods can be decorated!');
         }
 
-        $attributes = $method->getAttributes();
-        $f = fn() => $this->$func(...$args);
+        $f = [$this, $func];
 
+        $attributes = $method->getAttributes();
         foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
 
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this, $func);
-                $f = fn() => $instance->wrapper($f);
+                $f = fn() => $instance->wrapper($f, $args);
             }
 
         }
 
-        return $f();
+        return call_user_func_array($f, $args);
     }
 
     public function __invoke()
