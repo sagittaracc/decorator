@@ -8,7 +8,7 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class TimerMock extends PythonDecorator
 {
-    public function wrapper(callable $callback, array $args)
+    public function wrapper(callable $callback, array $args = [])
     {
         $time_start = 1.222;
 
