@@ -6,8 +6,8 @@ use Sagittaracc\PhpPythonDecorator\PhpDecorator;
 
 final class Wifi extends PhpDecorator
 {
-    public function wrapper($func)
+    public function wrapper(callable $callback, array $args)
     {
-        return 10 * $func();
+        return 10 * call_user_func_array($callback, $args);
     }
 }

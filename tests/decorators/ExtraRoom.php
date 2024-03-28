@@ -6,8 +6,8 @@ use Sagittaracc\PhpPythonDecorator\PhpDecorator;
 
 final class ExtraRoom extends PhpDecorator
 {
-    public function wrapper($func)
+    public function wrapper(callable $callback, array $args)
     {
-        return 2 * $func();
+        return 2 * call_user_func_array($callback, $args);
     }
 }

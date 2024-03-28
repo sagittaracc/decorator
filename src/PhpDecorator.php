@@ -14,6 +14,6 @@ abstract class PhpDecorator extends PythonDecorator
      */
     public function decorate($data)
     {
-        return $this->wrapper(fn() => $data);
+        return $this->wrapper(fn() => $data, []);
     }
 }
