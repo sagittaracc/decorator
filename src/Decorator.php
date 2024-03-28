@@ -76,7 +76,7 @@ trait Decorator
         $firstAttribute = array_shift($attributes);
         $firstInstance = $firstAttribute->newInstance();
         $f = fn() => $firstInstance instanceof PythonDecorator
-            ? $firstInstance->bindTo($this, $name)->wrapper($f)
+            ? $firstInstance->bindTo($this, $name)->wrapper($f, [])
             : $firstInstance;
 
         foreach ($attributes as $attribute) {
@@ -84,7 +84,7 @@ trait Decorator
 
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this, $name);
-                $f = fn() => $instance->wrapper($f);
+                $f = fn() => $instance->wrapper($f, []);
             }
         }
 
