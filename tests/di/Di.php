@@ -17,7 +17,7 @@ class Di extends PythonDecorator
         private null|array $constructor = null
     ) {}
     
-    public function wrapper($property)
+    public function wrapper($property, $args)
     {
         $class = new ReflectionClass($this->class);
         $constructor = $this->constructor ?? $class?->getConstructor()?->getParameters();
