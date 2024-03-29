@@ -10,8 +10,13 @@ final class Triple extends PythonDecorator
 {
     public function wrapper(mixed $callback)
     {
-        return function (...$args) use ($callback) {
-            return 3 * call_user_func_array($callback, $args);
-        };
+        if (is_callable($callback)) {
+            return function (...$args) use ($callback) {
+                return 3 * call_user_func_array($callback, $args);
+            };
+        }
+        else {
+            return 3 * $callback;
+        }
     }
 }

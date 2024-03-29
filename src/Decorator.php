@@ -90,7 +90,7 @@ trait Decorator
             }
         }
 
-        $this->$name = $f();
+        $this->$name = $f;
 
         return $this->$name;
     }
