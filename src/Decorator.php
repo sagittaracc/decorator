@@ -4,6 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator;
 
 use ReflectionClass;
 use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
+
 use function get_real_name;
 
 /**
