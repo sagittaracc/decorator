@@ -26,4 +26,11 @@ final class OrmTest extends TestCase
         
         $this->assertNull(null);
     }
+
+    public function testTable(): void
+    {
+        $category = new Category();
+        $category();
+        $this->assertSame('categories', $category->getTable());
+    }
 }

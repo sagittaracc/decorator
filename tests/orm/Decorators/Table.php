@@ -12,10 +12,9 @@ class Table extends PythonDecorator
         private string $table,
     ) {}
 
-    public function wrapper($class)
+    public function wrapper($ar)
     {
-        $classObject = $class();
-        $classObject->setTable($this->table);
-        return $classObject;
+        $ar->setTable($this->table);
+        return $ar;
     }
 }
