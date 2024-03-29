@@ -31,7 +31,7 @@ trait Decorator
 
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this, $func);
-                $f = fn() => $instance->wrapper($f, $args);
+                $f = $instance->wrapper($f);
             }
 
         }

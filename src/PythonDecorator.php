@@ -58,5 +58,5 @@ abstract class PythonDecorator extends PhpAttribute
      * Враппер декоратора
      * @return mixed
      */
-    abstract public function wrapper(mixed $callback_or_object_or_property_or_value, array $args);
+    abstract public function wrapper(mixed $callback_or_object_or_property_or_value);
 }

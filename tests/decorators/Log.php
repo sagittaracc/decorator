@@ -8,8 +8,10 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Log extends PythonDecorator
 {
-    public function wrapper(mixed $callback, array $args)
+    public function wrapper(mixed $callback)
     {
-        echo call_user_func_array($callback, $args);
+        return function (...$args) use ($callback) {
+            echo call_user_func_array($callback, $args);
+        };
     }
 }

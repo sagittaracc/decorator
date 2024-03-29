@@ -27,18 +27,20 @@ class Singleton extends PythonDecorator
         private bool $needSingleton = true
     ) {}
 
-    public function wrapper(mixed $callback, array $args)
+    public function wrapper(mixed $callback)
     {
-        if ($this->needSingleton) {
-            if (self::$instance === null) {
+        return function (...$args) use ($callback) {
+            if ($this->needSingleton) {
+                if (self::$instance === null) {
+                    self::$instance = new SingletonObject($this->mult);
+                }
+            }
+            else {
                 self::$instance = new SingletonObject($this->mult);
             }
-        }
-        else {
-            self::$instance = new SingletonObject($this->mult);
-        }
-
-        $result = call_user_func_array($callback, $args);
-        return self::$instance->doSomething($result);
+    
+            $result = call_user_func_array($callback, $args);
+            return self::$instance->doSomething($result);
+        };
     }
 }
