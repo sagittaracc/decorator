@@ -42,15 +42,17 @@ trait Decorator
     public function __invoke()
     {
         $class = new ReflectionClass($this);
-        $attributes = $class->getAttributes();
-        $f = fn() => $this;
 
+        $f = fn() => $this;
+        $args = [];
+
+        $attributes = $class->getAttributes();
         foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
 
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this);
-                $f = fn() => $instance->wrapper($f);
+                $f = fn() => $instance->wrapper($f, $args);
             }
         }
 
