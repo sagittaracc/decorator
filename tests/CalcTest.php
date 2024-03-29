@@ -69,4 +69,11 @@ final class CalcTest extends TestCase
         $calc = new Calc();
         $this->assertSame(3, call_decorator_func_array([$calc, 'sum2'], [1, 2]));
     }
+
+    public function testClassDecorator(): void
+    {
+        $calc = new Calc();
+        $calc();
+        $this->assertSame(1, $calc->prop);
+    }
 }

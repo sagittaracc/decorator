@@ -4,14 +4,18 @@ namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Double;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\Init;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Singleton;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\TimerMock;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Triple;
 
+#[Init]
 class Calc
 {
     use Decorator;
+
+    public int $prop = 0;
 
     #[Triple]
     #[Double]

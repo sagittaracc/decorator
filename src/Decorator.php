@@ -56,7 +56,7 @@ trait Decorator
             }
         }
 
-        return $f();
+        return $f;
     }
 
     public function __get($name)
