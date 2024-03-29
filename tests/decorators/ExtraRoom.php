@@ -2,9 +2,9 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
-use Sagittaracc\PhpPythonDecorator\PhpDecorator;
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
-final class ExtraRoom extends PhpDecorator
+final class ExtraRoom extends PythonDecorator
 {
     public function wrapper(mixed $price)
     {

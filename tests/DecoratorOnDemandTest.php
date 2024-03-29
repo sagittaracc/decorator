@@ -18,11 +18,11 @@ final class DecoratorOnDemandTest extends TestCase
         $price = $room->getPrice();
 
         if ($needExtraRoom) {
-            $price = (new ExtraRoom)->decorate($price);
+            $price = (new ExtraRoom)->wrapper($price);
         }
 
         if ($needWifi) {
-            $price = (new Wifi)->decorate($price);
+            $price = (new Wifi)->wrapper($price);
         }
 
         $this->assertSame(20000, $price);

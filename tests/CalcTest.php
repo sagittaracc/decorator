@@ -5,6 +5,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\InlineTimerMock;
+use Sagittaracc\PhpPythonDecorator\tests\decorators\TimerMock;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Calc;
 
 final class CalcTest extends TestCase
@@ -81,7 +82,7 @@ final class CalcTest extends TestCase
     public function testPhpDecorator(): void
     {
         $calc = new Calc();
-        $timerOnSum = (new InlineTimerMock)->decorate(fn($a, $b) => $calc->sum1($a, $b));
+        $timerOnSum = (new TimerMock)->wrapper(fn($a, $b) => $calc->sum1($a, $b));
         $this->assertSame('Total execution: 1; Result: 3', $timerOnSum(1, 2));
     }
 }

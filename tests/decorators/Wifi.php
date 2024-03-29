@@ -2,9 +2,9 @@
 
 namespace Sagittaracc\PhpPythonDecorator\tests\decorators;
 
-use Sagittaracc\PhpPythonDecorator\PhpDecorator;
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
-final class Wifi extends PhpDecorator
+final class Wifi extends PythonDecorator
 {
     public function wrapper(mixed $price)
     {
