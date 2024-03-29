@@ -8,11 +8,11 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Timer extends PythonDecorator
 {
-    public function wrapper($func)
+    public function wrapper(callable $callback, array $args)
     {
         $time_start = microtime(true);
 
-        $result = $func();
+        $result = call_user_func_array($callback, $args);
 
         $time_end = microtime(true);
         $execution_time = $time_end - $time_start;
