@@ -20,17 +20,15 @@ abstract class Validator extends PythonDecorator
 
     public function wrapper($value)
     {
-        return function (...$args) use ($value) {
-            $this->errors = [];
-            
-            if ($this->validation($value)) {
-                return;
-            }
-    
-            if ($this->debug) {
-                throw new Exception($this->dumpErrors());
-            }
-        };
+        $this->errors = [];
+        
+        if ($this->validation($value)) {
+            return;
+        }
+
+        if ($this->debug) {
+            throw new Exception($this->dumpErrors());
+        }
     }
 
     public function addError($error)
