@@ -8,7 +8,7 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Init extends PythonDecorator
 {
-    public function wrapper(mixed $object, array $args)
+    public function wrapper(mixed $object)
     {
         $object->prop = 1;
     }

@@ -44,7 +44,6 @@ trait Decorator
         $class = new ReflectionClass($this);
 
         $f = $this;
-        $args = [];
 
         $attributes = $class->getAttributes();
         foreach (array_reverse($attributes) as $attribute) {
@@ -52,7 +51,7 @@ trait Decorator
 
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this);
-                $f = $instance->wrapper($f, $args);
+                $f = $instance->wrapper($f);
             }
         }
 

@@ -8,8 +8,10 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Double extends PythonDecorator
 {
-    public function wrapper(mixed $callback, array $args)
+    public function wrapper(mixed $callback)
     {
-        return 2 * call_user_func_array($callback, $args);
+        return function (...$args) use ($callback) {
+            return 2 * call_user_func_array($callback, $args);
+        };
     }
 }

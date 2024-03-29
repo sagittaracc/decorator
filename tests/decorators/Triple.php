@@ -8,8 +8,10 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Triple extends PythonDecorator
 {
-    public function wrapper(mixed $callback, array $args)
+    public function wrapper(mixed $callback)
     {
-        return 3 * call_user_func_array($callback, $args);
+        return function (...$args) use ($callback) {
+            return 3 * call_user_func_array($callback, $args);
+        };
     }
 }
