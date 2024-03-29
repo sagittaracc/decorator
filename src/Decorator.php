@@ -33,7 +33,6 @@ trait Decorator
                 $instance->bindTo($this, $func);
                 $f = $instance->wrapper($f);
             }
-
         }
 
         return call_user_func_array($f, $args);
@@ -105,15 +104,17 @@ trait Decorator
             throw new DecoratorError('Only public properties can be validated!');
         }
 
+        $f = $value;
+
         $attributes = $property->getAttributes();
         foreach ($attributes as $attribute) {
             $instance = $attribute->newInstance();
             
             if ($instance instanceof PythonDecorator) {
-                $instance->bindTo($this, $name);
-                $instance->wrapper($value);
-                $this->$name = $value;
+                $instance->bindTo($this, $name)->wrapper($f);
             }
         }
+
+        $this->$name = $f;
     }
 }
