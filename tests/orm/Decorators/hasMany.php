@@ -26,6 +26,6 @@ class hasMany extends PythonDecorator
         $ar->setReference($this->reference);
         $ar();
 
-        return (new Query)->wrapper($ar);
+        return (new RawSql)->wrapper($ar);
     }
 }
