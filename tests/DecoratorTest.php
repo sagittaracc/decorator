@@ -17,6 +17,6 @@ final class DecoratorTest extends TestCase
             }
         );
 
-        $this->assertSame('Total execution: 1; Result: 3', $result);
+        $this->assertSame('Total execution: 1; Result: 3', $result());
     }
 }
