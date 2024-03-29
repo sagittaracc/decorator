@@ -9,19 +9,10 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 class Query extends PythonDecorator
 {
-    public function wrapper($classObject)
+    public function wrapper($ar)
     {
-        /**
-         * @var \Arutyunyan\Temp\ActiveRecord\ActiveRecord $ar
-         */
-        $ar = $classObject();
+        $rawQuery = (new RawSql)->wrapper($ar);
 
-        $rawQuery = (new RawSql)->wrapper(fn() => $ar);
-
-        $dbh = $ar->getConnection();
-        $sth = $dbh->prepare($rawQuery);
-        $sth->execute([':id' => $ar->getId()]);
-
-        return $sth->fetchAll(PDO::FETCH_CLASS, $ar->getReturnObjectClass());
+        return $rawQuery;
     }
 }

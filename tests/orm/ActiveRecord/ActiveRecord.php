@@ -3,14 +3,11 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\tests\orm\Decorators\PDO;
 
 abstract class ActiveRecord
 {
     use Decorator;
 
-    #[PDO('mysql:host=localhost;dbname=test', 'root', '')]
-    // TODO: #[Singleton]
     public $db;
 
     protected int $id;

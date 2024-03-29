@@ -7,30 +7,18 @@ use Sagittaracc\PhpPythonDecorator\tests\orm\Category;
 
 final class OrmTest extends TestCase
 {
-    public function testOrm(): void
-    {
-        /**
-         * Orm example
-         */
-        // $category = Category::findOne(1);
-        // $products = $category->_products;
-
-        // $firstProduct = $products[0];
-        // $secondProduct = $products[1];
-
-        // $this->assertSame(1, $firstProduct->id);
-        // $this->assertSame('computer', $firstProduct->name);
-
-        // $this->assertSame(2, $secondProduct->id);
-        // $this->assertSame('phone', $secondProduct->name);
-        
-        $this->assertNull(null);
-    }
-
     public function testTable(): void
     {
         $category = new Category();
         $category();
         $this->assertSame('categories', $category->getTable());
+    }
+
+    public function testHasMany(): void
+    {
+        $category = Category::findOne(1);
+        $query = $category->_products;
+        $this->assertSame('SELECT * from `categories` join `products` on `categories`.`id` = `products`.`category_id` where `categories`.`id` = :id', $query);
+        $this->assertSame(1, $category->getId());
     }
 }

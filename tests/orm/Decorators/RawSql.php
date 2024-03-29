@@ -8,13 +8,8 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 class RawSql extends PythonDecorator
 {
-    public function wrapper($classObject)
+    public function wrapper($ar)
     {
-        /**
-         * @var \Arutyunyan\Temp\ActiveRecord\ActiveRecord $ar
-         */
-        $ar = $classObject();
-
         $returnObject = $ar->getReturnObjectClass();
         $reference = new $returnObject;
         $reference();
