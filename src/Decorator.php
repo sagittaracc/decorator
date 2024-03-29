@@ -23,9 +23,10 @@ trait Decorator
             throw new DecoratorError('Only public methods can be decorated!');
         }
 
-        $f = [$this, $func];
-
+        // TODO: Получить атрибуты из кэша
         $attributes = $method->getAttributes();
+
+        $f = [$this, $func];
         foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
 
@@ -41,10 +42,10 @@ trait Decorator
     public function __invoke()
     {
         $class = new ReflectionClass($this);
+        // TODO: Получить атрибуты из кэша
+        $attributes = $class->getAttributes();
 
         $f = $this;
-
-        $attributes = $class->getAttributes();
         foreach (array_reverse($attributes) as $attribute) {
             $instance = $attribute->newInstance();
 
@@ -67,13 +68,13 @@ trait Decorator
             throw new DecoratorError('Only public properties can be decorated!');
         }
 
-        $f = $this->$name ?? null;
-
         // COMMENT: Первый атрибут проперти обрабатывается по особенному
         // 1. Если он отнаследован от PythonDecorator то в него проперти оборачивается
         // 2. Если от другого класса то его инстанс присваивается этому проперти
+        // TODO: Получить атрибуты из кэша
         $attributes = array_reverse($property->getAttributes());
 
+        $f = $this->$name ?? null;
         $firstAttribute = array_shift($attributes);
         $firstInstance = $firstAttribute->newInstance();
         $f = $firstInstance instanceof PythonDecorator
@@ -104,9 +105,10 @@ trait Decorator
             throw new DecoratorError('Only public properties can be validated!');
         }
 
-        $f = $value;
-
+        // TODO: Получить атрибуты из кэша
         $attributes = $property->getAttributes();
+
+        $f = $value;
         foreach ($attributes as $attribute) {
             $instance = $attribute->newInstance();
             
