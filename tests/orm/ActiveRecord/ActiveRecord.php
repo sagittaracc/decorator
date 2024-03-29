@@ -3,6 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\orm\ActiveRecord;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\tests\orm\Builder\MySql;
 
 abstract class ActiveRecord
 {
@@ -21,6 +22,8 @@ abstract class ActiveRecord
     protected string $returnObjectCount;
 
     protected string $reference;
+
+    public string $builderClass = MySql::class;
 
     public function getConnection()
     {
