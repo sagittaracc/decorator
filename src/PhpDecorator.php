@@ -9,11 +9,11 @@ namespace Sagittaracc\PhpPythonDecorator;
 abstract class PhpDecorator extends PythonDecorator
 {
     /**
-     * @param mixed $data
+     * @param mixed $callback_or_object_or_property_or_value
      * @return mixed
      */
-    public function decorate($data)
+    public function decorate($callback_or_object_or_property_or_value)
     {
-        return $this->wrapper($data);
+        return $this->wrapper($callback_or_object_or_property_or_value);
     }
 }
