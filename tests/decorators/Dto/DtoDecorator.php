@@ -13,7 +13,7 @@ abstract class DtoDecorator extends PythonDecorator
 {
     use Decorator;
 
-    public function wrapper(callable $callback, array $args)
+    public function wrapper(mixed $callback, array $args)
     {
         $row = call_user_func_array($callback, $args);
 

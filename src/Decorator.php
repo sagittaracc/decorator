@@ -43,7 +43,7 @@ trait Decorator
     {
         $class = new ReflectionClass($this);
 
-        $f = fn() => $this;
+        $f = $this;
         $args = [];
 
         $attributes = $class->getAttributes();
@@ -52,7 +52,7 @@ trait Decorator
 
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this);
-                $f = fn() => $instance->wrapper($f, $args);
+                $f = $instance->wrapper($f, $args);
             }
         }
 

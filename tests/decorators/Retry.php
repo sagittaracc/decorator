@@ -18,7 +18,7 @@ final class Retry extends PythonDecorator
         private int $maxAttemptCount
     ) {}
 
-    public function wrapper(callable $callback, array $args)
+    public function wrapper(mixed $callback, array $args)
     {
         $attemptTotal = 0;
 
