@@ -30,6 +30,11 @@ This is how you can call it
 $calc = new Calc();
 echo call_decorator_func_array([$calc, 'sum'], [1, 2]); // Total execution: 1.00034234 ms; Result: 3
 ```
+Or inline
+```php
+$timerOnSum = (new Timer)->decorate(fn($a, $b) => $calc->sum($a, $b));
+$this->assertSame('Total execution: 1.00034234; Result: 3', $timerOnSum(1, 2));
+```
 
 # Validation
 ```php
