@@ -8,17 +8,19 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 #[Attribute]
 final class Cache extends PythonDecorator
 {
-    public function wrapper(mixed $callback, array $args)
+    public function wrapper(mixed $callback)
     {
-        if ($cache = $this->getCache($this->getPropertyOrMethod())) {
-            // return $cache
-            return 'cache';
-        }
-
-        $result = call_user_func_array($callback, $args);
-        $this->setCache($this->getPropertyOrMethod(), $result);
-
-        return $result;
+        return function (...$args) use ($callback) {
+            if ($cache = $this->getCache($this->getPropertyOrMethod())) {
+                // return $cache
+                return 'cache';
+            }
+    
+            $result = call_user_func_array($callback, $args);
+            $this->setCache($this->getPropertyOrMethod(), $result);
+    
+            return $result;
+        };
     }
 
     private function getCache($key)

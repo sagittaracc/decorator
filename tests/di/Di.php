@@ -17,14 +17,16 @@ class Di extends PythonDecorator
         private null|array $constructor = null
     ) {}
     
-    public function wrapper($property, $args)
+    public function wrapper($property)
     {
-        $class = new ReflectionClass($this->class);
-        $constructor = $this->constructor ?? $class?->getConstructor()?->getParameters();
-
-        $this->instance = new $this->class(...$this->resolve($constructor));
-
-        return $this->instance;
+        return function (...$args) {
+            $class = new ReflectionClass($this->class);
+            $constructor = $this->constructor ?? $class?->getConstructor()?->getParameters();
+    
+            $this->instance = new $this->class(...$this->resolve($constructor));
+    
+            return $this->instance;
+        };
     }
 
     private function resolve(null|array $constructor): array

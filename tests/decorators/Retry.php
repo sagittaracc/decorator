@@ -18,35 +18,37 @@ final class Retry extends PythonDecorator
         private int $maxAttemptCount
     ) {}
 
-    public function wrapper(mixed $callback, array $args)
+    public function wrapper(mixed $callback)
     {
-        $attemptTotal = 0;
-
-        for ($i = 1; $i <= $this->maxAttemptCount; $i++) {
-            try
-            {
-                $attemptTotal++;
-
-                if ($i < 3) {
-                    throw new Exception;
+        return function (...$args) use ($callback) {
+            $attemptTotal = 0;
+    
+            for ($i = 1; $i <= $this->maxAttemptCount; $i++) {
+                try
+                {
+                    $attemptTotal++;
+    
+                    if ($i < 3) {
+                        throw new Exception;
+                    }
+                    else {
+                        $result = call_user_func_array($callback, $args);
+                    }
                 }
-                else {
-                    $result = call_user_func_array($callback, $args);
+                catch (Exception $e)
+                {
+                    $result = null;
                 }
             }
-            catch (Exception $e)
-            {
-                $result = null;
+    
+            if ($result === null) {
+                throw new Exception("{$this->maxAttemptCount} attempts was not enough!");
             }
-        }
-
-        if ($result === null) {
-            throw new Exception("{$this->maxAttemptCount} attempts was not enough!");
-        }
-
-        return [
-            'attempts' => $attemptTotal,
-            'result' => $result,
-        ];
+    
+            return [
+                'attempts' => $attemptTotal,
+                'result' => $result,
+            ];
+        };
     }
 }

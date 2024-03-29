@@ -3,7 +3,6 @@
 namespace Sagittaracc\PhpPythonDecorator;
 
 use Exception;
-use sagittaracc\PlaceholderHelper;
 
 /**
  * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
@@ -19,17 +18,19 @@ abstract class Validator extends PythonDecorator
      */
     protected array $errors;
 
-    public function wrapper($value, $args)
+    public function wrapper($value)
     {
-        $this->errors = [];
-        
-        if ($this->validation($value)) {
-            return;
-        }
-
-        if ($this->debug) {
-            throw new Exception($this->dumpErrors());
-        }
+        return function (...$args) use ($value) {
+            $this->errors = [];
+            
+            if ($this->validation($value)) {
+                return;
+            }
+    
+            if ($this->debug) {
+                throw new Exception($this->dumpErrors());
+            }
+        };
     }
 
     public function addError($error)

@@ -68,8 +68,7 @@ trait Decorator
             throw new DecoratorError('Only public properties can be decorated!');
         }
 
-        $f = fn() => $this->$name ?? null;
-        $args = [];
+        $f = $this->$name ?? null;
 
         // COMMENT: Первый атрибут проперти обрабатывается по особенному
         // 1. Если он отнаследован от PythonDecorator то в него проперти оборачивается
@@ -78,8 +77,8 @@ trait Decorator
 
         $firstAttribute = array_shift($attributes);
         $firstInstance = $firstAttribute->newInstance();
-        $f = fn() => $firstInstance instanceof PythonDecorator
-            ? $firstInstance->bindTo($this, $name)->wrapper($f, $args)
+        $f = $firstInstance instanceof PythonDecorator
+            ? $firstInstance->bindTo($this, $name)->wrapper($f)
             : $firstInstance;
 
         foreach ($attributes as $attribute) {
@@ -87,7 +86,7 @@ trait Decorator
 
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this, $name);
-                $f = fn() => $instance->wrapper($f, $args);
+                $f = $instance->wrapper($f);
             }
         }
 
