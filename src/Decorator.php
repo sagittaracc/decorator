@@ -69,16 +69,18 @@ trait Decorator
             throw new DecoratorError('Only public properties can be decorated!');
         }
 
-        $attributes = array_reverse($property->getAttributes());
         $f = fn() => $this->$name ?? null;
+        $args = [];
 
-        // Первый атрибут проперти обрабатывается по особенному
+        // COMMENT: Первый атрибут проперти обрабатывается по особенному
         // 1. Если он отнаследован от PythonDecorator то в него проперти оборачивается
         // 2. Если от другого класса то его инстанс присваивается этому проперти
+        $attributes = array_reverse($property->getAttributes());
+
         $firstAttribute = array_shift($attributes);
         $firstInstance = $firstAttribute->newInstance();
         $f = fn() => $firstInstance instanceof PythonDecorator
-            ? $firstInstance->bindTo($this, $name)->wrapper($f, [])
+            ? $firstInstance->bindTo($this, $name)->wrapper($f, $args)
             : $firstInstance;
 
         foreach ($attributes as $attribute) {
@@ -86,7 +88,7 @@ trait Decorator
 
             if ($instance instanceof PythonDecorator) {
                 $instance->bindTo($this, $name);
-                $f = fn() => $instance->wrapper($f, []);
+                $f = fn() => $instance->wrapper($f, $args);
             }
         }
 
@@ -106,7 +108,6 @@ trait Decorator
         }
 
         $attributes = $property->getAttributes();
-
         foreach ($attributes as $attribute) {
             $instance = $attribute->newInstance();
             
