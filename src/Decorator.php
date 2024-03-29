@@ -15,6 +15,10 @@ trait Decorator
 
     public function __call($func, $args)
     {
+        // if ($this->scope['__attributes__']->hasCache($func)) {
+        //     $attributes = $this->scope['__attributes__']->getCache($func);
+        // }
+        // else {
         $class = new ReflectionClass($this);
         $func = get_real_name($func);
         $method = $class->getMethod($func);
@@ -23,8 +27,8 @@ trait Decorator
             throw new DecoratorError('Only public methods can be decorated!');
         }
 
-        // TODO: Получить атрибуты из кэша
         $attributes = $method->getAttributes();
+        // }
 
         $f = [$this, $func];
         foreach (array_reverse($attributes) as $attribute) {
@@ -42,7 +46,6 @@ trait Decorator
     public function __invoke()
     {
         $class = new ReflectionClass($this);
-        // TODO: Получить атрибуты из кэша
         $attributes = $class->getAttributes();
 
         $f = $this;
@@ -71,7 +74,6 @@ trait Decorator
         // COMMENT: Первый атрибут проперти обрабатывается по особенному
         // 1. Если он отнаследован от PythonDecorator то в него проперти оборачивается
         // 2. Если от другого класса то его инстанс присваивается этому проперти
-        // TODO: Получить атрибуты из кэша
         $attributes = array_reverse($property->getAttributes());
 
         $f = $this->$name ?? null;
@@ -105,7 +107,6 @@ trait Decorator
             throw new DecoratorError('Only public properties can be validated!');
         }
 
-        // TODO: Получить атрибуты из кэша
         $attributes = $property->getAttributes();
 
         $f = $value;
