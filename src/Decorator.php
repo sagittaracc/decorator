@@ -2,6 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator;
 
+use Closure;
 use ReflectionClass;
 use Sagittaracc\PhpPythonDecorator\exceptions\DecoratorError;
 
@@ -44,7 +45,7 @@ trait Decorator
         return call_user_func_array($f, $args);
     }
 
-    public function __invoke()
+    public function __invoke(...$args)
     {
         $class = new ReflectionClass($this);
         $attributes = $class->getAttributes();
@@ -59,7 +60,10 @@ trait Decorator
             }
         }
 
-        return $f;
+        return
+            is_callable($f) && $f instanceof Closure
+                ? $f(...$args)
+                : $f;
     }
 
     public function __get($name)
