@@ -36,6 +36,28 @@ $timerOnSum = (new Timer)->wrapper(fn($a, $b) => $calc->sum($a, $b));
 echo $timerOnSum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 ```
 
+# Generics
+```php
+use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\T;
+
+#[T]
+class Box
+{
+    use Decorator;
+
+    #[T]
+    public array $items;
+}
+
+$box = new Box();
+$box(Pencil::class); // new Box<Pencil>();
+
+$pencil = new Pencil();
+$pen = new Pen();
+$box->_items = [$pencil, $pen]; // throws a GenericError
+```
+
 # Validation
 ```php
 
