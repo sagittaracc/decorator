@@ -10,20 +10,19 @@ class T extends PythonDecorator
 {
     private function checkGeneric($item)
     {
-        $object = $this->getObject();
-        $scope = $object->scope;
-        
-        if (!$scope) {
+        if (!$this->getObject()->scope) {
             return false;
         }
 
-        $tmp = $scope['generics'][static::class]['objectClass'];
-
-        if ($item instanceof $tmp) {
-            return true;
+        if (isset($this->getObject()->scope['generics'])) {
+            $tmp = $this->getObject()->scope['generics'][static::class]['objectClass'];
+    
+            if ($item instanceof $tmp) {
+                return true;
+            }
+    
+            throw new GenericError;
         }
-
-        throw new GenericError;
     }
 
     public function wrapper($value)

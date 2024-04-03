@@ -13,7 +13,9 @@ use function get_real_name;
  */
 trait Decorator
 {
-    public array $scope = [];
+    public array $scope = [
+        'modules' => [],
+    ];
 
     public function __call($func, $args)
     {
