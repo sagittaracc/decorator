@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
+use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\A;
+use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\T;
+use Sagittaracc\PhpPythonDecorator\modules\generics\Generic;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Box;
-use Sagittaracc\PhpPythonDecorator\tests\examples\Calc;
+use Sagittaracc\PhpPythonDecorator\tests\examples\MyBox;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Pen;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Pencil;
 
@@ -33,5 +36,13 @@ final class GenericsTest extends TestCase
         $box->_items = [$pen1, $pen2];
 
         $this->assertTrue(true);
+    }
+
+    public function testGenericModule(): void
+    {
+        $box = new MyBox();
+        $box(Pen::class, Pencil::class);
+
+        $this->assertSame($box->scope['modules'][Generic::class]['generics'], [T::class, A::class]);
     }
 }
