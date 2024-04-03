@@ -11,5 +11,7 @@ class Base extends PythonDecorator
     {
         $generic = Generic::install($this->getObject());
         $generic->addName(static::class);
+
+        return fn(...$args) => $generic->addEntities($args);
     }
 }

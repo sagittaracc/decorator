@@ -43,6 +43,12 @@ final class GenericsTest extends TestCase
         $box = new MyBox();
         $box(Pen::class, Pencil::class);
 
-        $this->assertSame($box->scope['modules'][Generic::class]['generics'], [T::class, A::class]);
+        $this->assertSame(
+            $box->scope['modules'][Generic::class]['match'],
+            [
+                T::class => Pen::class,
+                A::class => Pencil::class
+            ]
+        );
     }
 }
