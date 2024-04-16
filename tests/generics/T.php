@@ -7,9 +7,4 @@ use Sagittaracc\PhpPythonDecorator\modules\generics\BaseGeneric;
 
 #[Attribute]
 class T extends BaseGeneric
-{
-    public static function create()
-    {
-        return new T();
-    }
-}
+{}

@@ -5,7 +5,7 @@ namespace Sagittaracc\PhpPythonDecorator\modules\generics;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
-abstract class BaseGeneric extends PythonDecorator
+class BaseGeneric extends PythonDecorator
 {
     public function wrapper(mixed $callback_or_object_or_property_or_value)
     {
@@ -14,6 +14,4 @@ abstract class BaseGeneric extends PythonDecorator
 
         return fn(...$args) => $generic->addEntities($args);
     }
-
-    abstract public static function create();
 }
