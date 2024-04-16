@@ -38,6 +38,13 @@ abstract class PythonDecorator extends PhpAttribute
         return $this->object;
     }
     /**
+     * 
+     */
+    public function initialized(): bool
+    {
+        return isset($this->object);
+    }
+    /**
      * Получает название свойства или метода к которому привязан декоратор
      * @return string
      */

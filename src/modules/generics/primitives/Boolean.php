@@ -2,5 +2,10 @@
 
 namespace Sagittaracc\PhpPythonDecorator\modules\generics\primitives;
 
-class Boolean
-{}
+class Boolean implements PrimitiveInterface
+{
+    public function validate($value)
+    {
+        return is_bool($value);
+    }
+}
