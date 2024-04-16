@@ -6,7 +6,6 @@ use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Boolean;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Number;
-use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\PrimitiveInterface;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Str;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
