@@ -4,11 +4,20 @@ namespace Sagittaracc\PhpPythonDecorator\modules\generics;
 
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
+use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Boolean;
+use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Number;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\PrimitiveInterface;
+use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Str;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 class BaseGeneric extends PythonDecorator
 {
+    protected $primitives = [
+        Number::class,
+        Str::class,
+        Boolean::class,
+    ];
+
     private function getEntityByValue($value)
     {
         if (!$this->initialized()) {
@@ -37,10 +46,8 @@ class BaseGeneric extends PythonDecorator
             return false;
         }
 
-        $entityInstance = new $entity;
-
-        if ($entityInstance instanceof PrimitiveInterface) {
-            if ($entityInstance->validate($value)) {
+        if (in_array($entity, $this->primitives)) {
+            if ((new $entity)->validate($value)) {
                 return true;
             }
             else {

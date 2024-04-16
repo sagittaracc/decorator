@@ -2,7 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator\modules\generics\primitives;
 
-class Str implements PrimitiveInterface
+class Str
 {
     public function validate($value)
     {

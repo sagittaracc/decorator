@@ -2,7 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator\modules\generics\primitives;
 
-class Number implements PrimitiveInterface
+class Number
 {
     public function validate($value)
     {
