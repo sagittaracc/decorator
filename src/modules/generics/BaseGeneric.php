@@ -7,9 +7,9 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 class BaseGeneric extends PythonDecorator
 {
-    public function wrapper(mixed $callback_or_object_or_property_or_value)
+    public function wrapper(mixed $object)
     {
-        $generic = Generics::install($this->getObject());
+        $generic = Generics::install($object);
         $generic->addName(static::class);
 
         return fn(...$args) => $generic->addEntities($args);

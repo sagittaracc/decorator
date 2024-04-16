@@ -9,7 +9,6 @@ use Sagittaracc\PhpPythonDecorator\tests\examples\Box;
 use Sagittaracc\PhpPythonDecorator\tests\examples\MyBox;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Pen;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Pencil;
-use Sagittaracc\PhpPythonDecorator\tests\generics\T;
 use Sagittaracc\PhpPythonDecorator\tests\generics\U;
 
 final class GenericsTest extends TestCase
@@ -41,9 +40,9 @@ final class GenericsTest extends TestCase
     public function testGenericModule(): void
     {
         $box = new MyBox();
-        $box(Pen::class, Pencil::class);
+        $box(Pen::class);
 
-        $this->assertSame($box->scope['modules'][Generics::class]['generics'], [T::class, U::class]);
-        $this->assertSame($box->scope['modules'][Generics::class]['entities'], [Pen::class, Pencil::class]);
+        $this->assertSame($box->scope['modules'][Generics::class]['generics'], [U::class]);
+        $this->assertSame($box->scope['modules'][Generics::class]['entities'], [Pen::class]);
     }
 }
