@@ -11,4 +11,7 @@ use Sagittaracc\PhpPythonDecorator\tests\generics\U;
 class MyAnotherBox
 {
     use Decorator;
+
+    #[U]
+    public $id; // id might be either a string or a number
 }

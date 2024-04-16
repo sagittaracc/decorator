@@ -5,6 +5,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
+use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Number;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Box;
 use Sagittaracc\PhpPythonDecorator\tests\examples\MyAnotherBox;
 use Sagittaracc\PhpPythonDecorator\tests\examples\MyBox;
@@ -51,9 +52,9 @@ final class GenericsTest extends TestCase
     public function testGenericList(): void
     {
         $box = new MyAnotherBox();
-        $box(Pen::class, Pencil::class);
+        $box(Pen::class, Number::class);
 
         $this->assertSame($box->scope['modules'][Generics::class]['generics'], [T::class, U::class]);
-        $this->assertSame($box->scope['modules'][Generics::class]['entities'], [Pen::class, Pencil::class]);
+        $this->assertSame($box->scope['modules'][Generics::class]['entities'], [Pen::class, Number::class]);
     }
 }
