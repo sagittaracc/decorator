@@ -53,6 +53,7 @@ final class GenericsTest extends TestCase
     {
         $box = new MyAnotherBox();
         $box(Pen::class, Number::class);
+        // set_decorator_prop($box, 'id', 3);
 
         $this->assertSame($box->scope['modules'][Generics::class]['generics'], [T::class, U::class]);
         $this->assertSame($box->scope['modules'][Generics::class]['entities'], [Pen::class, Number::class]);
