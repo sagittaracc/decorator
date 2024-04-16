@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
-use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\A;
-use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\T;
-use Sagittaracc\PhpPythonDecorator\modules\generics\Generic;
+use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Box;
 use Sagittaracc\PhpPythonDecorator\tests\examples\MyBox;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Pen;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Pencil;
+use Sagittaracc\PhpPythonDecorator\tests\generics\T;
+use Sagittaracc\PhpPythonDecorator\tests\generics\U;
 
 final class GenericsTest extends TestCase
 {
@@ -43,12 +43,7 @@ final class GenericsTest extends TestCase
         $box = new MyBox();
         $box(Pen::class, Pencil::class);
 
-        $this->assertSame(
-            $box->scope['modules'][Generic::class]['match'],
-            [
-                T::class => Pen::class,
-                A::class => Pencil::class
-            ]
-        );
+        $this->assertSame($box->scope['modules'][Generics::class]['generics'], [T::class, U::class]);
+        $this->assertSame($box->scope['modules'][Generics::class]['entities'], [Pen::class, Pencil::class]);
     }
 }

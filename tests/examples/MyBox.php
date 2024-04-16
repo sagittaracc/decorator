@@ -3,10 +3,10 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\A;
-use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\T;
+use Sagittaracc\PhpPythonDecorator\tests\generics\T;
+use Sagittaracc\PhpPythonDecorator\tests\generics\U;
 
-#[A]
+#[U]
 #[T]
 class MyBox
 {
