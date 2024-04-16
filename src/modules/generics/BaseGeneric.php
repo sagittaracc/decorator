@@ -9,9 +9,9 @@ class BaseGeneric extends PythonDecorator
 {
     public function wrapper(mixed $object)
     {
-        $generic = Generics::install($object);
-        $generic->addName(static::class);
+        $generics = Generics::install($object);
+        $generics->addName(static::class);
 
-        return fn(...$args) => $generic->addEntities($args);
+        return fn(...$args) => $generics->addEntities($args);
     }
 }
