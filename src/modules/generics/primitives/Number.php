@@ -6,6 +6,6 @@ class Number
 {
     public function validate($value)
     {
-        return is_numeric($value);
+        return is_int($value);
     }
 }

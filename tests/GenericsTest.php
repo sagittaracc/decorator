@@ -9,6 +9,7 @@ use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Number;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Str;
 use Sagittaracc\PhpPythonDecorator\tests\examples\MyAnotherBox;
 use Sagittaracc\PhpPythonDecorator\tests\examples\MyBox;
+use Sagittaracc\PhpPythonDecorator\tests\examples\PaymentInfo;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Pen;
 use Sagittaracc\PhpPythonDecorator\tests\generics\T;
 use Sagittaracc\PhpPythonDecorator\tests\generics\U;
@@ -51,7 +52,16 @@ final class GenericsTest extends TestCase
         $this->expectException(GenericError::class);
 
         $box = new MyAnotherBox();
-        $box(Pen::class, Str::class);
-        set_decorator_prop($box, 'id', 3);
+        $box(Pen::class, Number::class);
+        set_decorator_prop($box, 'id', '3');
+    }
+
+    public function testPaymentInfo(): void
+    {
+        $this->expectException(GenericError::class);
+
+        $paymentInfo = new PaymentInfo();
+        $paymentInfo(Number::class);
+        set_decorator_prop($paymentInfo, 'currency', 'rubles');
     }
 }
