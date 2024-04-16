@@ -7,10 +7,15 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 class BaseGeneric extends PythonDecorator
 {
+    private function getEntityByValue($value)
+    {
+        return null;
+    }
+
     private function checkGeneric($value)
     {
-        // $index = index_of(static::class, $this->getObject()->scope['modules'][Generics::class]['generics'])
-        // $entity = $box->scope['modules'][Generics::class]['entities'][$index]
+        // $entity = $this->getEntityByValue(static::class)
+        // if !entity return
         // if Validation then check validation
         // else value or value item instance of entity
         return true;
