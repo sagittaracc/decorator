@@ -5,20 +5,12 @@ namespace Sagittaracc\PhpPythonDecorator\modules\generics;
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
-use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Boolean;
-use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Number;
-use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Str;
+use Sagittaracc\PhpPythonDecorator\modules\validation\Validation;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
 class T extends PythonDecorator implements GenericInterface
 {
-    protected $primitives = [
-        Number::class,
-        Str::class,
-        Boolean::class,
-    ];
-
     private function getEntityByValue($value)
     {
         if (!$this->initialized()) {
@@ -47,7 +39,7 @@ class T extends PythonDecorator implements GenericInterface
             return false;
         }
 
-        if (in_array($entity, $this->primitives)) {
+        if (in_array($entity, Validation::$primitives)) {
             if ((new $entity)->validate($value)) {
                 return true;
             }

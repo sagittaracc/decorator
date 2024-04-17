@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\modules\generics\primitives;
+namespace Sagittaracc\PhpPythonDecorator\modules\validation\primitives;
 
 class Boolean
 {
