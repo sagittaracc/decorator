@@ -1,8 +1,9 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator;
+namespace Sagittaracc\PhpPythonDecorator\modules\validation;
 
 use Exception;
+use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 /**
  * @author Yuriy Arutyunyan <sagittaracc@gmail.com>

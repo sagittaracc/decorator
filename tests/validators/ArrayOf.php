@@ -4,7 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator\tests\validators;
 
 use Attribute;
 use Closure;
-use Sagittaracc\PhpPythonDecorator\Validator;
+use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
 
 #[Attribute]
 final class ArrayOf extends Validator

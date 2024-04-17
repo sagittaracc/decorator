@@ -3,7 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples\DataTable;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\Validator;
+use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
 
 #[Attribute]
 final class Table extends Validator

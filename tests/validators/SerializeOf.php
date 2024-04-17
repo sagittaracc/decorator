@@ -4,7 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator\tests\validators;
 
 use Attribute;
 use Exception;
-use Sagittaracc\PhpPythonDecorator\Validator;
+use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
 
 #[Attribute]
 final class SerializeOf extends Validator
