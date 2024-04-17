@@ -2,6 +2,7 @@
 
 namespace Sagittaracc\PhpPythonDecorator\modules\generics;
 
+use Attribute;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Boolean;
@@ -9,7 +10,8 @@ use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Number;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Str;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
-class BaseGeneric extends PythonDecorator implements GenericInterface
+#[Attribute]
+class T extends PythonDecorator implements GenericInterface
 {
     protected $primitives = [
         Number::class,

@@ -3,9 +3,9 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\U;
 use Sagittaracc\PhpPythonDecorator\modules\generics\GenericList;
-use Sagittaracc\PhpPythonDecorator\tests\generics\T;
-use Sagittaracc\PhpPythonDecorator\tests\generics\U;
+use Sagittaracc\PhpPythonDecorator\modules\generics\T;
 
 #[GenericList(T::class, U::class)]
 class MyAnotherBox

@@ -3,7 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
-use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\T;
+use Sagittaracc\PhpPythonDecorator\modules\generics\T;
 
 #[T]
 class PaymentInfo
