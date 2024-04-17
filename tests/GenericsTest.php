@@ -7,10 +7,12 @@ use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Number;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Str;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Box;
 use Sagittaracc\PhpPythonDecorator\tests\examples\MyAnotherBox;
 use Sagittaracc\PhpPythonDecorator\tests\examples\MyBox;
 use Sagittaracc\PhpPythonDecorator\tests\examples\PaymentInfo;
 use Sagittaracc\PhpPythonDecorator\tests\examples\Pen;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Pencil;
 use Sagittaracc\PhpPythonDecorator\tests\generics\T;
 use Sagittaracc\PhpPythonDecorator\tests\generics\U;
 
@@ -63,5 +65,23 @@ final class GenericsTest extends TestCase
         $paymentInfo = new PaymentInfo();
         $paymentInfo(Number::class);
         set_decorator_prop($paymentInfo, 'currency', 'rubles');
+    }
+
+    public function testArrayOf(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $box = new Box();
+        $box(Pen::class);
+        set_decorator_prop($box, 'id', [new Pen, new Pen]);
+    }
+
+    public function testArrayOfFail(): void
+    {
+        $this->expectException(GenericError::class);
+
+        $box = new Box();
+        $box(Pen::class);
+        set_decorator_prop($box, 'id', [new Pen, new Pencil]);
     }
 }

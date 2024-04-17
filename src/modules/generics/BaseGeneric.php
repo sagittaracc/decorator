@@ -9,7 +9,7 @@ use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Number;
 use Sagittaracc\PhpPythonDecorator\modules\generics\primitives\Str;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
-class BaseGeneric extends PythonDecorator
+class BaseGeneric extends PythonDecorator implements GenericInterface
 {
     protected $primitives = [
         Number::class,
