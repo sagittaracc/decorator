@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\modules\generics\type;
+namespace Sagittaracc\PhpPythonDecorator\modules\validation\validators;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\modules\generics\GenericInterface;
