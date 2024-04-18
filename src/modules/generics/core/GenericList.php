@@ -19,8 +19,6 @@ class GenericList extends PythonDecorator
 
     public function wrapper(mixed $object)
     {
-        $generics = Generics::getInstanceFrom($object);
-
         foreach ($this->genericList as $genericClass)
         {
             $generic = new $genericClass;
@@ -31,6 +29,8 @@ class GenericList extends PythonDecorator
 
             $generic->wrapper($object);
         }
+
+        $generics = Generics::getInstanceFrom($object);
 
         return fn(...$args) => $generics->addEntities($args);
     }
