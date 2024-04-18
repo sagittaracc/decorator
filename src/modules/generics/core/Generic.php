@@ -1,6 +1,6 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\modules\generics;
+namespace Sagittaracc\PhpPythonDecorator\modules\generics\core;
 
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 

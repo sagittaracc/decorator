@@ -3,7 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\modules\validation\validators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\modules\generics\Generic;
+use Sagittaracc\PhpPythonDecorator\modules\generics\core\Generic;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]

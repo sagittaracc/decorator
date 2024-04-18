@@ -1,9 +1,10 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\modules\generics;
+namespace Sagittaracc\PhpPythonDecorator\modules\generics\core;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
+use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
