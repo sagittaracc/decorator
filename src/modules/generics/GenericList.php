@@ -3,6 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\modules\generics;
 
 use Attribute;
+use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
@@ -19,9 +20,15 @@ class GenericList extends PythonDecorator
     {
         $generics = Generics::getInstanceFrom($object);
 
-        foreach ($this->genericList as $generic)
+        foreach ($this->genericList as $genericClass)
         {
-            (new $generic)->wrapper($object);
+            $generic = new $genericClass;
+
+            if (!($generic instanceof Generic)) {
+                throw new GenericError('', 400);
+            }
+
+            $generic->wrapper($object);
         }
 
         return fn(...$args) => $generics->addEntities($args);

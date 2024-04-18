@@ -3,7 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\modules\validation\validators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\modules\generics\GenericInterface;
+use Sagittaracc\PhpPythonDecorator\modules\generics\Generic;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
@@ -19,7 +19,8 @@ class ArrayOf extends PythonDecorator
     public function wrapper(mixed $prop)
     {
         $of = new $this->of;
-        if ($of instanceof GenericInterface && $of instanceof PythonDecorator)
+
+        if ($of instanceof Generic)
         {
             $of->bindTo($this->getObject());
 

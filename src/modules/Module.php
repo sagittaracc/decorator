@@ -37,7 +37,7 @@ class Module
     }
     /**
      * Получает экземпляр модуля из объекта внедрения
-     * @return \Sagittaracc\PhpPythonDecorator\modules\Module
+     * @return static
      */
     private function getInstance()
     {
@@ -56,7 +56,7 @@ class Module
     /**
      * Получает экземпляр модуля из объекта внедрения
      * @param object $object объект внедрения
-     * @return \Sagittaracc\PhpPythonDecorator\modules\Module
+     * @return static
      */
     public static function getInstanceFrom(object $object)
     {

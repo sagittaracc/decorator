@@ -6,10 +6,9 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\modules\validation\Validation;
-use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 #[Attribute]
-class T extends PythonDecorator implements GenericInterface
+class T extends Generic
 {
     private function getEntityByValue($value)
     {
