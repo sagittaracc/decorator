@@ -4,32 +4,60 @@ namespace Sagittaracc\PhpPythonDecorator\modules;
 
 use Sagittaracc\PhpPythonDecorator\exceptions\ModuleError;
 
+/**
+ * Модуль
+ * Назначение модулей - внедряться в объекты которые используют декораторы
+ * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
+ */
 class Module
 {
+    /**
+     * Абсолютно любой объект который использует декораторы
+     * В данный объект внедряются пользовательские модули
+     * @var object
+     */
     protected object $object;
-
+    /**
+     * Проверяет может ли модуль внедриться в объект
+     * Для этого объект должен использовать декораторы
+     * Поэтому у объекта должно быть проперти scope
+     * @return boolean
+     */
     private function canImplement()
     {
         return isset($this->object?->scope['modules']);
     }
-
+    /**
+     * Проверяет имплементирован ли уже модуль в объект
+     * @return boolean
+     */
     private function hasInstance()
     {
         return isset($this->object->scope['modules'][static::class]);
     }
-
+    /**
+     * Получает экземпляр модуля из объекта внедрения
+     * @return \Sagittaracc\PhpPythonDecorator\modules\Module
+     */
     private function getInstance()
     {
         return $this->object->scope['modules'][static::class]['instance'];
     }
-
+    /**
+     * Внедряет модуль в объект внедрения
+     * @return static
+     */
     private function setInstance()
     {
         $this->object->scope['modules'][static::class]['instance'] = $this;
 
         return $this;
     }
-
+    /**
+     * Получает экземпляр модуля из объекта внедрения
+     * @param object $object объект внедрения
+     * @return \Sagittaracc\PhpPythonDecorator\modules\Module
+     */
     public static function getInstanceFrom(object $object)
     {
         $module = new static;
