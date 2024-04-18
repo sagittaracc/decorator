@@ -38,7 +38,7 @@ abstract class PythonDecorator
         return $this->object;
     }
     /**
-     * 
+     * TODO: может быть стоит переименовать в isBound
      */
     public function initialized(): bool
     {
