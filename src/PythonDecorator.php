@@ -3,10 +3,10 @@
 namespace Sagittaracc\PhpPythonDecorator;
 
 /**
- * Расширение PHP атрибута до декоратора
+ * Интерпретация PHP атрибута как Python декоратора
  * @author Yuriy Arutyunyan <sagittaracc@gmail.com>
  */
-abstract class PythonDecorator extends PhpAttribute
+abstract class PythonDecorator
 {
     /**
      * Ссылка на объект в котором применяется данный декоратор
@@ -51,15 +51,6 @@ abstract class PythonDecorator extends PhpAttribute
     public function getPropertyOrMethod(): string
     {
         return $this->propertyOrMethod;
-    }
-    /**
-     * По дефолту декораторы ни с чем не сравниваются
-     * Их логика отлична от логики метаданных PHP атрибутов
-     * {@inheritdoc}
-     */
-    protected function matchTo(PhpAttribute $object): array|false
-    {
-        return false;
     }
     /**
      * Враппер декоратора
