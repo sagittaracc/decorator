@@ -12,12 +12,12 @@ final class RouterTest extends TestCase
     {
         $this->assertSame(
             'Hello, guest',
-            (new Route('/hello'))->look(Controller::class)->run()
+            (new Route('/hello'))->getMethod(Controller::class)->run()
         );
 
         $this->assertSame(
             'Hello, yuriy',
-            (new Route('/hello/yuriy'))->look(Controller::class)->run()
+            (new Route('/hello/yuriy'))->getMethod(Controller::class)->run()
         );
     }
 
@@ -25,7 +25,7 @@ final class RouterTest extends TestCase
     {
         $this->assertSame(
             'Hello, guest',
-            (new Route('/hello'))->look(new Controller)->run()
+            (new Route('/hello'))->getMethod(new Controller)->run()
         );
     }
 
@@ -33,13 +33,13 @@ final class RouterTest extends TestCase
     {
         $this->expectExceptionCode(404);
         $this->expectExceptionMessage('GET /notFound not found in Sagittaracc\PhpPythonDecorator\tests\examples\Controller');
-        (new Route('/notFound'))->look(Controller::class)->run();
+        (new Route('/notFound'))->getMethod(Controller::class)->run();
     }
 
     public function testRouterLog(): void
     {
         ob_start();
-        (new Route('/log'))->look(Controller::class)->run();
+        (new Route('/log'))->getMethod(Controller::class)->run();
         $content = ob_get_clean();
         $this->assertSame('log', $content);
     }
@@ -47,6 +47,6 @@ final class RouterTest extends TestCase
     public function testMiddleware(): void
     {
         $this->expectExceptionMessage('Access denied!');
-        (new Route(url: '/data', method: 'POST'))->look(Controller::class)->run();
+        (new Route(url: '/data', method: 'POST'))->getMethod(Controller::class)->run();
     }
 }
