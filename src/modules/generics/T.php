@@ -61,7 +61,7 @@ class T extends PythonDecorator implements GenericInterface
             // ...
         }
         else {
-            $generics = Generics::implementIn($object_or_value);
+            $generics = Generics::getInstanceFrom($object_or_value);
             $generics->addName(static::class);
         }
 

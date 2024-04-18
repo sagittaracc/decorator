@@ -8,37 +8,41 @@ class Module
 {
     protected object $object;
 
-    private function can()
+    private function canImplement()
     {
         return isset($this->object?->scope['modules']);
     }
 
-    private function exists()
+    private function hasInstance()
     {
         return isset($this->object->scope['modules'][static::class]);
     }
 
-    private function get()
+    private function getInstance()
     {
         return $this->object->scope['modules'][static::class]['instance'];
     }
 
-    private function implement()
+    private function setInstance()
     {
         $this->object->scope['modules'][static::class]['instance'] = $this;
 
         return $this;
     }
 
-    public static function implementIn(object $object)
+    public static function getInstanceFrom(object $object)
     {
         $module = new static;
         $module->object = $object;
 
-        if ($module->can()) {
-            return $module->exists() ? $module->get() : $module->implement();
+        if (!$module->canImplement()) {
+            throw new ModuleError('', 400); // TODO: Придумать текст исключения
         }
 
-        throw new ModuleError('Cannot install module cuz object does not have a scope to install to', 400);
+        if (!$module->hasInstance()) {
+            $module->setInstance();
+        }
+
+        return $module->getInstance();
     }
 }

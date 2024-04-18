@@ -17,7 +17,7 @@ class GenericList extends PythonDecorator
 
     public function wrapper(mixed $object)
     {
-        $generics = Generics::implementIn($object);
+        $generics = Generics::getInstanceFrom($object);
 
         foreach ($this->genericList as $generic)
         {
