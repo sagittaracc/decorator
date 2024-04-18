@@ -54,15 +54,16 @@ class T extends Generic
         throw new GenericError;
     }
 
+    private function registerGeneric(&$generics, $object)
+    {
+        $generics = Generics::getInstanceFrom($object);
+        $generics->addName(static::class);
+    }
+
     public function wrapper(mixed $object_or_value)
     {
-        if ($this->checkGeneric($object_or_value)) {
-            // ...
-        }
-        else {
-            $generics = Generics::getInstanceFrom($object_or_value);
-            $generics->addName(static::class);
-        }
+        // TODO: Переставить местами registerGeneric и checkGeneric - что будет более логично
+        $this->checkGeneric($object_or_value) || $this->registerGeneric($generics, $object_or_value);
 
         return fn(...$args) => $generics->addEntities($args);
     }
