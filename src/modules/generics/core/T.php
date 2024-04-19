@@ -4,7 +4,7 @@ namespace Sagittaracc\PhpPythonDecorator\modules\generics\core;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
-use Sagittaracc\PhpPythonDecorator\exceptions\ModuleError;
+use Sagittaracc\PhpPythonDecorator\exceptions\module\NotFoundModuleError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\modules\Module;
 use Sagittaracc\PhpPythonDecorator\modules\validation\Validation;
@@ -50,10 +50,8 @@ class T extends Generic
         try {
             $module = Generics::getInstanceFrom($object);
         }
-        catch (ModuleError $e) {
-            if ($e->getCode() === Module::NOT_FOUND) {
-                return false;
-            }
+        catch (NotFoundModuleError $e) {
+            return false;
         }
 
         $module->addName(static::class);
