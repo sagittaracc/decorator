@@ -26,7 +26,7 @@ class T extends Generic
         $entity = $this->getEntityByValue(static::class);
 
         if (in_array($entity, Validation::$primitives)) {
-            if ((new $entity)->validate($value)) {
+            if ((new $entity)->validation($value)) {
                 return true;
             }
             else {

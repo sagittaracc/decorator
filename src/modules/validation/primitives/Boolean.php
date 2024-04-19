@@ -2,9 +2,13 @@
 
 namespace Sagittaracc\PhpPythonDecorator\modules\validation\primitives;
 
-class Boolean
+use Attribute;
+use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
+
+#[Attribute]
+class Boolean extends Validator
 {
-    public function validate($value)
+    public function validation($value)
     {
         return is_bool($value);
     }

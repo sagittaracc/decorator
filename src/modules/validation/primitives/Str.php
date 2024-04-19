@@ -2,9 +2,13 @@
 
 namespace Sagittaracc\PhpPythonDecorator\modules\validation\primitives;
 
-class Str
+use Attribute;
+use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
+
+#[Attribute]
+class Str extends Validator
 {
-    public function validate($value)
+    public function validation($value)
     {
         return is_string($value);
     }
