@@ -22,7 +22,6 @@ class ArrayOf extends Validator
             return false;
         }
 
-        // ...
         $of = new $this->of;
 
         if ($of instanceof Generic)
@@ -32,9 +31,6 @@ class ArrayOf extends Validator
             foreach ($value as $item) {
                 $of->wrapper($item);
             }
-        }
-        else {
-            // TODO: $of instanceof PrimitiveInterface (e.g. Number, String, Boolean)
         }
 
         return true;

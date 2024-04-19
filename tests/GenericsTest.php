@@ -84,4 +84,22 @@ final class GenericsTest extends TestCase
         $box(Pen::class);
         set_decorator_prop($box, 'id', [new Pen, new Pencil]);
     }
+
+    public function testArrayOfPrimitives(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $box = new Box();
+        $box(Number::class);
+        set_decorator_prop($box, 'id', [1, 2, 3]);
+    }
+
+    public function testArrayOfPrimitivesFail(): void
+    {
+        $this->expectException(GenericError::class);
+
+        $box = new Box();
+        $box(Number::class);
+        set_decorator_prop($box, 'id', [1, 2, '3']);
+    }
 }
