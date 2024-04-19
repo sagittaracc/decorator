@@ -11,7 +11,7 @@ use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 abstract class Validator extends PythonDecorator
 {
     /**
-     * @var bool в режиме дебаг выбрасывается исключение
+     * @var bool в режиме дебаг выбрасывается исключение !С ПЕРВОЙ ОШИБКОЙ!
      */
     public bool $debug = true;
     /**
