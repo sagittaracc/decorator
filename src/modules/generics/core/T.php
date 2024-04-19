@@ -15,7 +15,7 @@ class T extends Generic
     {
         $module = $this->getObject()->scope['modules'][Generics::class];
         $entityIndex = array_search($value, $module['generics']);
-        $entity = $module['entities'][$entityIndex] ?? null;
+        $entity = $module['entities'][$entityIndex];
 
         return $entity;
     }
