@@ -11,6 +11,8 @@ use Sagittaracc\PhpPythonDecorator\exceptions\ModuleError;
  */
 class Module
 {
+    const NOT_FOUND = 400;
+
     /**
      * Абсолютно любой объект который использует декораторы
      * В данный объект внедряются пользовательские модули
@@ -64,7 +66,7 @@ class Module
         $module->object = $object;
 
         if (!$module->canImplement()) {
-            throw new ModuleError('', 400); // TODO: Придумать текст исключения
+            throw new ModuleError('', self::NOT_FOUND); // TODO: Придумать текст исключения
         }
 
         if (!$module->hasInstance()) {

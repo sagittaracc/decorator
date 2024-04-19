@@ -38,13 +38,6 @@ abstract class PythonDecorator
         return $this->object;
     }
     /**
-     * TODO: может быть стоит переименовать в isBound
-     */
-    public function initialized(): bool
-    {
-        return isset($this->object);
-    }
-    /**
      * Получает название свойства или метода к которому привязан декоратор
      * @return string
      */

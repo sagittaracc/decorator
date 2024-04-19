@@ -4,7 +4,9 @@ namespace Sagittaracc\PhpPythonDecorator\modules\generics\core;
 
 use Attribute;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
+use Sagittaracc\PhpPythonDecorator\exceptions\ModuleError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
+use Sagittaracc\PhpPythonDecorator\modules\Module;
 use Sagittaracc\PhpPythonDecorator\modules\validation\Validation;
 
 #[Attribute]
@@ -12,20 +14,9 @@ class T extends Generic
 {
     private function getEntityByValue($value)
     {
-        if (!$this->initialized()) {
-            return null;
-        }
-
-        $modules = $this->getObject()->scope['modules'];
-
-        if (!isset($modules[Generics::class])) {
-            return null;
-        }
-
-        $cfg = $modules[Generics::class];
-
-        $entityIndex = array_search($value, $cfg['generics']);
-        $entity = $cfg['entities'][$entityIndex] ?? null;
+        $module = $this->getObject()->scope['modules'][Generics::class];
+        $entityIndex = array_search($value, $module['generics']);
+        $entity = $module['entities'][$entityIndex] ?? null;
 
         return $entity;
     }
@@ -33,10 +24,6 @@ class T extends Generic
     private function checkGeneric($value)
     {
         $entity = $this->getEntityByValue(static::class);
-
-        if (!$entity) {
-            return false;
-        }
 
         if (in_array($entity, Validation::$primitives)) {
             if ((new $entity)->validate($value)) {
@@ -54,17 +41,30 @@ class T extends Generic
         throw new GenericError;
     }
 
-    private function registerGeneric(&$generics, $object)
+    private function registerGeneric($object, &$module)
     {
-        $generics = Generics::getInstanceFrom($object);
-        $generics->addName(static::class);
+        if (!is_object($object)) {
+            return false;
+        }
+
+        try {
+            $module = Generics::getInstanceFrom($object);
+        }
+        catch (ModuleError $e) {
+            if ($e->getCode() === Module::NOT_FOUND) {
+                return false;
+            }
+        }
+
+        $module->addName(static::class);
+
+        return true;
     }
 
     public function wrapper(mixed $object_or_value)
     {
-        // TODO: Переставить местами registerGeneric и checkGeneric - что будет более логично
-        $this->checkGeneric($object_or_value) || $this->registerGeneric($generics, $object_or_value);
+        $this->registerGeneric($object_or_value, $module) || $this->checkGeneric($object_or_value);
 
-        return fn(...$args) => $generics->addEntities($args);
+        return fn(...$args) => $module->addEntities($args);
     }
 }
