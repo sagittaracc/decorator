@@ -6,7 +6,6 @@ use Attribute;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
 use Sagittaracc\PhpPythonDecorator\exceptions\module\NotFoundModuleError;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
-use Sagittaracc\PhpPythonDecorator\modules\Module;
 use Sagittaracc\PhpPythonDecorator\modules\validation\Validation;
 
 #[Attribute]
