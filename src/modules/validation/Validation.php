@@ -13,11 +13,21 @@ class Validation extends Module
 
     public function addError($prop, $error)
     {
-        $this->object->scope['modules'][self::class]['properties'][$prop]['errors'][] = $error;
+        $this->object->scope['modules'][self::class]['errors'][] = [$prop, $error];
     }
 
     public function addWarning($prop, $warning)
     {
-        $this->object->scope['modules'][self::class]['properties'][$prop]['warnings'][] = $warning;
+        $this->object->scope['modules'][self::class['warnings']][] = [$prop, $warning];
+    }
+
+    public function getFirstError()
+    {
+        return array_shift($this->object->scope['modules'][self::class]['errors']);
+    }
+
+    public function getLog()
+    {
+        return $this->object->scope['modules'][self::class];
     }
 }

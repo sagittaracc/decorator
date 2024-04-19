@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
+use Sagittaracc\PhpPythonDecorator\modules\validation\Validation;
+use Sagittaracc\PhpPythonDecorator\tests\examples\Box;
 use Sagittaracc\PhpPythonDecorator\tests\examples\DataTable\Request;
 
 final class ValidationTest extends TestCase
@@ -209,5 +211,28 @@ final class ValidationTest extends TestCase
                 ],
             ]
         ]);
+    }
+
+    public function testBrandNewValidator(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $box = new Box();
+        set_decorator_prop($box, 'name', 'box');
+    }
+
+    public function testBrandNewValidatorFail(): void
+    {
+        $this->expectExceptionMessage('Sagittaracc\PhpPythonDecorator\tests\examples\Box::name `boxx` is not length of 3');
+
+        $box = new Box();
+        set_decorator_prop($box, 'name', 'boxx');
+        set_decorator_prop($box, 'size', '11111');
+
+        /**
+         * COMMENT: This is how you can get all the errors and warnings
+         * set validator debug option to false
+         * $log = Validation::getInstanceFrom($box)->getLog();
+         */
     }
 }
