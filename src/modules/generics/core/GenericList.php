@@ -24,7 +24,7 @@ class GenericList extends PythonDecorator
             $generic = new $genericClass;
 
             if (!($generic instanceof Generic)) {
-                throw new GenericError('', 400);
+                throw new GenericError;
             }
 
             $generic->wrapper($object);

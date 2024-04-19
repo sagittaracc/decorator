@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Sagittaracc\PhpPythonDecorator\exceptions\GenericError;
+use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\T;
 use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\U;
-use Sagittaracc\PhpPythonDecorator\modules\generics\core\T;
 use Sagittaracc\PhpPythonDecorator\modules\generics\Generics;
 use Sagittaracc\PhpPythonDecorator\modules\validation\primitives\Number;
 use Sagittaracc\PhpPythonDecorator\modules\validation\primitives\Str;
