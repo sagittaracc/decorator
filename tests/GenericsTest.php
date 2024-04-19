@@ -102,4 +102,20 @@ final class GenericsTest extends TestCase
         $box(Number::class);
         set_decorator_prop($box, 'id', [1, 2, '3']);
     }
+
+    public function testPrimitiveStrItSelf(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $box = new Box();
+        set_decorator_prop($box, 'str', 'Hello');
+    }
+
+    public function testPrimitiveStrItSelfFail(): void
+    {
+        $this->expectException(Exception::class);
+
+        $box = new Box();
+        set_decorator_prop($box, 'str', 1);
+    }
 }
