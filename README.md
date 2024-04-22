@@ -96,7 +96,7 @@ set_decorator_prop($progress, 'status', 'progress');  // status is one of possib
 set_decorator_prop($progress, 'caption', 'in progress ...');  // just a string (max length is 32)
 ```
 
-# Attributes
+# Router
 ```php
 class Controller
 {
@@ -112,4 +112,26 @@ class Controller
 
 // index.php
 (new Route('/hello/Yuriy'))->getMethod(Controller::class)->run();  // output: Hello, Yuriy
+```
+
+# Console
+```php
+use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\modules\console\core\Console;
+
+class Controller
+{
+    use Decorator;
+
+    #[Console('/hello')]
+    function greetingPerson($name)
+    {
+        return "Hello, $name";
+    }
+}
+
+// example from the command line: php index.php -c hello --name Yuriy
+// in index.php you should read the command and the parameters
+// and then call it like this:
+(new Console('hello'))->setParameters(['name' => 'Yuriy'])->run();
 ```
