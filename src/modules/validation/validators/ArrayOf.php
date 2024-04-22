@@ -3,7 +3,6 @@
 namespace Sagittaracc\PhpPythonDecorator\modules\validation\validators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\modules\generics\core\Generic;
 use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
 
 #[Attribute]
@@ -22,15 +21,10 @@ class ArrayOf extends Validator
             return false;
         }
 
-        $of = new $this->of;
+        $of = (new $this->of)->bindTo($this->getObject());
 
-        if ($of instanceof Generic)
-        {
-            $of->bindTo($this->getObject());
-
-            foreach ($value as $item) {
-                $of->wrapper($item);
-            }
+        foreach ($value as $item) {
+            $of->wrapper($item);
         }
 
         return true;
