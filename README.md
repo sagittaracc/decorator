@@ -70,21 +70,6 @@ use Sagittaracc\PhpPythonDecorator\tests\validators\In;
 use Sagittaracc\PhpPythonDecorator\tests\validators\LessThan;
 use Sagittaracc\PhpPythonDecorator\tests\validators\UInt8;
 
-class Request extends BaseRequest
-{
-    #[Length(8)]
-    public string $name;
-
-    #[Length(32)]
-    public string $caption;
-
-    #[SerializeOf(Progress::class)]
-    public array $progress;
-
-    #[SerializeOf(DataTable::class)]
-    public array $data;
-}
-
 class Progress
 {
     use Decorator;
@@ -103,41 +88,12 @@ class Progress
     public string $caption;
 }
 
-class DataTable
-{
-    use Decorator;
+$progress = new Progress();
 
-    #[ArrayOf(Str::class)]
-    public array $header;
-
-    // Custom validator
-    #[Table]
-    public array $table;
-}
-
-/**
- * Usage
- */
-new Request([
-    'name' => 'my_table',
-    'caption' => 'my_table_caption',
-    'progress' => [
-        'max' => 255,
-        'pos' => 1,
-        'status' => 'progress',
-        'caption' => 'in progress...',
-    ],
-    'data' => [
-        'header' => ['col-1', 'col-2'],
-        'table' => [
-            'ins' => [
-                ['1', '2'],
-                ['3', '4'],
-                ['5', '6'],
-            ]
-        ],
-    ]
-]);
+set_decorator_prop($progress, 'max', 255);  // max uint8 - 255
+set_decorator_prop($progress, 'pos', 100);  // should be less than max
+set_decorator_prop($progress, 'status', 'progress');  // status is one of possible cases (progress, finish or aborted)
+set_decorator_prop($progress, 'caption', 'in progress ...');  // just a string (max length is 32)
 ```
 
 # Attributes
@@ -153,4 +109,7 @@ class Controller
         return "Hello, $name";
     }
 }
+
+// index.php
+(new Route('/hello/Yuriy'))->getMethod(Controller::class)->run();  // output: Hello, Yuriy
 ```
