@@ -3,7 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\validators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\Validator;
 
 #[Attribute]
 final class UInt8 extends Validator

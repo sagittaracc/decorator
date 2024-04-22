@@ -1,9 +1,9 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\modules\validation\validators;
+namespace Sagittaracc\PhpPythonDecorator\modules\validation\core\validators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\Validator;
 
 #[Attribute]
 class ArrayOf extends Validator

@@ -1,8 +1,9 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\modules\validation;
+namespace Sagittaracc\PhpPythonDecorator\modules\validation\core;
 
 use Exception;
+use Sagittaracc\PhpPythonDecorator\modules\validation\Validation;
 use Sagittaracc\PhpPythonDecorator\PythonDecorator;
 
 /**

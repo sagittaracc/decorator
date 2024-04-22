@@ -1,9 +1,9 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\modules\validation\primitives;
+namespace Sagittaracc\PhpPythonDecorator\modules\validation\core\primitives;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\modules\validation\Validator;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\Validator;
 
 #[Attribute]
 class Boolean extends Validator

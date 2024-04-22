@@ -1,9 +1,9 @@
 <?php
 
-namespace Sagittaracc\PhpPythonDecorator\modules\validation\validators;
+namespace Sagittaracc\PhpPythonDecorator\modules\validation\core\validators;
 
 use Attribute;
-use Sagittaracc\PhpPythonDecorator\modules\validation\Validator2;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\Validator2;
 
 #[Attribute]
 final class Length extends Validator2

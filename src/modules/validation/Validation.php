@@ -3,9 +3,9 @@
 namespace Sagittaracc\PhpPythonDecorator\modules\validation;
 
 use Sagittaracc\PhpPythonDecorator\modules\Module;
-use Sagittaracc\PhpPythonDecorator\modules\validation\primitives\Boolean;
-use Sagittaracc\PhpPythonDecorator\modules\validation\primitives\Number;
-use Sagittaracc\PhpPythonDecorator\modules\validation\primitives\Str;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\primitives\Boolean;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\primitives\Number;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\primitives\Str;
 
 class Validation extends Module
 {

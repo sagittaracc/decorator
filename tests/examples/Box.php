@@ -4,9 +4,9 @@ namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\T;
-use Sagittaracc\PhpPythonDecorator\modules\validation\primitives\Str;
-use Sagittaracc\PhpPythonDecorator\modules\validation\validators\ArrayOf;
-use Sagittaracc\PhpPythonDecorator\modules\validation\validators\Length;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\primitives\Str;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\validators\ArrayOf;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\validators\Length;
 
 #[T]
 class Box
