@@ -3,6 +3,7 @@
 namespace Sagittaracc\PhpPythonDecorator\tests\examples;
 
 use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\modules\console\core\Console;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Log;
 use Sagittaracc\PhpPythonDecorator\tests\decorators\Middleware;
 use Sagittaracc\PhpPythonDecorator\tests\attributes\Route;
@@ -30,5 +31,11 @@ class Controller
     function data()
     {
         return 'secret data';
+    }
+
+    #[Console('hello')]
+    function greetingFromConsole($name)
+    {
+        return "Hello, $name. This is from console";
     }
 }
