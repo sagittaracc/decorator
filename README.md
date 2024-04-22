@@ -123,15 +123,20 @@ class Controller
 {
     use Decorator;
 
-    #[Console('/hello')]
+    #[Console('hello')]
     function greetingPerson($name)
     {
         return "Hello, $name";
     }
 }
+```
 
-// example from the command line: php index.php -c hello --name Yuriy
-// in index.php you should read the command and the parameters
-// and then call it like this:
+in the command line it would be calling for example something like this:
+
+`php index.php -c hello --name Yuriy`
+
+then in `index.php` you should read the command and the parameters and after that call it like this:
+
+```php
 (new Console('hello'))->setParameters(['name' => 'Yuriy'])->run();
 ```
