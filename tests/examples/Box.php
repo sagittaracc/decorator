@@ -24,4 +24,12 @@ class Box
 
     #[Length(4)]
     public $size;
+
+    #[ArrayOf(T::class)]
+    public $items;
+
+    public function addItem(#[T] $item)
+    {
+        $this->items[] = $item;
+    }
 }

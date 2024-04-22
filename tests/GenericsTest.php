@@ -118,4 +118,24 @@ final class GenericsTest extends TestCase
         $box = new Box();
         set_decorator_prop($box, 'str', 1);
     }
+
+    public function testMethodParamAttributes(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $box = new Box();
+        $box(Pen::class);
+
+        call_decorator_func_array([$box, 'addItem'], [new Pen]);
+    }
+
+    public function testMethodParamAttributesFail(): void
+    {
+        $this->expectException(GenericError::class);
+
+        $box = new Box();
+        $box(Pen::class);
+
+        call_decorator_func_array([$box, 'addItem'], [new Pencil]);
+    }
 }

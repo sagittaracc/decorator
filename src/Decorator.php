@@ -31,6 +31,20 @@ trait Decorator
             throw new DecoratorError('Only public methods can be decorated!');
         }
 
+        $params = $method->getParameters();
+
+        foreach ($params as $paramIndex => $param) {
+            $paramAttrs = $param->getAttributes();
+
+            foreach ($paramAttrs as $paramAttr) {
+                $paramAttrInst = $paramAttr->newInstance();
+                
+                if ($paramAttrInst instanceof PythonDecorator) {
+                    $paramAttrInst->bindTo($this)->wrapper($args[$paramIndex]);
+                }
+            }
+        }
+
         $attributes = $method->getAttributes();
         // }
 
