@@ -40,23 +40,25 @@ echo $timerOnSum(1, 2); // Total execution: 1.00034234 ms; Result: 3
 ```php
 use Sagittaracc\PhpPythonDecorator\Decorator;
 use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\T;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\validators\ArrayOf;
 
 #[T]
-class PaymentInfo
+class Box
 {
     use Decorator;
 
-    public string $id;
+    #[ArrayOf(T::class)]
+    public $items;
 
-    public int $amount;
-
-    #[T]
-    public $currency;
+    public function addItem(#[T] $item)
+    {
+        $this->items[] = $item;
+    }
 }
 
-$paymentInfo = new PaymentInfo();
-$paymentInfo(Number::class); // new PaymentInfo<Number>();
-set_decorator_prop($paymentInfo, 'currency', 'rubles'); // throws a GenericError
+$box = new Box();
+$box(Pen::class); // new Box<Pen>();
+call_decorator_func_array([$box, 'addItem'], [new Pencil]); // throws a GenericError
 ```
 
 # Validation
