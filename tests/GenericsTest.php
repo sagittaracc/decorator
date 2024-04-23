@@ -138,4 +138,34 @@ final class GenericsTest extends TestCase
 
         call_decorator_func_array([$box, 'addItem'], [new Pencil]);
     }
+
+    public function testRecordValidator(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $box = new Box();
+        $box(Number::class);
+
+        set_decorator_prop($box, 'map', [1 => 'string-1', 2 => 'string-2']);
+    }
+
+    public function testRecordValidatorFail(): void
+    {
+        $this->expectException(GenericError::class);
+
+        $box = new Box();
+        $box(Str::class);
+
+        set_decorator_prop($box, 'map', [1 => 'string-1', 2 => 'string-2']);
+    }
+
+    public function testRecordValidatorFailTwo(): void
+    {
+        $this->expectException(Exception::class);
+
+        $box = new Box();
+        $box(Number::class);
+
+        set_decorator_prop($box, 'map', [1 => 2, 2 => 'string-2']);
+    }
 }
