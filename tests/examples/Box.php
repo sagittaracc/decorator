@@ -7,6 +7,7 @@ use Sagittaracc\PhpPythonDecorator\modules\generics\aliases\T;
 use Sagittaracc\PhpPythonDecorator\modules\validation\core\primitives\Str;
 use Sagittaracc\PhpPythonDecorator\modules\validation\core\validators\ArrayOf;
 use Sagittaracc\PhpPythonDecorator\modules\validation\core\validators\Length;
+use Sagittaracc\PhpPythonDecorator\modules\validation\core\validators\Nullable;
 use Sagittaracc\PhpPythonDecorator\modules\validation\core\validators\Record;
 
 #[T]
@@ -31,6 +32,9 @@ class Box
 
     #[Record(T::class, Str::class)]
     public $map;
+
+    #[Nullable(Str::class)]
+    public $innerName;
 
     public function addItem(#[T] $item)
     {

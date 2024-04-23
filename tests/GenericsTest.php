@@ -168,4 +168,23 @@ final class GenericsTest extends TestCase
 
         set_decorator_prop($box, 'map', [1 => 2, 2 => 'string-2']);
     }
+
+    public function testNullableValidator(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $box = new Box();
+
+        set_decorator_prop($box, 'innerName', null);
+        set_decorator_prop($box, 'innerName', 'name');
+    }
+
+    public function testNullableValidatorFail(): void
+    {
+        $this->expectException(Exception::class);
+
+        $box = new Box();
+
+        set_decorator_prop($box, 'innerName', 1);
+    }
 }
