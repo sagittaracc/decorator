@@ -98,22 +98,31 @@ set_decorator_prop($progress, 'status', 'progress');  // status is one of possib
 set_decorator_prop($progress, 'caption', 'in progress ...');  // just a string (max length is 32)
 ```
 
-# Router
+# Rpc
 ```php
+use Sagittaracc\PhpPythonDecorator\Decorator;
+use Sagittaracc\PhpPythonDecorator\modules\rpc\core\Rpc;
+
+#[Rpc]
 class Controller
 {
     use Decorator;
 
-    #[Route('/hello')]
-    #[Route('/hello/(\w+)')]
-    function greetingPerson($name = 'guest')
+    public function sum($a, $b)
     {
-        return "Hello, $name";
+        return $a + $b;
     }
 }
+```
 
-// index.php
-(new Route('/hello/Yuriy'))->getMethod(Controller::class)->run();  // output: Hello, Yuriy
+in `index.php`
+
+```php
+// STUB
+$requestBody = '{"id":1,"method":"sum","params":[1,2]}';
+
+$controller = new Controller();
+$controller($requestBody);  // Output: {"json-rpc":"2.0","id":1,"result":3}
 ```
 
 # Console
