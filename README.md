@@ -118,11 +118,17 @@ class Controller
 in `index.php`
 
 ```php
-// STUB
-$requestBody = '{"id":1,"method":"sum","params":[1,2]}';
+$requestBody = file_get_contents('php://input');
 
 $controller = new Controller();
-$controller($requestBody);  // Output: {"json-rpc":"2.0","id":1,"result":3}
+$controller($requestBody);
+```
+
+in `terminal`
+
+```console
+$ curl -d "{"id":1,"method":"sum","params":[1,4]}" http://localhost:4000
+{"json-rpc":"2.0","id":1,"result":5}
 ```
 
 # Console
